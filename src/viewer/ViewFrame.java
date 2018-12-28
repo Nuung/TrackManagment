@@ -18,10 +18,10 @@ public class ViewFrame extends JFrame{
 	
 	public ViewFrame() {
 		// UI (front) Setting
-//		new ViewFirstSet(this);
+		new ViewFirstSet(this);
 		
 		// test line
-		new ViewSecondSet(this);
+//		new ViewSecondSet(this);
 		
 		// Main Frame Setting
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

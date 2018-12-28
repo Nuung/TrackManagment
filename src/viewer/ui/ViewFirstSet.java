@@ -1,6 +1,8 @@
 package viewer.ui;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,7 +14,7 @@ import viewer.ViewFrame;
 public class ViewFirstSet {
 
 	// Default Swing
-	private ViewFrame viewFrame;
+	ViewFrame viewFrame;
 	private JPanel p1;
 	private JButton btn1, btn2;
 	
@@ -47,6 +49,9 @@ public class ViewFirstSet {
 		JButton loginBtn = new JButton("로그인");
 		JButton signupBtn = new JButton("회원가입");
 		
+		// adding event
+		this.btnAction(loginBtn);
+		
 		newFrame.setSize(512, 512);
 		newFrame.setVisible(true);
 		newFrame.setLayout(null);
@@ -58,5 +63,15 @@ public class ViewFirstSet {
 		tempP.add(loginBtn);
 		tempP.add(signupBtn);
 	}
+	
+	private void btnAction(JButton inBtn) {
+		inBtn.addActionListener ( new ActionListener() {
+		    public void actionPerformed(ActionEvent ev) {
+		    	viewFrame.remove(p1); // delete 'p1' Panel
+		    	new ViewSecondSet(viewFrame); // Make Second Layout Setting
+		    	viewFrame.revalidate(); // ReLoading
+		    } // actionPerformed
+		});
+	} // btnAction()
 
 }

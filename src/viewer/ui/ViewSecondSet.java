@@ -17,7 +17,6 @@ public class ViewSecondSet {
 	
 	public ViewSecondSet(ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;
-//		this.viewFrame.removeAll();
 		this.panelSetting();
 	}
 	
