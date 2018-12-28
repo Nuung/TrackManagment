@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,6 +16,7 @@ public class ViewFirstSet {
 
 	// Default Swing
 	ViewFrame viewFrame;
+	JFrame newFrame;
 	private JPanel p1;
 	private JButton btn1, btn2;
 	
@@ -25,9 +27,6 @@ public class ViewFirstSet {
 		this.viewFrame.setLayout(null);
 		this.viewFrame.add(this.p1);
 		this.p1.setBounds(100, 100, 800, 256);
-		
-		// test, making new frame
-		this.newFrameSet();
 	}
 	
 	// Private Panel Setting
@@ -38,11 +37,13 @@ public class ViewFirstSet {
 		this.btn1 = new JButton("학생");
 		this.btn2 = new JButton("관리자");
 		this.p1.add(btn1); this.p1.add(btn2);
+		// adding event
+		this.btnAction(this.btn1);
 	}
 	
 	// Private New Frame For Loging and SignUp
-	private void newFrameSet() {
-		JFrame newFrame = new JFrame();
+	void newFrameSet() {
+		newFrame = new JFrame();
 		JPanel tempP = new JPanel();
 		JTextField idText = new JTextField();
 		JTextField passText = new JTextField();
@@ -51,6 +52,7 @@ public class ViewFirstSet {
 		
 		// adding event
 		this.btnAction(loginBtn);
+		this.btnAction(signupBtn);
 		
 		newFrame.setSize(512, 512);
 		newFrame.setVisible(true);
@@ -67,9 +69,25 @@ public class ViewFirstSet {
 	private void btnAction(JButton inBtn) {
 		inBtn.addActionListener ( new ActionListener() {
 		    public void actionPerformed(ActionEvent ev) {
-		    	viewFrame.remove(p1); // delete 'p1' Panel
-		    	new ViewSecondSet(viewFrame); // Make Second Layout Setting
-		    	viewFrame.revalidate(); // ReLoading
+		    	
+				// getting btn text value
+				Object source =  ev.getSource();
+		        String butSrcTxt = ((AbstractButton) source).getText();
+		    	
+		        if(butSrcTxt == "학생") {
+		    		// test, making new frame
+		    		newFrameSet();
+		        }
+		        else if(butSrcTxt == "로그인") {
+			    	viewFrame.remove(p1); // delete 'p1' Panel
+			    	new ViewSecondSet(viewFrame); // Make Second Layout Setting
+			    	viewFrame.revalidate(); // ReLoading
+			    	newFrame.dispose();
+		    	} 
+		        else if(butSrcTxt == "회원가입") {
+		    		System.out.print("회원가입");
+		    	}
+		    	
 		    } // actionPerformed
 		});
 	} // btnAction()
