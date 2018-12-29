@@ -30,10 +30,12 @@ public class ViewSecondSet {
 		this.p3 = new JPanel();
 		
 		this.p1.setLayout(new GridLayout(1, 5));
+		this.p1.setName("p1");
 		this.btnSetting(this.p1, 5);
 		this.btnAddListener(this.p1, btnclick);
 		
 		this.p2.setLayout(new GridLayout(5, 1));
+		this.p2.setName("p2");
 		this.btnSetting(this.p2, 5);
 		this.btnAddListener(this.p2, btnclick);
 		
