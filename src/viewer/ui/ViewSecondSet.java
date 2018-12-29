@@ -49,23 +49,26 @@ public class ViewSecondSet {
 	} // panelSetting()
 	
 	private void btnSetting(JPanel tempP, int btnNum) {
-		
+
 		JButton tempBtn[] = new JButton[btnNum];
 
 		for (int i = 0; i < tempBtn.length; i++) {
 			tempBtn[i] = new JButton(i + "번 버튼");
 			tempP.add(tempBtn[i]);
 		} // for
-		
 	} // btnSetting()
 
+	// Inner Btn Action -> 간편하게 우선 익명함수로 만들어둠
 	private void btnAddListener(JPanel panel, ButtonClickViewSecond btnclickEvent) {
 		
 		btnclickEvent = new ButtonClickViewSecond(panel);
 		JButton[] btn = btnclickEvent.getButton();
+		
+		// adding Event to All Button
 		for(int i=0; i<btn.length; i++) {
 			btn[i].addActionListener(btnclickEvent);
-		}
+		} // for
+		
 	} // btn add Event
 
 }

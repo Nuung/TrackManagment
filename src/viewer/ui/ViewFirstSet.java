@@ -64,7 +64,7 @@ public class ViewFirstSet {
 		tempP.add(passText);
 		tempP.add(loginBtn);
 		tempP.add(signupBtn);
-	}
+	} // newFrameSet()
 	
 	private void btnAction(JButton inBtn) {
 		inBtn.addActionListener ( new ActionListener() {
