@@ -64,6 +64,6 @@ public class ViewSecondSet {
 		for(int i=0; i<btn.length; i++) {
 			btn[i].addActionListener(btnclickEvent);
 		}
-	}
+	} // btn add Event
 
 }
