@@ -94,8 +94,8 @@ public class ViewFirstSet {
 		    		newFrame.dispose();
 		    	}
 		    	
-		    } // actionPerformed
-		});
+		    } // actionPerformed()
+		}); // addActionListener
 	} // btnAction()
 
 }

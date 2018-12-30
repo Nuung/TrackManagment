@@ -3,15 +3,19 @@ package viewer.ui;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -64,29 +68,37 @@ public class ViewThirdSet {
 		this.btnAction(signupBtn);
 	}
 	
+	// Button Event for Thrid set Frame
 	private void btnAction(JButton inBtn) {
 		inBtn.addActionListener ( new ActionListener() {
-		    public void actionPerformed(ActionEvent ev) {
+			public void actionPerformed(ActionEvent ev) {
 		    	
 				// getting btn text value
 				Object source =  ev.getSource();
 		        String butSrcTxt = ((AbstractButton) source).getText();
 		    	
 		        if(butSrcTxt == "첨부파일") {
-		    		// test, making new frame
-		    		System.out.println("엑셀파일첨부");
-		    		
-		    		// Reading Excel Files (XLSX 파일 리딩)
+		    		// Val for Reading Excel Files (XLSX 파일 리딩)
 		    		FileInputStream fis;
 		    		XSSFWorkbook workbook = null;
 		    		
-					try {
-						fis = new FileInputStream("test.xlsx");
-						workbook = new XSSFWorkbook(fis);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} // try catch
+		        	// Open 다이얼로그 세팅 -> File 선택자
+	    			JFileChooser choosed = new JFileChooser();
+	    		    FileNameExtensionFilter filter = new FileNameExtensionFilter("Excel files", "xlsx");
+	    		    choosed.setFileFilter(filter);
+	    		    int returnVal = choosed.showOpenDialog(RevisedFrame); 
+	    		    
+	    		    // Open 다이얼로그 -> 선택자로 가져온 파일, FileInputStream으로 엑셀파일 입력
+	    		    if(returnVal == JFileChooser.APPROVE_OPTION) {
+		    		       System.out.println("You chose to open this file: " + choosed.getSelectedFile().getName());
+		    		       try {
+		    		    	   File f = choosed.getSelectedFile();
+		    		    	   fis = new FileInputStream(f);
+		    		    	   workbook = new XSSFWorkbook(fis);
+		    		       } catch(Exception error) {
+		    		    	   System.out.println(error);
+		    		       } // try ~ catch
+		    		    } // inner if
 		    		
 		    		//시트 수 (첫번째에만 존재하므로 0을 준다) -> 만약 각 시트를 읽기위해서는 FOR문을 한번더 돌려준다
 		    		XSSFSheet sheet = workbook.getSheetAt(0);
@@ -137,8 +149,8 @@ public class ViewThirdSet {
 			    	RevisedFrame.dispose();
 		    	} // if - else
 		    	
-		    } // btnAction
-		});
+		    } // actionPerformed()
+		}); // addActionListener
 	} // btnAction()
 	
 
