@@ -85,7 +85,11 @@ public class ViewFirstSet {
 			    	newFrame.dispose();
 		    	} 
 		        else if(butSrcTxt == "회원가입") {
+		        	viewFrame.remove(p1);
+		        	new ViewThirdSet(viewFrame);
+		        	viewFrame.revalidate();
 		    		System.out.print("회원가입");
+		    		newFrame.dispose();
 		    	}
 		    	
 		    } // actionPerformed
