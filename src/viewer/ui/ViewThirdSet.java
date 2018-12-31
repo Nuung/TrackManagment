@@ -1,5 +1,6 @@
 package viewer.ui;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,8 +14,10 @@ import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -34,6 +37,7 @@ public class ViewThirdSet {
 	ViewFrame viewFrame;
 	JFrame RevisedFrame;
 	private JPanel p1;
+	private JLabel fileText;
 	
 	public ViewThirdSet(ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;
@@ -50,6 +54,7 @@ public class ViewThirdSet {
 		JTextField passText = new JTextField();
 		JButton uploadBtn = new JButton("첨부파일");
 		JButton signupBtn = new JButton("가입하기");
+		this.fileText = new JLabel("");
 		
 		// Frame Setting
 		RevisedFrame.setSize(512, 512);
@@ -57,12 +62,13 @@ public class ViewThirdSet {
 		RevisedFrame.setLayout(null);
 		RevisedFrame.add(p1);
 		p1.setBounds(100, 80, 300, 300);
-		p1.setLayout(new GridLayout(5, 1));
+		p1.setLayout(new GridLayout(6, 1));
 		p1.add(nameText);
 		p1.add(idText);
 		p1.add(passText);
 		p1.add(uploadBtn);
 		p1.add(signupBtn);
+		p1.add(fileText);
 		
 		this.btnAction(uploadBtn);
 		this.btnAction(signupBtn);
@@ -90,7 +96,12 @@ public class ViewThirdSet {
 	    		    
 	    		    // Open 다이얼로그 -> 선택자로 가져온 파일, FileInputStream으로 엑셀파일 입력
 	    		    if(returnVal == JFileChooser.APPROVE_OPTION) {
-		    		       System.out.println("You chose to open this file: " + choosed.getSelectedFile().getName());
+		    		       // JLabel Text Setting 
+		    		       fileText.setVerticalAlignment(SwingConstants.CENTER);
+		    		       fileText.setHorizontalAlignment(SwingConstants.CENTER);
+		    		       fileText.setFont(new Font("Serif", Font.BOLD, 20));
+		    		       fileText.setText("가져온 파일 : "+choosed.getSelectedFile().getName());
+		    		       
 		    		       try {
 		    		    	   File f = choosed.getSelectedFile();
 		    		    	   fis = new FileInputStream(f);
