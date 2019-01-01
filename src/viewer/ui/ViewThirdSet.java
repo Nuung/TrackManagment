@@ -111,42 +111,45 @@ public class ViewThirdSet {
 		    			
 		    		    if(row !=null){ // 행이 비어 있지 않으면
 		    		        int cells = row.getPhysicalNumberOfCells(); // 행에 존재하는 total 셀 수
-		    		        for(columnindex = 0; columnindex <= cells; columnindex++){ // 셀 수 만큼 '열(컬럼값)'을 읽어온다
+		    		        
+		    		        for(columnindex = 3; columnindex <= 4; columnindex++){ // 셀 수 만큼 '열(컬럼값)'을 읽어온다
+		    		            	
+		    		            	if(row.getCell(4).getStringCellValue().toString().equals("전선") || row.getCell(4).getStringCellValue().toString().equals("전필")) {
+		    		            		
+		    		            		XSSFCell cell = row.getCell(columnindex); //셀값을 읽는다
+				    		            String value = "";
+				    		        		    		            
+				    		            if(cell == null){ //셀이 빈값일경우를 위한 널체크
+				    		                continue;
+				    		            } else{ // 셀 타입별로 모두 다른 형태의 값이 된다 -> 셀 타입별로 모두 읽기
+				    		                switch (cell.getCellType()){
+				    		                case FORMULA:
+				    		                    value = cell.getCellFormula();
+				    		                    break;
+				    		                case NUMERIC:
+				    		                    value = cell.getNumericCellValue()+"";
+				    		                    break;
+				    		                case STRING:
+				    		                    value = cell.getStringCellValue()+"";
+				    		                    break;
+				    		                case BLANK:
+				    		                    value = cell.getBooleanCellValue()+"";
+				    		                    break;
+				    		                case ERROR:
+				    		                    value = cell.getErrorCellValue()+"";
+				    		                    break;
+				    		                } // switch()
 
-		    		        	if(columnindex == 3 || columnindex == 4) {
-		    		        		
-		    		        		XSSFCell cell = row.getCell(columnindex); //셀값을 읽는다
-			    		            String value = "";
-			    		        		    		            
-			    		            if(cell == null){ //셀이 빈값일경우를 위한 널체크
-			    		                continue;
-			    		            } else{ // 셀 타입별로 모두 다른 형태의 값이 된다 -> 셀 타입별로 모두 읽기
-			    		                switch (cell.getCellType()){
-			    		                case FORMULA:
-			    		                    value = cell.getCellFormula();
-			    		                    break;
-			    		                case NUMERIC:
-			    		                    value = cell.getNumericCellValue()+"";
-			    		                    break;
-			    		                case STRING:
-			    		                    value = cell.getStringCellValue()+"";
-			    		                    break;
-			    		                case BLANK:
-			    		                    value = cell.getBooleanCellValue()+"";
-			    		                    break;
-			    		                case ERROR:
-			    		                    value = cell.getErrorCellValue()+"";
-			    		                    break;
-			    		                } // switch()
-			    		            } // inner if - else
-			    		            
-			    		            if(columnindex == 3) 
-			    		            	System.out.print("교과목명 : "+value + " / ");
-			    		            else
-			    		            	System.out.println("구분 : "+value);
-		    		        		
-		    		        	} // if columnindex 3 or 4
-		    		        	
+				    		            } // inner if - else
+				    		            
+				    		            	
+				    		            if(columnindex == 3) 
+					    		           	System.out.print("교과목명 : "+value + " / ");
+					    		        else
+					    		           	System.out.println("구분 : "+value);
+		    		            		
+		    		            } // gubun if
+
 		    		        } // inner for
 		    		    } // if
 		    		} // for
