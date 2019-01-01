@@ -112,7 +112,7 @@ public class ViewThirdSet {
 		    		    if(row !=null){ // 행이 비어 있지 않으면
 		    		        int cells = row.getPhysicalNumberOfCells(); // 행에 존재하는 total 셀 수
 		    		        for(columnindex = 0; columnindex <= cells; columnindex++){ // 셀 수 만큼 '열(컬럼값)'을 읽어온다
-		    		            
+
 		    		        	if(columnindex == 3 || columnindex == 4) {
 		    		        		
 		    		        		XSSFCell cell = row.getCell(columnindex); //셀값을 읽는다
@@ -147,7 +147,6 @@ public class ViewThirdSet {
 		    		        		
 		    		        	} // if columnindex 3 or 4
 		    		        	
-
 		    		        } // inner for
 		    		    } // if
 		    		} // for
