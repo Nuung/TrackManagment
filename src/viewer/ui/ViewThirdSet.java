@@ -26,6 +26,8 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import controller.db.DBconnection;
+
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -44,6 +46,8 @@ public class ViewThirdSet {
 	JFrame RevisedFrame;
 	private JPanel p1;
 	private JLabel fileText;
+	// Name / student id / passwoard
+	protected PlaceholderJTextField nameText, idText, passText;
 	
 	public ViewThirdSet(ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;
@@ -55,11 +59,11 @@ public class ViewThirdSet {
 		
 		this.RevisedFrame = new JFrame();
 		p1 = new JPanel();
-		PlaceholderJTextField nameText = new PlaceholderJTextField("");
+		this.nameText = new PlaceholderJTextField("");
 		nameText.setPlaceholder("Name");
-		PlaceholderJTextField idText = new PlaceholderJTextField("");
+		this.idText = new PlaceholderJTextField("");
 		idText.setPlaceholder("Student Num");
-		PlaceholderJTextField passText = new PlaceholderJTextField("");
+		this.passText = new PlaceholderJTextField("");
 		passText.setPlaceholder("Passward");
 		Font f = nameText.getFont();
 		nameText.setFont(new Font(f.getName(), f.getStyle(), 35));
@@ -164,22 +168,21 @@ public class ViewThirdSet {
 				    		                    value = cell.getErrorCellValue()+"";
 				    		                    break;
 				    		                } // switch()
-
 				    		            } // inner if - else
-				    		            
-				    		            	
+
 				    		            if(columnindex == 3) // 수업명 출력 
 					    		           	System.out.print("교과목명 : "+value + " / ");
 					    		        else // 구분 출력(전필/전선)
 					    		           	System.out.println("구분 : "+value);
-		    		            		
 		    		            } // gubun if
-
 		    		        } // inner for
 		    		    } // if
 		    		} // for
 		        } // if 첨부파일
 		        else if(butSrcTxt == "가입하기") {
+		        	DBconnection dbcon = new DBconnection();
+		        	dbcon.registUser(nameText.getText(), Integer.parseInt(idText.getText()), passText.getText());
+		        	dbcon.printList();
 			    	viewFrame.remove(p1); // delete 'p1' Panel
 			    	new ViewSecondSet(viewFrame); // Make Second Layout Setting
 			    	viewFrame.revalidate(); // ReLoading

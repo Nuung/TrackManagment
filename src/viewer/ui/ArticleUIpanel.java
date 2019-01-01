@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
-public class ArticleUI extends JPanel{
+public class ArticleUIpanel extends JPanel{
 
 	//레이아웃
 	private GridBagLayout gbl;
@@ -34,14 +34,11 @@ public class ArticleUI extends JPanel{
 	protected JTextField infoTrackText;
 	protected JTextArea infoText;
 	
-	public ArticleUI() {
-		setSize(668, 512);
-		setVisible(true);
+	public ArticleUIpanel() {
 		infoArticle();
 	}
 	
 	public void welcomeArticle() {
-		
 		super.setLayout(new BorderLayout());
 		super.add(new JLabel("WELCOME"));
 	} //welcomeArticle()
@@ -137,9 +134,5 @@ public class ArticleUI extends JPanel{
 		gbc.gridy = 1;
 		super.add(infoText, gbc);
 		infoText.add(scroll);
-		
-		
 	} //infoArticle()
-	
-	
 }

@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import controller.db.DBconnection;
 import viewer.ViewFrame;
 /*
  * 가장 첫 화면 [ 학생 ] [ 관리자 ]
@@ -26,6 +27,7 @@ public class ViewFirstSet {
 	JFrame newFrame;
 	private JPanel p1;
 	private JButton btn1, btn2;
+	private PlaceholderJTextField idText, passText;
 	
 	// 생성자
 	public ViewFirstSet(ViewFrame viewFrame) {
@@ -52,14 +54,14 @@ public class ViewFirstSet {
 	void newFrameSet() {
 		newFrame = new JFrame();
 		JPanel tempP = new JPanel();
-		PlaceholderJTextField idText = new PlaceholderJTextField("");
+		
+		this.idText = new PlaceholderJTextField("");
 		idText.setPlaceholder("Student Num");
-		PlaceholderJTextField passText = new PlaceholderJTextField("");
-		passText.setPlaceholder("Passward");
 		Font f = idText.getFont();
-        idText.setFont(new Font(f.getName(), f.getStyle(), 40));
+		idText.setFont(new Font(f.getName(), f.getStyle(), 40));
+		this.passText = new PlaceholderJTextField("");
+		passText.setPlaceholder("Passward");
         passText.setFont(new Font(f.getName(), f.getStyle(), 40));
-//		JPasswordField passText = new JPasswordField();
 		JButton loginBtn = new JButton("로그인");
 		JButton signupBtn = new JButton("회원가입");
 	
@@ -93,6 +95,10 @@ public class ViewFirstSet {
 		    		newFrameSet();
 		        }
 		        else if(butSrcTxt == "로그인") {
+		        	DBconnection dbcon = new DBconnection();
+		        	// TO DO
+		        	
+		        	
 			    	viewFrame.remove(p1); // delete 'p1' Panel
 			    	new ViewSecondSet(viewFrame); // Make Second Layout Setting			   
 			    	// New Frame이 아니라, 기존에 있는 Frame Re Setting -> ReLoading
@@ -102,9 +108,7 @@ public class ViewFirstSet {
 		        else if(butSrcTxt == "회원가입") {
 		        	viewFrame.remove(p1);
 		        	// SignUp button --> 새로운 프레임 띄우기
-		        	new ViewThirdSet(viewFrame);
-		        	
-		    		System.out.print("회원가입");
+		        	new ViewThirdSet(viewFrame); // -> 실제 이벤트 액션은 ThirdSet에서 명시
 		    		newFrame.dispose();
 		    	}
 		    	
