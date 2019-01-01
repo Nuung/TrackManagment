@@ -64,7 +64,7 @@ public class ViewFirstSet {
 		tempP.add(passText);
 		tempP.add(loginBtn);
 		tempP.add(signupBtn);
-	}
+	} // newFrameSet()
 	
 	private void btnAction(JButton inBtn) {
 		inBtn.addActionListener ( new ActionListener() {
@@ -81,15 +81,21 @@ public class ViewFirstSet {
 		        else if(butSrcTxt == "로그인") {
 			    	viewFrame.remove(p1); // delete 'p1' Panel
 			    	new ViewSecondSet(viewFrame); // Make Second Layout Setting
+			    	// New Frame이 아니라, 기존에 있는 Frame Re Setting -> ReLoading
 			    	viewFrame.revalidate(); // ReLoading
 			    	newFrame.dispose();
 		    	} 
 		        else if(butSrcTxt == "회원가입") {
+		        	viewFrame.remove(p1);
+		        	// SignUp button --> 새로운 프레임 띄우기
+		        	new ViewThirdSet(viewFrame);
+		        	
 		    		System.out.print("회원가입");
+		    		newFrame.dispose();
 		    	}
 		    	
-		    } // actionPerformed
-		});
+		    } // actionPerformed()
+		}); // addActionListener
 	} // btnAction()
 
 }
