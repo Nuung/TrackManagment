@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -52,7 +53,7 @@ public class ViewThirdSet {
 		p1 = new JPanel();
 		JTextField nameText = new JTextField();
 		JTextField idText = new JTextField();
-		JTextField passText = new JTextField();
+		JPasswordField passText = new JPasswordField();
 		JButton uploadBtn = new JButton("첨부파일");
 		JButton signupBtn = new JButton("가입하기");
 		
