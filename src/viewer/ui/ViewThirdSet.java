@@ -111,6 +111,7 @@ public class ViewThirdSet {
 		    			
 		    		    if(row !=null){ // 행이 비어 있지 않으면
 		    		        int cells = row.getPhysicalNumberOfCells(); // 행에 존재하는 total 셀 수
+		    		        
 		    		        for(columnindex = 3; columnindex <= 4; columnindex++){ // 셀 수 만큼 '열(컬럼값)'을 읽어온다
 		    		            	
 		    		            	if(row.getCell(4).getStringCellValue().toString().equals("전선") || row.getCell(4).getStringCellValue().toString().equals("전필")) {
@@ -148,7 +149,6 @@ public class ViewThirdSet {
 					    		           	System.out.println("구분 : "+value);
 		    		            		
 		    		            } // gubun if
-				    		        		
 
 		    		        } // inner for
 		    		    } // if
