@@ -5,11 +5,15 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import viewer.ViewFrame;
 import event.ButtonClickViewSecond;
-
+/*
+ * 가장 메인 화면 MainFrame!
+ * 상단 메뉴, 네비게이션 메뉴 동적 생성 필요
+ */
 public class ViewSecondSet {
 	
 	// Default Swing
@@ -32,20 +36,22 @@ public class ViewSecondSet {
 		this.p3 = new JPanel();
 		
 		this.p1.setLayout(new GridLayout(1, 5));
-
 		this.p1.setName("p1");
-		this.topBarSetting(this.p1, 5);
+		this.btnBarSetting(this.p1, 5); // p1 패널에 5개 버튼 추가
 		this.btnAddListener(this.p1, btnclick);
 		
 		this.p2.setLayout(new GridLayout(10, 1));
 		this.p2.setName("p2");
-		this.sideBarSetting(this.p2, 10);
+		this.btnBarSetting(this.p2, 5); // p2 패널에 5개 버튼 추가
 		this.btnAddListener(this.p2, btnclick);
+		
 	//	this.p2.setVisible(false); // topBar(트랙, 피드백, INFO) 클릭시 setVisible(true)
 		
-		this.p3.setLayout(null);
-		this.p3.add(new JTextArea());
+		this.p3.setLayout(new GridLayout(1, 1));
+		JScrollPane jsp = new JScrollPane(new JTextArea("TEST"));
+		this.p3.add(jsp); // p3 패널은 article 부분 (MAIN)
 		
+		// Main Frame Setting
 		ArticleUI au = new ArticleUI();
 		
 		this.viewFrame.setLayout(new BorderLayout());
@@ -53,39 +59,24 @@ public class ViewSecondSet {
 		this.viewFrame.add(this.p2, BorderLayout.WEST);
 	//	this.viewFrame.add(this.p3, BorderLayout.CENTER);
 		this.viewFrame.add(au, BorderLayout.CENTER);	
-	
 	} // panelSetting()
 	
-	public void topBarSetting(JPanel tempP, int btnNum) {
-
+	public void btnBarSetting(JPanel tempP, int btnNum) {
 		JButton tempBtn[] = new JButton[btnNum];
-
 		for (int i = 0; i < tempBtn.length; i++) {
 			tempBtn[i] = new JButton(topBar[i]);
 			tempP.add(tempBtn[i]);
 		} // for
-	} // topBarSetting()
+	} // btnBarSetting()
 
-	public void sideBarSetting(JPanel tempP, int btnNum) {
-		JButton tempBtn[] = new JButton[btnNum];
-
-		for (int i = 0; i < tempBtn.length; i++) {
-			tempBtn[i] = new JButton(trackName[i]);
-			tempP.add(tempBtn[i]);
-		} // for
-	} // sideBarSetting()
-	
 	// Inner Btn Action -> 간편하게 우선 익명함수로 만들어둠
 	private void btnAddListener(JPanel panel, ButtonClickViewSecond btnclickEvent) {
-		
 		btnclickEvent = new ButtonClickViewSecond(panel);
 		JButton[] btn = btnclickEvent.getButton();
-		
 		// adding Event to All Button
 		for(int i=0; i<btn.length; i++) {
 			btn[i].addActionListener(btnclickEvent);
 		} // for
-		
 	} // btn add Event
 
 }

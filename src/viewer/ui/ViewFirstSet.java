@@ -1,5 +1,6 @@
 package viewer.ui;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,13 +8,17 @@ import java.awt.event.ActionListener;
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import viewer.ViewFrame;
-
+/*
+ * 가장 첫 화면 [ 학생 ] [ 관리자 ]
+ * 클릭시 newFrame -> 로그인
+ */
 public class ViewFirstSet {
 
 	// Default Swing
@@ -47,8 +52,14 @@ public class ViewFirstSet {
 	void newFrameSet() {
 		newFrame = new JFrame();
 		JPanel tempP = new JPanel();
-		JTextField idText = new JTextField();
-		JPasswordField passText = new JPasswordField();
+		PlaceholderJTextField idText = new PlaceholderJTextField("");
+		idText.setPlaceholder("Student Num");
+		PlaceholderJTextField passText = new PlaceholderJTextField("");
+		passText.setPlaceholder("Passward");
+		Font f = idText.getFont();
+        idText.setFont(new Font(f.getName(), f.getStyle(), 40));
+        passText.setFont(new Font(f.getName(), f.getStyle(), 40));
+//		JPasswordField passText = new JPasswordField();
 		JButton loginBtn = new JButton("로그인");
 		JButton signupBtn = new JButton("회원가입");
 	
@@ -59,15 +70,16 @@ public class ViewFirstSet {
 		newFrame.setSize(512, 512);
 		newFrame.setVisible(true);
 		newFrame.setLayout(null);
-		newFrame.add(tempP);
 		tempP.setBounds(100, 80, 300, 300);
 		tempP.setLayout(new GridLayout(4, 1));
 		tempP.add(idText);
 		tempP.add(passText);
 		tempP.add(loginBtn);
 		tempP.add(signupBtn);
+		newFrame.add(tempP);
 	} // newFrameSet()
 	
+	// 각 버튼의 액션 이벤트 세팅과 명시
 	private void btnAction(JButton inBtn) {
 		inBtn.addActionListener ( new ActionListener() {
 		    public void actionPerformed(ActionEvent ev) {
