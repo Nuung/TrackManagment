@@ -52,7 +52,7 @@ public class ViewSecondSet {
 		this.p3.add(jsp); // p3 패널은 article 부분 (MAIN)
 		
 		// Main Frame Setting
-		ArticleUI au = new ArticleUI();
+		ArticleUIpanel au = new ArticleUIpanel();
 		
 		this.viewFrame.setLayout(new BorderLayout());
 		this.viewFrame.add(this.p1, BorderLayout.NORTH);

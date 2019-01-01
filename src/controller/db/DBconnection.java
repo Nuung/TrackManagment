@@ -15,10 +15,11 @@ public class DBconnection {
 	private PreparedStatement pstmt;
 	private ResultSet rs; // SQL 결과 받아오는 객체
 	
-	public ResultSet getRecodeAll() {
+	public ResultSet getRecodeAll(String tablename) {
 		this.connectDB();
 		try {
-			String SQL = "SELECT * FROM `event`"; // ORDER BY `score` DESC"
+			String SQL = "SELECT * FROM "; // ORDER BY `score` DESC"
+			SQL += tablename;
 			rs = st.executeQuery(SQL); // rs가 SQL 구문의 결과 행 값들을 가지게 된다.
 			if(rs != null) { // SQL구문의 결과값이 존재한다면
 				return rs;
@@ -32,14 +33,13 @@ public class DBconnection {
 	
 	public void registUser(String name, int studentnum, String passwoard){
 		this.connectDB();
-		String SQL = "INSERT INTO `user` VALUES(?, ?, ?, ?)";
+		String SQL = "INSERT INTO user(name, student_number, password) VALUES(?, ?, ?)";
 		try {
 			// 3단계 : Statement 생성
 			this.pstmt = con.prepareStatement(SQL);
-			pstmt.setString(1, "null");
-			pstmt.setString(2, name);
-			pstmt.setInt(3, studentnum);
-			pstmt.setString(4, passwoard);
+			pstmt.setString(1, name);
+			pstmt.setInt(2, studentnum);
+			pstmt.setString(3, passwoard);
 			
 			// 4단계 : SQL 문 쿼리 전송
 			pstmt.executeUpdate();
@@ -51,8 +51,7 @@ public class DBconnection {
 	
 	// Printing All Elements
 	public void printList(){
-		this.connectDB();
-		this.rs = this.getRecodeAll();
+		this.rs = this.getRecodeAll("user");
 		if(rs == null) { System.out.println("This Table is Empty!"); }
 		
 		try {
@@ -66,7 +65,6 @@ public class DBconnection {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} // try - catch	
-		this.closeDB();
 	} // printList()	
 	
 	// Connecting to my DB
@@ -88,10 +86,14 @@ public class DBconnection {
 	// End DB connection
 	private void closeDB() {
 		try {
-			this.rs.close();
-			this.pstmt.close();
-			this.st.close();
-			this.con.close();			
+			if(this.rs != null)
+				this.rs.close();
+			if(this.pstmt != null)
+				this.pstmt.close();
+			if(this.st != null)
+				this.st.close();
+			if(this.con != null)
+				this.con.close();	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
