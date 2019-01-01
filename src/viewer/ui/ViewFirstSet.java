@@ -9,7 +9,9 @@ import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import viewer.ViewFrame;
@@ -57,9 +59,10 @@ public class ViewFirstSet {
 		Font f = idText.getFont();
         idText.setFont(new Font(f.getName(), f.getStyle(), 40));
         passText.setFont(new Font(f.getName(), f.getStyle(), 40));
+//		JPasswordField passText = new JPasswordField();
 		JButton loginBtn = new JButton("로그인");
 		JButton signupBtn = new JButton("회원가입");
-		
+	
 		// adding event
 		this.btnAction(loginBtn);
 		this.btnAction(signupBtn);
@@ -91,7 +94,7 @@ public class ViewFirstSet {
 		        }
 		        else if(butSrcTxt == "로그인") {
 			    	viewFrame.remove(p1); // delete 'p1' Panel
-			    	new ViewSecondSet(viewFrame); // Make Second Layout Setting
+			    	new ViewSecondSet(viewFrame); // Make Second Layout Setting			   
 			    	// New Frame이 아니라, 기존에 있는 Frame Re Setting -> ReLoading
 			    	viewFrame.revalidate(); // ReLoading
 			    	newFrame.dispose();

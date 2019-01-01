@@ -16,6 +16,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -64,6 +65,7 @@ public class ViewThirdSet {
 		nameText.setFont(new Font(f.getName(), f.getStyle(), 35));
         idText.setFont(new Font(f.getName(), f.getStyle(), 35));
         passText.setFont(new Font(f.getName(), f.getStyle(), 35));
+
 		JButton uploadBtn = new JButton("첨부파일");
 		JButton signupBtn = new JButton("가입하기");
 		this.fileText = new JLabel("");
