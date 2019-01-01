@@ -84,7 +84,7 @@ public class ViewThirdSet {
 		    		
 		        	// Open 다이얼로그 세팅 -> File 선택자
 	    			JFileChooser choosed = new JFileChooser();
-	    		    FileNameExtensionFilter filter = new FileNameExtensionFilter("Excel files", "xlsx");
+	    		    FileNameExtensionFilter filter = new FileNameExtensionFilter("Excel files", "xlsx", "xls");
 	    		    choosed.setFileFilter(filter);
 	    		    int returnVal = choosed.showOpenDialog(RevisedFrame); 
 	    		    
@@ -143,9 +143,9 @@ public class ViewThirdSet {
 				    		            } // inner if - else
 				    		            
 				    		            	
-				    		            if(columnindex == 3) 
+				    		            if(columnindex == 3) // 수업명 출력 
 					    		           	System.out.print("교과목명 : "+value + " / ");
-					    		        else
+					    		        else // 구분 출력(전필/전선)
 					    		           	System.out.println("구분 : "+value);
 		    		            		
 		    		            } // gubun if
