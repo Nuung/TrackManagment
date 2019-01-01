@@ -30,14 +30,16 @@ public class DBconnection {
 		return null;
 	} // getRecodeAll()
 	
-	public void registUser(String uname, String email){
+	public void registUser(String name, int studentnum, String passwoard){
 		this.connectDB();
-		String SQL = "INSERT INTO `event` VALUES(?, ?)";
+		String SQL = "INSERT INTO `user` VALUES(?, ?, ?, ?)";
 		try {
 			// 3단계 : Statement 생성
 			this.pstmt = con.prepareStatement(SQL);
-			pstmt.setString(1, uname);
-			pstmt.setString(2, email);
+			pstmt.setString(1, "null");
+			pstmt.setString(2, name);
+			pstmt.setInt(3, studentnum);
+			pstmt.setString(4, passwoard);
 			
 			// 4단계 : SQL 문 쿼리 전송
 			pstmt.executeUpdate();
@@ -55,9 +57,11 @@ public class DBconnection {
 		
 		try {
 			while(rs.next()) {
-				String result_uname = rs.getString("uname");
-				String result_email = rs.getString("email");
-				System.out.println(result_uname+", "+result_email);
+				String result_id = rs.getString("id");
+				String result_name = rs.getString("name");
+				String result_num = rs.getString("student_number");
+				String result_pass = rs.getString("password");
+				System.out.println(result_id+", "+result_name+", "+result_num+", "+result_pass);
 			} // while
 		} catch (SQLException e) {
 			e.printStackTrace();
