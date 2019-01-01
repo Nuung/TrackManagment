@@ -22,6 +22,11 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
 import event.ButtonClickViewSecond;
 import viewer.ViewFrame;
 
@@ -80,11 +85,11 @@ public class ViewThirdSet {
 		        if(butSrcTxt == "첨부파일") {
 		    		// Val for Reading Excel Files (XLSX 파일 리딩)
 		    		FileInputStream fis;
-		    		XSSFWorkbook workbook = null;
+		    		HSSFWorkbook workbook = null;
 		    		
 		        	// Open 다이얼로그 세팅 -> File 선택자
 	    			JFileChooser choosed = new JFileChooser();
-	    		    FileNameExtensionFilter filter = new FileNameExtensionFilter("Excel files", "xlsx", "xls");
+	    		    FileNameExtensionFilter filter = new FileNameExtensionFilter("Excel files", "xls");
 	    		    choosed.setFileFilter(filter);
 	    		    int returnVal = choosed.showOpenDialog(RevisedFrame); 
 	    		    
@@ -94,20 +99,20 @@ public class ViewThirdSet {
 		    		       try {
 		    		    	   File f = choosed.getSelectedFile();
 		    		    	   fis = new FileInputStream(f);
-		    		    	   workbook = new XSSFWorkbook(fis);
+		    		    	   workbook = new HSSFWorkbook(fis);
 		    		       } catch(Exception error) {
 		    		    	   System.out.println(error);
 		    		       } // try ~ catch
 		    		    } // inner if
 		    		
 		    		//시트 수 (첫번째에만 존재하므로 0을 준다) -> 만약 각 시트를 읽기위해서는 FOR문을 한번더 돌려준다
-		    		XSSFSheet sheet = workbook.getSheetAt(0);
+		    		HSSFSheet sheet = workbook.getSheetAt(0);
 		    		int rows = sheet.getPhysicalNumberOfRows(); // total 행의 수
 		    		int rowindex=0; // 행을 가르키는 index value
 		    		int columnindex=0; // 열을 가르키는 index value
 		    		
 		    		for(rowindex = 1; rowindex < rows; rowindex++){ // 각 행을 모두 읽는다
-		    			XSSFRow row = sheet.getRow(rowindex);
+		    			HSSFRow row = sheet.getRow(rowindex);
 		    			
 		    		    if(row !=null){ // 행이 비어 있지 않으면
 		    		        int cells = row.getPhysicalNumberOfCells(); // 행에 존재하는 total 셀 수
@@ -116,7 +121,7 @@ public class ViewThirdSet {
 		    		            	
 		    		            	if(row.getCell(4).getStringCellValue().toString().equals("전선") || row.getCell(4).getStringCellValue().toString().equals("전필")) {
 		    		            		
-		    		            		XSSFCell cell = row.getCell(columnindex); //셀값을 읽는다
+		    		            		HSSFCell cell = row.getCell(columnindex); //셀값을 읽는다
 				    		            String value = "";
 				    		        		    		            
 				    		            if(cell == null){ //셀이 빈값일경우를 위한 널체크
