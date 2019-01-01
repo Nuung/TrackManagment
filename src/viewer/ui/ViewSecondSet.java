@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import viewer.ViewFrame;
@@ -32,19 +33,20 @@ public class ViewSecondSet {
 		this.p3 = new JPanel();
 		
 		this.p1.setLayout(new GridLayout(1, 5));
-
 		this.p1.setName("p1");
-		this.btnSetting(this.p1, 5);
+		this.btnSetting(this.p1, 5); // p1 패널에 5개 버튼 추가
 		this.btnAddListener(this.p1, btnclick);
 		
 		this.p2.setLayout(new GridLayout(5, 1));
 		this.p2.setName("p2");
-		this.btnSetting(this.p2, 5);
+		this.btnSetting(this.p2, 5); // p2 패널에 5개 버튼 추가
 		this.btnAddListener(this.p2, btnclick);
 		
-		this.p3.setLayout(null);
-		this.p3.add(new JTextArea());
+		this.p3.setLayout(new GridLayout(1, 1));
+		JScrollPane jsp = new JScrollPane(new JTextArea("TEST"));
+		this.p3.add(jsp); // p3 패널은 article 부분 (MAIN)
 		
+		// Main Frame Setting
 		this.viewFrame.setLayout(new BorderLayout());
 		this.viewFrame.add(this.p1, BorderLayout.NORTH);
 		this.viewFrame.add(this.p2, BorderLayout.WEST);

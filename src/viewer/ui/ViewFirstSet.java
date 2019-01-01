@@ -67,15 +67,16 @@ public class ViewFirstSet {
 		newFrame.setSize(512, 512);
 		newFrame.setVisible(true);
 		newFrame.setLayout(null);
-		newFrame.add(tempP);
 		tempP.setBounds(100, 80, 300, 300);
 		tempP.setLayout(new GridLayout(4, 1));
 		tempP.add(idText);
 		tempP.add(passText);
 		tempP.add(loginBtn);
 		tempP.add(signupBtn);
+		newFrame.add(tempP);
 	} // newFrameSet()
 	
+	// 각 버튼의 액션 이벤트 세팅과 명시
 	private void btnAction(JButton inBtn) {
 		inBtn.addActionListener ( new ActionListener() {
 		    public void actionPerformed(ActionEvent ev) {
