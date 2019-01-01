@@ -9,7 +9,10 @@ import javax.swing.JTextArea;
 
 import viewer.ViewFrame;
 import event.ButtonClickViewSecond;
-
+/*
+ * 가장 메인 화면 MainFrame!
+ * 상단 메뉴, 네비게이션 메뉴 동적 생성 필요
+ */
 public class ViewSecondSet {
 	
 	// Default Swing

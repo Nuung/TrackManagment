@@ -1,5 +1,6 @@
 package viewer.ui;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,11 +8,15 @@ import java.awt.event.ActionListener;
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import viewer.ViewFrame;
-
+/*
+ * 가장 첫 화면 [ 학생 ] [ 관리자 ]
+ * 클릭시 newFrame -> 로그인
+ */
 public class ViewFirstSet {
 
 	// Default Swing
@@ -45,8 +50,13 @@ public class ViewFirstSet {
 	void newFrameSet() {
 		newFrame = new JFrame();
 		JPanel tempP = new JPanel();
-		JTextField idText = new JTextField();
-		JTextField passText = new JTextField();
+		PlaceholderJTextField idText = new PlaceholderJTextField("");
+		idText.setPlaceholder("Student Num");
+		PlaceholderJTextField passText = new PlaceholderJTextField("");
+		passText.setPlaceholder("Passward");
+		Font f = idText.getFont();
+        idText.setFont(new Font(f.getName(), f.getStyle(), 40));
+        passText.setFont(new Font(f.getName(), f.getStyle(), 40));
 		JButton loginBtn = new JButton("로그인");
 		JButton signupBtn = new JButton("회원가입");
 		

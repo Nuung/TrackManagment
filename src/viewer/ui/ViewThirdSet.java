@@ -54,9 +54,16 @@ public class ViewThirdSet {
 		
 		this.RevisedFrame = new JFrame();
 		p1 = new JPanel();
-		JTextField nameText = new JTextField();
-		JTextField idText = new JTextField();
-		JTextField passText = new JTextField();
+		PlaceholderJTextField nameText = new PlaceholderJTextField("");
+		nameText.setPlaceholder("Name");
+		PlaceholderJTextField idText = new PlaceholderJTextField("");
+		idText.setPlaceholder("Student Num");
+		PlaceholderJTextField passText = new PlaceholderJTextField("");
+		passText.setPlaceholder("Passward");
+		Font f = nameText.getFont();
+		nameText.setFont(new Font(f.getName(), f.getStyle(), 35));
+        idText.setFont(new Font(f.getName(), f.getStyle(), 35));
+        passText.setFont(new Font(f.getName(), f.getStyle(), 35));
 		JButton uploadBtn = new JButton("첨부파일");
 		JButton signupBtn = new JButton("가입하기");
 		this.fileText = new JLabel("");
