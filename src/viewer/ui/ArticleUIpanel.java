@@ -20,6 +20,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
@@ -41,8 +44,12 @@ public class ArticleUIpanel extends JPanel {
 	// trackArticle
 	private JLabel trackBlbl;
 	private JLabel trackAlbl;
-	protected JTextArea trackBText;
-	protected JTextArea trackAText;
+//	protected JTextArea trackBText;
+//	protected JTextArea trackAText;
+	protected JTextPane trackBPane;
+	protected JTextPane trackAPane;
+	protected SimpleAttributeSet set;
+	protected Document doc;
 
 	// simulArticle
 	protected JTextArea completeText;
@@ -92,6 +99,7 @@ public class ArticleUIpanel extends JPanel {
 	public void welcomeArticle() {
 		super.setLayout(new BorderLayout());
 		welcomelbl = new JLabel("WELCOME");
+
 		super.add(welcomelbl);
 		this.studentinfo.gettingStudentInfo();
 	} // welcomeArticle()
@@ -104,9 +112,17 @@ public class ArticleUIpanel extends JPanel {
 
 		trackBlbl = new JLabel("트랙 기초 교과");
 		trackAlbl = new JLabel("트랙 응용 교과");
-		trackBText = new JTextArea("", 7, 20);
-		trackAText = new JTextArea("", 7, 20);
-
+		trackBPane = new JTextPane();
+		trackAPane = new JTextPane();
+		
+		set = new SimpleAttributeSet();
+		StyleConstants.setBold(set, true);
+		
+		trackBPane.setCharacterAttributes(set, true);
+	
+		JScrollPane trackBScroll = new JScrollPane(trackBPane);
+		JScrollPane trackAScroll = new JScrollPane(trackAPane);
+	     
 		gbc.fill = GridBagConstraints.BOTH;
 		gbc.weightx = 0.5;
 		gbc.gridx = 0;
@@ -123,12 +139,12 @@ public class ArticleUIpanel extends JPanel {
 		gbc.weightx = 0.0;
 		gbc.gridx = 0;
 		gbc.gridy = 1;
-		super.add(trackBText, gbc);
+		super.add(trackBScroll, gbc);
 
 		gbc.fill = GridBagConstraints.BOTH;
 		gbc.gridx = 3;
 		gbc.gridy = 1;
-		super.add(trackAText, gbc);
+		super.add(trackAScroll, gbc);
 
 	} // trackArticle()
 
@@ -321,6 +337,30 @@ public class ArticleUIpanel extends JPanel {
 		infoText.add(scroll);
 		
 	} // infoArticle()
+	
+	public void ConvertRedColor(Document tempDoc, JTextPane tempPane, String tempStr) {
+		tempDoc = tempPane.getStyledDocument();
+		this.set = new SimpleAttributeSet();
+		StyleConstants.setForeground(this.set, Color.red);
+		try {
+			tempDoc.insertString(tempDoc.getLength(), tempStr, this.set);
+		} catch (BadLocationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	} //ConvertRedColor()
+	
+	public void ConvertBlueColor(Document tempDoc, JTextPane tempPane, String tempStr) {
+		tempDoc = tempPane.getStyledDocument();
+		this.set = new SimpleAttributeSet();
+		StyleConstants.setForeground(this.set, Color.blue);
+		try {
+			tempDoc.insertString(tempDoc.getLength(), tempStr, this.set);
+		} catch (BadLocationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	} //ConvertRedColor()
 	
 	// 버튼 클릭 시 패널에 있는 UI 초기화를 해주기 위한 메소드
 	public void resetArticleUI() {
