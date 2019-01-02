@@ -14,7 +14,7 @@ public class DBconnection {
 	private Statement st; // connect에 SQL문장 실행하는 방법을 정해주는 객체
 	private PreparedStatement pstmt;
 	private ResultSet rs; // SQL 결과 받아오는 객체
-	
+
 	public ResultSet getRecodeAll(String tablename) {
 		this.connectDB();
 		try {

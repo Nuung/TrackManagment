@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controller.db.DBconnection;
@@ -78,7 +79,6 @@ public class ViewFirstSet {
 						// New Frame이 아니라, 기존에 있는 Frame Re Setting -> ReLoading
 						viewFrame.revalidate(); // ReLoading
 						newFrame.dispose();
-
 					} // inner if
 				} else {
 					if (passText.getPassword().length > 7) {
@@ -122,21 +122,22 @@ public class ViewFirstSet {
 					newFrameSet();
 				} // STUDENT
 				else if (butSrcTxt == "로그인") {
-					// DBconnection dbcon = new DBconnection();
-					// String passString = new String(passText.getPassword(), 0,
-					// passText.getPassword().length);
-					// if(dbcon.findUser(Integer.parseInt(idText.getText()), passString)) { // login
-					// 성공
-					viewFrame.remove(p1); // delete 'p1' Panel
-					new ViewSecondSet(viewFrame); // Make Second Layout Setting
-					// New Frame이 아니라, 기존에 있는 Frame Re Setting -> ReLoading
-					viewFrame.revalidate(); // ReLoading
-					newFrame.dispose();
-					// } // login 실패
-					// else {
-					// JOptionPane.showMessageDialog(viewFrame, "아이디 또는 비밀번호를 확인해 주세요", "Message",
-					// JOptionPane.ERROR_MESSAGE);
-					// } // if - else
+					DBconnection dbcon = new DBconnection();
+					String passString = new String(passText.getPassword(), 0,
+					passText.getPassword().length);
+					if(dbcon.findUser(Integer.parseInt(idText.getText()), passString)) { // login
+						// 로그인 성공
+						viewFrame.remove(p1); // delete 'p1' Panel
+						new ViewSecondSet(viewFrame); // Make Second Layout Setting
+						// New Frame이 아니라, 기존에 있는 Frame Re Setting -> ReLoading
+						viewFrame.revalidate(); // ReLoading
+						newFrame.dispose();
+					}
+					else 
+					{ // 로그인 실패
+					 JOptionPane.showMessageDialog(viewFrame, "아이디 또는 비밀번호를 확인해 주세요", "Message",
+					 JOptionPane.ERROR_MESSAGE); 
+					} // if - else
 				} // LOGIN
 				else if (butSrcTxt == "회원가입") {
 					viewFrame.remove(p1);
