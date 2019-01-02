@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import controller.StudentInfo;
 import viewer.ViewFrame;
 
 /*
@@ -23,18 +24,19 @@ public class ViewSecondSet {
 
 	// Default Swing
 	private ViewFrame viewFrame;
-	private ArticleUIpanel articleUi;
 	protected JPanel p1, p2, p3;
 	protected String topBar[] = { "트랙", "트랙시뮬레이션", "피드백", "INFO", "LogOut" };
 	String[] sideTxt = { "HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육", "사이버국방" };
-
+	private StudentInfo studentinfo;
+	
 	// sideBar
 	protected CardLayout cardLayout;
 	SidePanel sidePanel;
 	ArticleUIpanel articleUIpanel;
 
-	public ViewSecondSet(ViewFrame viewFrame) {
+	public ViewSecondSet(ViewFrame viewFrame, StudentInfo studentinfo) {
 		this.viewFrame = viewFrame;
+		this.studentinfo = studentinfo;
 		this.panelSetting();
 	}
 
@@ -42,12 +44,10 @@ public class ViewSecondSet {
 	private void panelSetting() {
 		this.p1 = new JPanel();
 		this.p2 = new JPanel();
-		// Main Frame Setting
-		this.articleUi = new ArticleUIpanel();
 
 		// p2패널 - sideBar
 		cardLayout = new CardLayout();
-		sidePanel = new SidePanel(this.viewFrame);
+		sidePanel = new SidePanel(this.viewFrame, this.studentinfo);
 
 		this.p2.setLayout(cardLayout);
 		sidePanel.trackSide();
@@ -62,7 +62,7 @@ public class ViewSecondSet {
 		this.btnBarSetting(this.p1, 5);
 
 		// Main Frame Setting
-		articleUIpanel = new ArticleUIpanel();
+		articleUIpanel = new ArticleUIpanel(this.studentinfo);
 
 		this.viewFrame.setLayout(new BorderLayout());
 		this.viewFrame.add(this.p1, BorderLayout.NORTH);

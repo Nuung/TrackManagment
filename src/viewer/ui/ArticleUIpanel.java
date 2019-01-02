@@ -15,6 +15,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
+import controller.StudentInfo;
+
 public class ArticleUIpanel extends JPanel {
 
 	// 레이아웃
@@ -42,6 +44,7 @@ public class ArticleUIpanel extends JPanel {
 	// infoArticle
 	protected JTextField infoTrackText;
 	protected JTextArea infoText;	
+	private StudentInfo studentinfo; // 로그인한 학생 정보 덩어리 object
 	
 	static int[] hciBarr = {1,2,3};
 	static int[] multimediaBarr = {16,1,17};
@@ -62,13 +65,15 @@ public class ArticleUIpanel extends JPanel {
 	static int[] datascienceSarr = {51,70,48,71,72,73,74,75,2,17};
 	static int[] sweduSarr = {77,8,24,78,79,80,81,40,82,47,83};
 
-	public ArticleUIpanel() {
+	public ArticleUIpanel(StudentInfo studentinfo) {
+		this.studentinfo = studentinfo;
 		welcomeArticle();
 	}
 
 	public void welcomeArticle() {
 		super.setLayout(new BorderLayout());
 		super.add(new JLabel("WELCOME"));
+		this.studentinfo.gettingStudentInfo();
 	} // welcomeArticle()
 
 	public void trackArticle() {
