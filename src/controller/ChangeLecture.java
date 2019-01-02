@@ -185,7 +185,10 @@ public class ChangeLecture {
 		
 		for (int j = 0; j < changeLecture.length; j++) {
 			if(dbcon.registUserSubject(stnum, changeLecture[j])) {
-				System.out.println("in test");
+				System.out.println("getting in [ " + changeLecture[j] + " ] ");
+			} // if
+			else {
+				System.out.println("Changing Error!");
 			}
 		} // for
 	}
