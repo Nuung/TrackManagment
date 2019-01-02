@@ -38,10 +38,13 @@ public class SidePanel {
 	// 이벤트처리
 	protected String sideTxt[] = { "HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육" };
 	protected StudentInfo studentinfo;
+	protected ArticleUIpanel articleUi;
 	
 	public SidePanel(ViewFrame viewFrame, StudentInfo studentinfo) {
 		this.viewFrame = viewFrame;
 		this.studentinfo = studentinfo;
+		this.articleUi = new ArticleUIpanel(studentinfo);
+		
 		trackSidePanel = new JPanel();
 		trackSidePanel.setName("trackSidePanel");
 		simulSidePanel = new JPanel();
@@ -115,7 +118,6 @@ public class SidePanel {
 	private void trackBtnAction(JButton inBtn) {
 		inBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {				
-				ArticleUIpanel articleUi = new ArticleUIpanel(studentinfo);
 				// getting btn text value
 				Object source = ev.getSource();
 				String butSrcTxt = ((AbstractButton) source).getText();
@@ -195,8 +197,7 @@ public class SidePanel {
 	// simulSidePanel
 	private void simulBtnAction(JButton inBtn) {
 		inBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {				
-				ArticleUIpanel articleUi = new ArticleUIpanel(studentinfo);
+			public void actionPerformed(ActionEvent ev) {
 				// getting btn text value
 				Object source = ev.getSource();
 				String butSrcTxt = ((AbstractButton) source).getText();
@@ -212,8 +213,7 @@ public class SidePanel {
 	// fidSidePanel
 	private void fidBtnAction(JButton inBtn) {
 		inBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {				
-				ArticleUIpanel articleUi = new ArticleUIpanel(studentinfo);
+			public void actionPerformed(ActionEvent ev) {
 				// getting btn text value
 				Object source = ev.getSource();
 				String butSrcTxt = ((AbstractButton) source).getText();
@@ -230,7 +230,6 @@ public class SidePanel {
 	private void infoBtnAction(JButton inBtn) {
 		inBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {				
-				ArticleUIpanel articleUi = new ArticleUIpanel(studentinfo);
 				// getting btn text value
 				Object source = ev.getSource();
 				String butSrcTxt = ((AbstractButton) source).getText();
@@ -240,27 +239,23 @@ public class SidePanel {
 
 				for(int i = 0; i < 9; i++) {
 					if(butSrcTxt == sideTxt[i]) { //사이드 패널 버튼을 눌렀다면
-						ArticleUIpanel article = new ArticleUIpanel(studentinfo);
-						article.infoArticle();
-						article.welcomelbl.setText("");
+						articleUi.infoArticle();
+						articleUi.welcomelbl.setText("");
 						//article의 trackTextField에 문자열 넣기
-						article.infoTrackText.setText(sideTxt[i]);
-						article.infoTrackText.setHorizontalAlignment(JTextField.CENTER);
+						articleUi.infoTrackText.setText(sideTxt[i]);
+						articleUi.infoTrackText.setHorizontalAlignment(JTextField.CENTER);
 
 						String linkedStr[] = {"HCI 산학프로젝트", "멀티미디어 산학프로젝트", "사물인터넷 산학프로젝트", "시스템응용 산학프로젝트", "인공지능 산학프로젝트", "가상현실 산학프로젝트", "정보보호 산학프로젝트", "데이터사이언스 산학프로젝트", "SW교육 산학프로젝트"};
 						String employStr[] = {"HCI 관련 직종", "멀티미디어 관련 직종", "사물인터넷 기술응용 물류, 제조, 에너지, 시큐리티, 텔레매틱스, 헬스케어, 스마트홈", "", "지능형SW, 로봇지능, 무인제어, 무인주행, 전문가시스템, 기계번역, 의료/금융 예측 및 이상탐지", "가상현실 기술응용, 교육, 치료, 문화, 오락, 여가 산업", "정보보호, 네트워크 보안, 어플리케이션 보안, 금융/군사 보안", "데이터사이언스 관련 직종", "SW교육 관련 직종"};
 						
 						//JTextArea에 해당 트랙 설명, 관련 직종
-						article.infoText.setText("산학연계교육 : " + linkedStr[i] + "\n" + "취업 및 진학 : " + employStr[i] + "\n");
+						articleUi.infoText.setText("산학연계교육 : " + linkedStr[i] + "\n" + "취업 및 진학 : " + employStr[i] + "\n");
 						
-						viewFrame.add(article);
+						viewFrame.add(articleUi);
 						viewFrame.revalidate();
-						
-						System.out.println(sideTxt[i]);
-						
+						System.out.println(sideTxt[i]);	
 					}
 				} //for
-				
 			} // actionPerformed()
 		}); // addActionListener
 	} // simulBtnAction()
@@ -268,12 +263,10 @@ public class SidePanel {
 	// logOutSidePanel
 	private void logoutBtnAction(JButton inBtn) {
 		inBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {				
-				ArticleUIpanel articleUi = new ArticleUIpanel(studentinfo);
+			public void actionPerformed(ActionEvent ev) {	
 				// getting btn text value
 				Object source = ev.getSource();
 				String butSrcTxt = ((AbstractButton) source).getText();
-				
 				
 				if (butSrcTxt == sideTxt[0]) {
 					
