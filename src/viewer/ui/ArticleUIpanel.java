@@ -1,6 +1,7 @@
 package viewer.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -13,7 +14,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
+import javax.swing.text.StyledDocument;
 
 import controller.StudentInfo;
 
@@ -23,6 +29,9 @@ public class ArticleUIpanel extends JPanel {
 	private GridBagLayout gbl;
 	private GridBagConstraints gbc;
 
+	//welcomeArticle
+	protected JLabel welcomelbl;
+	
 	// trackArticle
 	private JLabel trackBlbl;
 	private JLabel trackAlbl;
@@ -65,6 +74,8 @@ public class ArticleUIpanel extends JPanel {
 	static int[] datascienceSarr = {51,70,48,71,72,73,74,75,2,17};
 	static int[] sweduSarr = {77,8,24,78,79,80,81,40,82,47,83};
 
+	
+	
 	public ArticleUIpanel(StudentInfo studentinfo) {
 		this.studentinfo = studentinfo;
 		welcomeArticle();
@@ -72,7 +83,8 @@ public class ArticleUIpanel extends JPanel {
 
 	public void welcomeArticle() {
 		super.setLayout(new BorderLayout());
-		super.add(new JLabel("WELCOME"));
+		welcomelbl = new JLabel("WELCOME");
+		super.add(welcomelbl);
 		this.studentinfo.gettingStudentInfo();
 	} // welcomeArticle()
 
@@ -170,7 +182,7 @@ public class ArticleUIpanel extends JPanel {
 		JScrollPane scroll = new JScrollPane(infoText);
 		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
+		
 		gbc.fill = GridBagConstraints.NONE;
 		gbc.weightx = 0.0;
 		gbc.ipadx = 200;
@@ -186,6 +198,7 @@ public class ArticleUIpanel extends JPanel {
 		gbc.gridy = 1;
 		super.add(infoText, gbc);
 		infoText.add(scroll);
+		
 	} // infoArticle()
 	
 	// 버튼 클릭 시 패널에 있는 UI 초기화를 해주기 위한 메소드

@@ -17,9 +17,11 @@ import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import controller.StudentInfo;
 import controller.StudentInfo.StudentSubject;
+import controller.ChangeLecture;
 import controller.db.DBconnection;
 import viewer.ViewFrame;
 
@@ -130,40 +132,30 @@ public class SidePanel {
 						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
 							if(ArticleUIpanel.hciBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
 								String to = Integer.toString(ArticleUIpanel.hciBarr[i]);
+								ChangeLecture cl = new ChangeLecture();
+								to = cl.numToSubject(ArticleUIpanel.hciBarr[i]);
 								artic.trackBText.append("이수 "+to+"\n");
 							}else {
 								count++;
 								if(count == tempStudentinfo.size()) {
 									String too = Integer.toString(ArticleUIpanel.hciBarr[i]);
+									ChangeLecture cl = new ChangeLecture();
+									too = cl.numToSubject(ArticleUIpanel.hciBarr[i]);
 									artic.trackBText.append("미이수 "+too+"\n");
 									count = 0;
 								} // inner if
 							} // if - else
 						} // inner for
 					} // for
-					
-					
-//					for(int i = 0 ; i < ArticleUIpanel.hciBarr.length ; i++) {
-//						for(int j = 0 ; j < ArticleUIpanel.hciBarr.length ; j++) {
-//							if(ArticleUIpanel.hciBarr[i] != rs.getInt("student_number")) {
-//								String to = Integer.toString(rs.getInt("student_number"));
-//								artic.trackBText.setText(to);
-//							}
-//						}//안쪽for
-//					}//바깥쪽 for
-					
+					//왼쪽 text
 					
 					System.out.println(sideTxt[0]);
-//					JTextArea firta = new JTextArea()
-					//System.out.println(ArticleUIpanel.hciBarr[0]);
-					
-					//int[] hcib = new int[3];
-					
+					//오른쪽 text
 					
 					artic.trackAText.setText("bbbbbbb");
 					viewFrame.add(artic);
 					viewFrame.revalidate();
-				}
+				}//if
 				else if (butSrcTxt == sideTxt[1]) {
 					System.out.println(sideTxt[1]);
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
@@ -195,6 +187,7 @@ public class SidePanel {
 				else if (butSrcTxt == sideTxt[8]) {
 					System.out.println(sideTxt[8]);
 				} // if -- else
+				
 			} // actionPerformed()
 		});
 	} // btnAction()
@@ -243,9 +236,31 @@ public class SidePanel {
 				String butSrcTxt = ((AbstractButton) source).getText();
 				
 				
-				if (butSrcTxt == sideTxt[0]) {
-					
-				} // 왼쪽 첫번째 버튼
+				//INFO article 버튼 이벤트 구현
+
+				for(int i = 0; i < 9; i++) {
+					if(butSrcTxt == sideTxt[i]) { //사이드 패널 버튼을 눌렀다면
+						ArticleUIpanel article = new ArticleUIpanel(studentinfo);
+						article.infoArticle();
+						article.welcomelbl.setText("");
+						//article의 trackTextField에 문자열 넣기
+						article.infoTrackText.setText(sideTxt[i]);
+						article.infoTrackText.setHorizontalAlignment(JTextField.CENTER);
+
+						String linkedStr[] = {"HCI 산학프로젝트", "멀티미디어 산학프로젝트", "사물인터넷 산학프로젝트", "시스템응용 산학프로젝트", "인공지능 산학프로젝트", "가상현실 산학프로젝트", "정보보호 산학프로젝트", "데이터사이언스 산학프로젝트", "SW교육 산학프로젝트"};
+						String employStr[] = {"HCI 관련 직종", "멀티미디어 관련 직종", "사물인터넷 기술응용 물류, 제조, 에너지, 시큐리티, 텔레매틱스, 헬스케어, 스마트홈", "", "지능형SW, 로봇지능, 무인제어, 무인주행, 전문가시스템, 기계번역, 의료/금융 예측 및 이상탐지", "가상현실 기술응용, 교육, 치료, 문화, 오락, 여가 산업", "정보보호, 네트워크 보안, 어플리케이션 보안, 금융/군사 보안", "데이터사이언스 관련 직종", "SW교육 관련 직종"};
+						
+						//JTextArea에 해당 트랙 설명, 관련 직종
+						article.infoText.setText("산학연계교육 : " + linkedStr[i] + "\n" + "취업 및 진학 : " + employStr[i] + "\n");
+						
+						viewFrame.add(article);
+						viewFrame.revalidate();
+						
+						System.out.println(sideTxt[i]);
+						
+					}
+				} //for
+				
 			} // actionPerformed()
 		}); // addActionListener
 	} // simulBtnAction()
