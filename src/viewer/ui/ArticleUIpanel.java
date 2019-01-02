@@ -3,8 +3,10 @@ package viewer.ui;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -25,6 +27,13 @@ public class ArticleUIpanel extends JPanel {
 	protected JTextArea trackAText;
 
 	// simulArticle
+	protected JTextArea completeText;
+	protected JTextArea inCompleteText;
+	protected JTextArea topRankText;
+	private JPanel addPanel; // 콤보박스 추가 할 패널
+	protected JComboBox addCombo; // 추가할 교과
+	protected String[] addStr;
+
 	// fidArticle
 	protected JTextArea fidIdText;
 	private JButton chatBtn;
@@ -34,7 +43,7 @@ public class ArticleUIpanel extends JPanel {
 	protected JTextArea infoText;
 
 	public ArticleUIpanel() {
-		trackArticle();
+		simulArticle();
 	}
 
 	public void welcomeArticle() {
@@ -79,6 +88,15 @@ public class ArticleUIpanel extends JPanel {
 	} // trackArticle()
 
 	public void simulArticle() {
+
+		super.setLayout(new GridLayout(2, 2));
+
+		completeText = new JTextArea("이수한 트랙");
+		inCompleteText = new JTextArea("불이수 트랙");
+		topRankText = new JTextArea("트랙 랭킹 순으로");
+		addPanel = new JPanel(); // 콤보박스 추가 할 패널
+		addCombo = JComboBox(); // 추가할 교과
+
 	} // simulArticle()
 
 	public void fidArticle() {
