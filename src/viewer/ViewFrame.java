@@ -1,5 +1,7 @@
 package viewer;
 
+import java.awt.Color;
+
 /*
  * 
  */
@@ -16,7 +18,6 @@ public class ViewFrame extends JFrame{
 	
 	public ViewFrame() {
 		
-		
 		// UI (front) Setting
 		this.SettingLookAndFeel();
 		new ViewFirstSet(this);
@@ -26,7 +27,6 @@ public class ViewFrame extends JFrame{
 		this.setTitle("Track Manager System");
 		this.setSize(WIDTH, HEIGHT);
 		this.setVisible(true);
-
 	} // ViewFrame()
 
 	private void SettingLookAndFeel() {

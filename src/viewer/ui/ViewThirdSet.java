@@ -1,9 +1,12 @@
 package viewer.ui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -47,9 +50,14 @@ public class ViewThirdSet {
 	JFrame RevisedFrame;
 	private JPanel p1;
 	private JLabel fileText;
+	
 	// Name / student id / passwoard
 	protected PlaceholderJTextField nameText, idText;
 	protected PlaceholderJPasswordField passText;
+	
+	// For testing the Length of ID and PASS
+	protected boolean signUpIDLenCk = false;
+	protected boolean signUpPASSLenCk = false;
 	
 	protected ArrayList<String> subjectList; // 기이수 강의 담아줄 ArrayList
 	
@@ -68,8 +76,34 @@ public class ViewThirdSet {
 		nameText.setPlaceholder("Name");
 		this.idText = new PlaceholderJTextField("");
 		idText.setPlaceholder("Student Num");
+		idText.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (idText.getText().length() >= 7) {
+					signUpIDLenCk = true;
+					idText.setBackground(new Color(102, 255, 102)); // GREEN
+				} else {
+					signUpIDLenCk = false;
+					idText.setBackground(new Color(204, 102, 102)); // RED
+				} // inner if -else
+			} // keyPressed()
+		}); // idText Key input Action
+		
 		this.passText = new PlaceholderJPasswordField("");
 		passText.setPlaceholder("Passward");
+		passText.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (passText.getPassword().length >= 7) {
+					signUpPASSLenCk = true;
+					passText.setBackground(new Color(102, 255, 102)); // GREEN
+				} else {
+					signUpPASSLenCk = false;
+					passText.setBackground(new Color(204, 102, 102)); // RED
+				} // inner if -else
+			} // keyPressed()
+		}); // passText Key input Action
+		
 		Font f = nameText.getFont();
 		nameText.setFont(new Font(f.getName(), f.getStyle(), 35));
         idText.setFont(new Font(f.getName(), f.getStyle(), 35));
@@ -187,7 +221,7 @@ public class ViewThirdSet {
 		    		    } // if
 		    		} // for
 		        } // if 첨부파일
-		        else if(butSrcTxt == "가입하기") {
+		        else if(butSrcTxt == "가입하기" && signUpIDLenCk && signUpPASSLenCk && fileText.getText() != "") {
 		        	// DB setting
 		        	DBconnection dbcon = new DBconnection();
 	                String passString = new String(passText.getPassword(), 0, passText.getPassword().length);
@@ -205,7 +239,4 @@ public class ViewThirdSet {
 		    } // actionPerformed()
 		}); // addActionListener
 	} // btnAction()
-	
-
-
 }
