@@ -112,8 +112,8 @@ public class ArticleUIpanel extends JPanel {
 
 	} // trackArticle()
 
+	// Track simulation setting method
 	public void simulArticle() {
-
 		super.setLayout(new GridLayout(2, 2));
 
 		completeText = new JTextArea("이수한 트랙");
@@ -127,7 +127,7 @@ public class ArticleUIpanel extends JPanel {
 		addPanel.setLayout(new BorderLayout());
 		addPanel.setSize(100, 100);
 		addPanel.add(addCombo);
-
+		
 		super.add(completeText);
 		super.add(inCompleteText);
 		super.add(addPanel);
