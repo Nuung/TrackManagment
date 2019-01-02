@@ -42,9 +42,13 @@ public class SidePanel {
 		this.viewFrame = viewFrame;
 		this.studentinfo = studentinfo;
 		trackSidePanel = new JPanel();
+		trackSidePanel.setName("trackSidePanel");
 		simulSidePanel = new JPanel();
+		simulSidePanel.setName("simulSidePanel");
 		fidSidePanel = new JPanel();
+		fidSidePanel.setName("fidSidePanel");
 		infoSidePanel = new JPanel();
+		infoSidePanel.setName("infoSidePanel");
 		logOutSidePanel = new JPanel();
 	} // 생성자
 
@@ -86,13 +90,28 @@ public class SidePanel {
 		tempBtn = new JButton[9];
 		for (int i = 0; i < 9; i++) {
 			tempBtn[i] = new JButton(sideTxt[i]);
-			this.btnAction(tempBtn[i]);
-			tempPanel.add(tempBtn[i]);
-		} // inner for
+			if(tempPanel.getName() == "trackSidePanel") {
+				this.trackBtnAction(tempBtn[i]);
+				tempPanel.add(tempBtn[i]);
+			} else if(tempPanel.getName() == "simulSidePanel") {
+				this.simulBtnAction(tempBtn[i]);
+				tempPanel.add(tempBtn[i]);
+			} else if(tempPanel.getName() == "fidSidePanel") {
+				this.fidBtnAction(tempBtn[i]);
+				tempPanel.add(tempBtn[i]);
+			} else if(tempPanel.getName() == "infoSidePanel") {
+				this.infoBtnAction(tempBtn[i]);
+				tempPanel.add(tempBtn[i]);
+			} else if(tempPanel.getName() == "logOutSidePanel") {
+				this.logoutBtnAction(tempBtn[i]);
+				tempPanel.add(tempBtn[i]);
+			}
+		} // for
 	} // SideBarBtn()
 	
-	// 각 버튼의 액션 이벤트 세팅과 명시
-	private void btnAction(JButton inBtn) {
+	// Side Bar Button의 액션 이벤트 세팅과 명시
+	// trackSidePanel
+	private void trackBtnAction(JButton inBtn) {
 		inBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {				
 				ArticleUIpanel articleUi = new ArticleUIpanel(studentinfo);
@@ -106,8 +125,7 @@ public class SidePanel {
 					artic.trackArticle();
 					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
-					
-					
+
 					for (int i = 0 ; i < ArticleUIpanel.hciBarr.length;i++) {
 						int count = 0;
 						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
@@ -124,9 +142,9 @@ public class SidePanel {
 									too = cl.numToSubject(ArticleUIpanel.hciBarr[i]);
 									artic.trackBText.append("미이수 "+too+"\n");
 									count = 0;
-								}
-							}
-						}
+								} // inner if
+							} // if - else
+						} // inner for
 					} // for
 					//왼쪽 text
 					
@@ -172,5 +190,72 @@ public class SidePanel {
 		});
 	} // btnAction()
 
+	// simulSidePanel
+	private void simulBtnAction(JButton inBtn) {
+		inBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {				
+				ArticleUIpanel articleUi = new ArticleUIpanel(studentinfo);
+				// getting btn text value
+				Object source = ev.getSource();
+				String butSrcTxt = ((AbstractButton) source).getText();
+				
+				
+				if (butSrcTxt == sideTxt[0]) {
+					
+				} // 왼쪽 첫번째 버튼
+			} // actionPerformed()
+		}); // addActionListener
+	} // simulBtnAction()
+	
+	// fidSidePanel
+	private void fidBtnAction(JButton inBtn) {
+		inBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {				
+				ArticleUIpanel articleUi = new ArticleUIpanel(studentinfo);
+				// getting btn text value
+				Object source = ev.getSource();
+				String butSrcTxt = ((AbstractButton) source).getText();
+				
+				
+				if (butSrcTxt == sideTxt[0]) {
+					
+				} // 왼쪽 첫번째 버튼
+			} // actionPerformed()
+		}); // addActionListener
+	} // fidBtnAction()
+	
+	// infoSidePanel
+	private void infoBtnAction(JButton inBtn) {
+		inBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {				
+				ArticleUIpanel articleUi = new ArticleUIpanel(studentinfo);
+				// getting btn text value
+				Object source = ev.getSource();
+				String butSrcTxt = ((AbstractButton) source).getText();
+				
+				
+				if (butSrcTxt == sideTxt[0]) {
+					
+				} // 왼쪽 첫번째 버튼
+			} // actionPerformed()
+		}); // addActionListener
+	} // simulBtnAction()
+	
+	// logOutSidePanel
+	private void logoutBtnAction(JButton inBtn) {
+		inBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {				
+				ArticleUIpanel articleUi = new ArticleUIpanel(studentinfo);
+				// getting btn text value
+				Object source = ev.getSource();
+				String butSrcTxt = ((AbstractButton) source).getText();
+				
+				
+				if (butSrcTxt == sideTxt[0]) {
+					
+				} // 왼쪽 첫번째 버튼
+			} // actionPerformed()
+		}); // addActionListener
+	} // infoBtnAction()
 	
 } // SidePanel class
