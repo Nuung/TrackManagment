@@ -41,8 +41,7 @@ public class ArticleUIpanel extends JPanel {
 
 	// infoArticle
 	protected JTextField infoTrackText;
-	protected JTextArea infoText;
-	
+	protected JTextArea infoText;	
 	
 	static int[] hciBarr = {1,2,3};
 	static int[] multimediaBarr = {16,1,17};
@@ -63,7 +62,6 @@ public class ArticleUIpanel extends JPanel {
 	static int[] datascienceSarr = {51,70,48,71,72,73,74,75,2,17};
 	static int[] sweduSarr = {77,8,24,78,79,80,81,40,82,47,83};
 
-	
 	public ArticleUIpanel() {
 		welcomeArticle();
 	}

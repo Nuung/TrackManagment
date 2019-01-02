@@ -5,6 +5,7 @@ public class DBconfig {
 	// jdbc driver
 	private String jdbcDriver = "com.mysql.cj.jdbc.Driver";
 	private String jdbcUrl = "jdbc:mysql://localhost:3306/java?characterEncoding=UTF-8&serverTimezone=UTC";
+
 	
 	// DB connection Name and Password
 	private String dbName, dbPass;

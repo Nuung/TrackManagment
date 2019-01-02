@@ -32,7 +32,7 @@ public class ViewFirstSet {
 	private JButton btn1, btn2;
 	protected PlaceholderJTextField idText;
 	protected PlaceholderJPasswordField passText;
-	
+
 	// 생성자
 	public ViewFirstSet(ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;

@@ -14,7 +14,7 @@ public class DBconnection {
 	private Statement st; // connect에 SQL문장 실행하는 방법을 정해주는 객체
 	private PreparedStatement pstmt;
 	private ResultSet rs; // SQL 결과 받아오는 객체
-	static int mainnumber;
+
 	public ResultSet getRecodeAll(String tablename) {
 		this.connectDB();
 		try {
@@ -86,7 +86,22 @@ public class DBconnection {
 		} // try - catch
 		this.closeDB();
 		return false; // 실패했을 경우 여기서 false 리턴
-	}
+	} // findUser()
+	
+	public ResultSet findUserSubject(int studentnum) {
+		this.connectDB();
+		String SQL = "SELECT * FROM userinfo WHERE student_number="+studentnum; 
+		try {
+			this.rs = st.executeQuery(SQL); // rs가 SQL 구문의 결과 행 값들을 가지게 된다.
+			if(rs != null) { // SQL구문의 결과값이 존재한다면
+				return this.rs; // 성공시 여기서 true 리턴
+			} // if
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} // try - catch
+		this.closeDB();
+		return null; // 실패했을 경우 여기서 false 리턴
+	} // findUser()
 	
 	// Printing All Elements
 	public void printList(){

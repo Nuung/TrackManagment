@@ -27,6 +27,7 @@ public class SidePanel {
 	protected JPanel infoSidePanel;
 	protected JPanel logOutSidePanel;
 	JButton tempBtn[];
+
 	protected ViewFrame viewFrame;
 	// 이벤트처리
 	protected String sideTxt[] = { "HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육" };
@@ -86,8 +87,7 @@ public class SidePanel {
 	// 각 버튼의 액션 이벤트 세팅과 명시
 	private void btnAction(JButton inBtn) {
 		inBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {
-				
+			public void actionPerformed(ActionEvent ev) {				
 				ArticleUIpanel articleUi = new ArticleUIpanel();
 				// getting btn text value
 				Object source = ev.getSource();

@@ -24,6 +24,7 @@ public class ViewSecondSet {
 	// Default Swing
 	private ViewFrame viewFrame;
 	private ArticleUIpanel articleUi;
+
 	protected JPanel p1, p2, p3;
 	protected String topBar[] = { "트랙", "트랙시뮬레이션", "피드백", "INFO", "LogOut" };
 	String[] sideTxt = { "HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육", "사이버국방" };
@@ -32,6 +33,8 @@ public class ViewSecondSet {
 	protected CardLayout cardLayout;
 	SidePanel sidePanel;
 
+	ArticleUIpanel articleUIpanel;
+	
 	public ViewSecondSet(ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;
 		this.panelSetting();
@@ -48,6 +51,7 @@ public class ViewSecondSet {
 		// p2패널 - sideBar
 		cardLayout = new CardLayout();
 		sidePanel = new SidePanel(this.viewFrame);
+
 		this.p2.setLayout(cardLayout);
 		sidePanel.trackSide();
 		this.p2.add(sidePanel.trackSidePanel, "tP");
@@ -60,16 +64,22 @@ public class ViewSecondSet {
 		this.p1.setName("p1");
 		this.btnBarSetting(this.p1, 5);
 
-//		this.p3.setLayout(new GridLayout(1, 1));
-//		JScrollPane jsp = new JScrollPane(new JTextArea("TEST"));
-//		this.p3.add(jsp); // p3 (MAIN)
+		this.p3.setLayout(new GridLayout(1, 1));
+		JScrollPane jsp = new JScrollPane(new JTextArea("TEST"));
+		this.p3.add(jsp); // p3 (MAIN)
 
-
+		// Main Frame Setting
+		articleUIpanel = new ArticleUIpanel();
+		JPanel articleWrapArticlePanel = new JPanel();
+		articleWrapArticlePanel.setLayout(new CardLayout());
+		
+//		articleWrapArticlePanel.add(articleUIpanel.trackArticle(), "trackArticle");
 
 		this.viewFrame.setLayout(new BorderLayout());
 		this.viewFrame.add(this.p1, BorderLayout.NORTH);
 		this.viewFrame.add(this.p2, BorderLayout.WEST);
-		this.viewFrame.add(this.articleUi, BorderLayout.CENTER);
+		this.viewFrame.add(articleUIpanel, BorderLayout.CENTER);
+
 	} // panelSetting()
 
 	public void btnBarSetting(JPanel tempP, int btnNum) {
@@ -81,7 +91,6 @@ public class ViewSecondSet {
 			// P1 패널 버튼에만 P2 패널 카드 레이아웃 조절 권한
 			if (tempP.getName() == "p1") {
 				btnAction(tempBtn[i]);
-				System.out.println("check");
 			} // if
 		} // for
 	} // btnBarSetting()
