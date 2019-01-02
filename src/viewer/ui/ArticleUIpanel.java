@@ -41,7 +41,26 @@ public class ArticleUIpanel extends JPanel {
 
 	// infoArticle
 	protected JTextField infoTrackText;
-	protected JTextArea infoText;
+	protected JTextArea infoText;	
+	
+	static int[] hciBarr = {1,2,3};
+	static int[] multimediaBarr = {16,1,17};
+	static int[] iotBarr = {25,18,26};
+	static int[] systemappBarr = {37,38,39};
+	static int[] aiBarr = {48,26,40};
+	static int[] virtualrealityBarr = {13,1,2};
+	static int[] infoprotectBarr = {58,59,25};
+	static int[] datascienceBarr = {40,26,50};
+	static int[] sweduBarr = {76,3,42};
+	static int[] hciSarr = {4,5,6,7,8,9,10,11,1,13,14,15};
+	static int[] multimediaSarr = {18,19,29,21,22,4,23,24,12,13};
+	static int[] iotSarr = {27,19,28,29,30,31,32,33,34,35,36};
+	static int[] systemappSarr = {40,41,42,43,36,44,45,28,46,13,47};
+	static int[] aiSarr = {4,21,42,43,36,44,45,28,46,13,47};
+	static int[] virtualrealitySarr = {14,12,16,54,55,56,57,5,4,13,15};
+	static int[] infoprotectSarr = {60,611,622,63,64,65,30,67,68,69,66};
+	static int[] datascienceSarr = {51,70,48,71,72,73,74,75,2,17};
+	static int[] sweduSarr = {77,8,24,78,79,80,81,40,82,47,83};
 
 	public ArticleUIpanel() {
 		welcomeArticle();
@@ -163,4 +182,11 @@ public class ArticleUIpanel extends JPanel {
 		super.add(infoText, gbc);
 		infoText.add(scroll);
 	} // infoArticle()
+	
+	// 버튼 클릭 시 패널에 있는 UI 초기화를 해주기 위한 메소드
+	public void resetArticleUI() {
+		super.removeAll();
+		super.revalidate();
+		super.repaint();
+	}
 }

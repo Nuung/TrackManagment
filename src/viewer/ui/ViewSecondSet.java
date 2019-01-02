@@ -23,6 +23,7 @@ public class ViewSecondSet {
 
 	// Default Swing
 	private ViewFrame viewFrame;
+	private ArticleUIpanel articleUi;
 	protected JPanel p1, p2, p3;
 	protected String topBar[] = { "트랙", "트랙시뮬레이션", "피드백", "INFO", "LogOut" };
 	String[] sideTxt = { "HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육", "사이버국방" };
@@ -30,7 +31,6 @@ public class ViewSecondSet {
 	// sideBar
 	protected CardLayout cardLayout;
 	SidePanel sidePanel;
-
 	ArticleUIpanel articleUIpanel;
 
 	public ViewSecondSet(ViewFrame viewFrame) {
@@ -42,11 +42,13 @@ public class ViewSecondSet {
 	private void panelSetting() {
 		this.p1 = new JPanel();
 		this.p2 = new JPanel();
-		this.p3 = new JPanel();
+		// Main Frame Setting
+		this.articleUi = new ArticleUIpanel();
 
 		// p2패널 - sideBar
 		cardLayout = new CardLayout();
-		sidePanel = new SidePanel();
+		sidePanel = new SidePanel(this.viewFrame);
+
 		this.p2.setLayout(cardLayout);
 		sidePanel.trackSide();
 		this.p2.add(sidePanel.trackSidePanel, "tP");
@@ -59,21 +61,12 @@ public class ViewSecondSet {
 		this.p1.setName("p1");
 		this.btnBarSetting(this.p1, 5);
 
-		this.p3.setLayout(new GridLayout(1, 1));
-		JScrollPane jsp = new JScrollPane(new JTextArea("TEST"));
-		this.p3.add(jsp); // p3 (MAIN)
-
 		// Main Frame Setting
 		articleUIpanel = new ArticleUIpanel();
-		JPanel articleWrapArticlePanel = new JPanel();
-		articleWrapArticlePanel.setLayout(new CardLayout());
-		
-//		articleWrapArticlePanel.add(articleUIpanel.trackArticle(), "trackArticle");
 
 		this.viewFrame.setLayout(new BorderLayout());
 		this.viewFrame.add(this.p1, BorderLayout.NORTH);
 		this.viewFrame.add(this.p2, BorderLayout.WEST);
-
 		this.viewFrame.add(articleUIpanel, BorderLayout.CENTER);
 
 	} // panelSetting()
@@ -101,22 +94,31 @@ public class ViewSecondSet {
 
 				if (butSrcTxt == topBar[0]) {
 					System.out.println("TRACK");
+					articleUIpanel.resetArticleUI();
+					articleUIpanel.trackArticle();
 					cardLayout.show(p2, "tP");
 				} // TRACK tP
 				else if (butSrcTxt == topBar[1]) {
 					System.out.println("TRACK SIMULATION");
+					articleUIpanel.resetArticleUI();
+					articleUIpanel.simulArticle();
 					cardLayout.show(p2, "sP");
 				} // TRACK SIMULATION sP
 				else if (butSrcTxt == topBar[2]) {
 					System.out.println("FEED BACK");
+					articleUIpanel.resetArticleUI();
+					articleUIpanel.fidArticle();
 					cardLayout.show(p2, "fP");
 				} // FEED BACK fP
 				else if (butSrcTxt == topBar[3]) {
 					System.out.println("INFO ");
+					articleUIpanel.resetArticleUI();
+					articleUIpanel.infoArticle();
 					cardLayout.show(p2, "iP");
 				} // INFO iP
 				else if (butSrcTxt == topBar[4]) {
 					System.out.println("LOGOUT");
+					articleUIpanel.resetArticleUI();
 					cardLayout.show(p2, "lP");
 				} // LOGOUT lP
 			} // actionPerformed()

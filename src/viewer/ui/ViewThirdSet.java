@@ -200,7 +200,6 @@ public class ViewThirdSet {
 			    	viewFrame.revalidate(); // ReLoading
 			    	RevisedFrame.dispose();
 		    	} // if - else
-		    	
 		    } // actionPerformed()
 		}); // addActionListener
 	} // btnAction()
