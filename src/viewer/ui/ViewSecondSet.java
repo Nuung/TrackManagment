@@ -22,9 +22,8 @@ public class ViewSecondSet {
 	private ViewFrame viewFrame;
 	private JPanel p1, p2, p3;
 	private ButtonClickViewSecond btnclick;
-	private String topBar[] = { "�듃�옓", "�듃�옓�떆臾쇰젅�씠�뀡", "�뵾�뱶諛�", "INFO", "LogOut" };
-	String trackName[] = { "HCI&鍮꾩�ъ뼹而댄벂�똿", "硫��떚誘몃뵒�뼱", "�궗臾쇱씤�꽣�꽬", "�떆�뒪�뀥�쓳�슜", "�씤怨듭��뒫", "媛��긽�쁽�떎", "�젙蹂대낫�샇",
-			"�뜲�씠�꽣�궗�씠�뼵�뒪", "SW援먯쑁", "�궗�씠踰꾧뎅諛�" };
+	private String topBar[] = { "트랙", "트랙시뮬레이션", "피드백", "INFO", "LogOut" };
+	String[] sideTxt = { "HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육", "사이버국방" };
 
 	// sideBar
 	CardLayout cardLayout;
