@@ -1,5 +1,6 @@
 package viewer.ui;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -97,7 +98,7 @@ public class SidePanel {
 				// getting btn text value
 				Object source = ev.getSource();
 				String butSrcTxt = ((AbstractButton) source).getText();
-				int tempnumber = 13011038;
+				
 				
 				if (butSrcTxt == sideTxt[0]) {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
@@ -105,7 +106,22 @@ public class SidePanel {
 
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 					for (int i = 0; i < tempStudentinfo.size(); i++) {
-						tempStudentinfo.get(i).getLectureNum();
+						for(int j = i; j < ArticleUIpanel.hciBarr.length; j++) {
+							if(ArticleUIpanel.hciBarr[j] == tempStudentinfo.get(i).getLectureNum()) {
+								String to = Integer.toString(ArticleUIpanel.hciBarr[j]);
+								//to.setTextColor(Color.getColor("#FFFFFF"));
+								//텍스트뷰.setTextColor(Color.parseColor(strColor));
+								//String strColor = "#00FFFF";
+								//artic.trackBText.setForeground(Color.GREEN);
+								System.out.println("if");
+								artic.trackBText.setText(to+"\n");
+							}else {
+								System.out.println("else");
+								String too = Integer.toString(tempStudentinfo.get(i).getLectureNum());
+								artic.trackBText.setText(too);
+							}
+						}
+						
 					} // for
 					
 					
