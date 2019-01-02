@@ -191,5 +191,264 @@ public class ChangeLecture {
 				System.out.println("Changing Error!");
 			}
 		} // for
+	} // constructor
+	
+	public ChangeLecture() {
+		//
 	}
+	
+	public String numToSubject(int lecNum) {
+		String ss="";
+		
+		if(lecNum == 1) {
+			ss = "선형대수및프로그래밍";
+			return ss;
+		}else if(lecNum == 2) {
+			ss = "컴퓨터그래픽스";
+			return ss;
+		}else if(lecNum == 3) {
+			ss = "웹프로그래밍";
+			return ss;
+		}else if(lecNum == 4) {
+			ss = "영상처리";
+			return ss;
+		}else if(lecNum == 5) {
+			ss = "HCI개론";
+			return ss;
+		}else if(lecNum == 6) {
+			ss = "웹프로그래밍설계";
+			return ss;
+		}else if(lecNum == 7) {
+			ss = "웹기반시스템";
+			return ss;
+		}else if(lecNum == 8) {
+			ss = "윈도우즈프로그래밍";
+			return ss;
+		}else if(lecNum == 9) {
+			ss = "XML프로그래밍";
+			return ss;
+		}else if(lecNum == 10) {
+			ss = "데이터컴퓨팅";
+			return ss;
+		}else if(lecNum == 11) {
+			ss = "정보검색";
+			return ss;
+		}else if(lecNum == 12) {
+			ss = "가상현실";
+			return ss;
+		}else if(lecNum == 13) {
+			ss = "멀티미디어프로그래밍";
+			return ss;
+		}else if(lecNum == 14) {
+			ss = "고급실시간그래픽스";
+			return ss;
+		}else if(lecNum == 15) {
+			ss = "오픈소스SW개론";
+			return ss;
+		}else if(lecNum == 16) {
+			ss = "멀티미디어";
+			return ss;
+		}else if(lecNum == 17) {
+			ss = "통계학개론";
+			return ss;
+		}else if(lecNum == 18) {
+			ss = "신호및시스템";
+			return ss;
+		}else if(lecNum == 19) {
+			ss = "디지털신호처리";
+			return ss;
+		}else if(lecNum == 20) {
+			ss = "멀티미디어데이터베이스";
+			return ss;
+		}else if(lecNum == 21) {
+			ss = "패턴인식";
+			return ss;
+		}else if(lecNum == 22) {
+			ss = "컴퓨터비젼시스템";
+			return ss;
+		}else if(lecNum == 23) {
+			ss = "영상처리프로그래밍";
+			return ss;
+		}else if(lecNum == 24) {
+			ss = "모바일프로그래밍";
+			return ss;
+		}else if(lecNum == 25) {
+			ss = "컴퓨터네트워크";
+			return ss;
+		}else if(lecNum == 26) {
+			ss = "확률통계및프로그래밍";
+			return ss;
+		}else if(lecNum == 27) {
+			ss = "통신시스템";
+			return ss;
+		}else if(lecNum == 28) {
+			ss = "임베디드시스템";
+			return ss;
+		}else if(lecNum == 29) {
+			ss = "네트워크프로그래밍";
+			return ss;
+		}else if(lecNum == 30) {
+			ss = "정보보호개론";
+			return ss;
+		}else if(lecNum == 31) {
+			ss = "데이터통신";
+			return ss;
+		}else if(lecNum == 32) {
+			ss = "무선통신";
+			return ss;
+		}else if(lecNum == 33) {
+			ss = "스마트그리드";
+			return ss;
+		}else if(lecNum == 34) {
+			ss = "인터넷보안";
+			return ss;
+		}else if(lecNum == 35) {
+			ss = "지능형시스템";
+			return ss;
+		}else if(lecNum == 36) {
+			ss = "멀티코어프로그래밍";
+			return ss;
+		}else if(lecNum == 37) {
+			ss = "디지털시스템";
+			return ss;
+		}else if(lecNum == 38) {
+			ss = "마이크로컴퓨터";
+			return ss;
+		}else if(lecNum == 39) {
+			ss = "VHDL프로그래밍";
+			return ss;
+		}else if(lecNum == 40) {
+			ss = "데이터베이스";
+			return ss;
+		}else if(lecNum == 41) {
+			ss = "프로그래밍언어의개념";
+			return ss;
+		}else if(lecNum == 42) {
+			ss = "소프트웨어공학";
+			return ss;
+		}else if(lecNum == 43) {
+			ss = "컴파일러";
+			return ss;
+		}else if(lecNum == 44) {
+			ss = "시스템모델링";
+			return ss;
+		}else if(lecNum == 45) {
+			ss = "분산시스템";
+			return ss;
+		}else if(lecNum == 46) {
+			ss = "UNIX프로그래밍";
+			return ss;
+		}else if(lecNum == 47) {
+			ss = "문제해결기법";
+			return ss;
+		}else if(lecNum == 48) {
+			ss = "인공지능";
+			return ss;
+		}else if(lecNum == 49) {
+			ss = "데이터베이스프로그래밍";
+			return ss;
+		}else if(lecNum == 50) {
+	         ss = "데이터분석개론";
+	         return ss;
+	      }else if(lecNum == 51) {
+	         ss = "기계학습";
+	         return ss;
+	      }else if(lecNum == 52) {
+	         ss = "컴퓨터비전시스템";
+	         return ss;
+	      }else if(lecNum == 54) {
+	         ss = "게임프로그래밍";
+	         return ss;
+	      }else if(lecNum == 55) {
+	         ss = "디지털사운드";
+	         return ss;
+	      }else if(lecNum == 56) {
+	         ss = "컴퓨터애니메이션";
+	         return ss;
+	      }else if(lecNum == 57) {
+	         ss = "증강현실";
+	         return ss;
+	      }else if(lecNum == 58) {
+	         ss = "어셈블리어";
+	         return ss;
+	      }else if(lecNum == 59) {
+	         ss = "보안프로그래밍";
+	         return ss;
+	      }else if(lecNum == 60) {
+	         ss = "대칭키암호론";
+	         return ss;
+	      }else if(lecNum == 61) {
+	         ss = "공개키암호론";
+	         return ss;
+	      }else if(lecNum == 62) {
+	         ss = "시스템해킹과보안";
+	         return ss;
+	      }else if(lecNum == 63) {
+	         ss = "인터넷보안";
+	         return ss;
+	      }else if(lecNum == 64) {
+	         ss = "악성코드분석";
+	         return ss;
+	      }else if(lecNum == 65) {
+	         ss = "네트워크해킹과보안";
+	         return ss;
+	      }else if(lecNum == 66) {
+	         ss = "디지털포렌식";
+	         return ss;
+	      }else if(lecNum == 67) {
+	         ss = "정보보호와보안의기초";
+	         return ss;
+	      }else if(lecNum == 68) {
+	         ss = "데이터베이스및보안";
+	         return ss;
+	      }else if(lecNum == 69) {
+	         ss = "사이버전개론";
+	         return ss;
+	      }else if(lecNum == 70) {
+	         ss = "데이터기반인공지능";
+	         return ss;
+	      }else if(lecNum == 71) {
+	         ss = "경영과학";
+	         return ss;
+	      }else if(lecNum == 72) {
+	         ss = "데이터시각화";
+	         return ss;
+	      }else if(lecNum == 73) {
+	         ss = "대용량데이터처리개론";
+	         return ss;
+	      }else if(lecNum == 74) {
+	         ss = "텍스트마이닝";
+	         return ss;
+	      }else if(lecNum == 75) {
+	         ss = "의사결정분석";
+	         return ss;
+	      }else if(lecNum == 76) {
+	         ss = "문제해결및실습:C++";
+	         return ss;
+	      }else if(lecNum == 77) {
+	         ss = "문제해결및실습:JAVA";
+	         return ss;
+	      }else if(lecNum == 78) {
+	         ss = "오픈소스SW";
+	         return ss;
+	      }else if(lecNum == 79) {
+	         ss = "객체지향설계기술";
+	         return ss;
+	      }else if(lecNum == 80) {
+	         ss = "SW교육특강1";
+	         return ss;
+	      }else if(lecNum == 81) {
+	         ss = "SW교육특강2";
+	         return ss;
+	      }else if(lecNum == 82) {
+	         ss = "오픈소스SW공학";
+	         return ss;
+	      }else if(lecNum == 83) {
+	         ss = "오픈소스SW설계";
+	         return ss;
+	      } else {
+	         return null;
+	      }
+	}
+	
 }
