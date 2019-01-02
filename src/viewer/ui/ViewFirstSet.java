@@ -78,6 +78,7 @@ public class ViewFirstSet {
 						// New Frame이 아니라, 기존에 있는 Frame Re Setting -> ReLoading
 						viewFrame.revalidate(); // ReLoading
 						newFrame.dispose();
+
 					} // inner if
 				} else {
 					if (passText.getPassword().length > 7) {
