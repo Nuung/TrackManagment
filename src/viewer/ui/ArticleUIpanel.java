@@ -182,4 +182,11 @@ public class ArticleUIpanel extends JPanel {
 		super.add(infoText, gbc);
 		infoText.add(scroll);
 	} // infoArticle()
+	
+	// 버튼 클릭 시 패널에 있는 UI 초기화를 해주기 위한 메소드
+	public void resetArticleUI() {
+		super.removeAll();
+		super.revalidate();
+		super.repaint();
+	}
 }
