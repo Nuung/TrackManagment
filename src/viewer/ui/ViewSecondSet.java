@@ -61,10 +61,6 @@ public class ViewSecondSet {
 		this.p1.setName("p1");
 		this.btnBarSetting(this.p1, 5);
 
-		this.p3.setLayout(new GridLayout(1, 1));
-		JScrollPane jsp = new JScrollPane(new JTextArea("TEST"));
-		this.p3.add(jsp); // p3 (MAIN)
-
 		// Main Frame Setting
 		articleUIpanel = new ArticleUIpanel();
 		JPanel articleWrapArticlePanel = new JPanel();
