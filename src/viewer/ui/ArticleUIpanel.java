@@ -84,8 +84,8 @@ public class ArticleUIpanel extends JPanel {
 
 		trackBlbl = new JLabel("트랙 기초 교과");
 		trackAlbl = new JLabel("트랙 응용 교과");
-		trackBText = new JTextArea("트랙 기초 교과", 7, 20);
-		trackAText = new JTextArea("트랙 응용 교과", 7, 20);
+		trackBText = new JTextArea("", 7, 20);
+		trackAText = new JTextArea("", 7, 20);
 
 		gbc.fill = GridBagConstraints.BOTH;
 		gbc.weightx = 0.5;
