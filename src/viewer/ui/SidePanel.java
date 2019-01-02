@@ -17,6 +17,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import controller.db.DBconnection;
+import javaproject1227.Product;
 import viewer.ViewFrame;
 
 public class SidePanel {
@@ -94,46 +96,42 @@ public class SidePanel {
 				String butSrcTxt = ((AbstractButton) source).getText();
 				int tempnumber = 13011038;
 				
-				
 				if (butSrcTxt == sideTxt[0]) {
 					ArticleUIpanel artic = new ArticleUIpanel();
 					artic.trackArticle();
 					
 					
-					String jdbcDriver = "com.mysql.cj.jdbc.Driver";
-					String jdbcUrl = "jdbc:mysql://localhost:3306/java?characterEncoding=UTF-8&serverTimezone=UTC";
-					Connection conn;
-					PreparedStatement pstmt;
-					ResultSet rs;
+					DBconnection dbcon = new DBconnection();
 					
-
+					ArrayList<Integer> comparedArr = new ArrayList<Integer>();
 					String sql ="";
-					try {
-						
-						Class.forName(jdbcDriver); 
-						conn = DriverManager.getConnection(jdbcUrl, "kingjw", "1066223gks!"); // url, username, password
-			         
-						sql = "select * from userinfo where student_number = ?";
-						pstmt = conn.prepareStatement(sql);
-						pstmt.setInt(2, tempnumber);
-						rs = pstmt.executeQuery();
-						while(rs.next()) {
-							for(int i = 0 ; i < ArticleUIpanel.hciBarr.length ; i++) {
-								for(int j = 0 ; j < ArticleUIpanel.hciBarr.length ; j++) {
-									if(ArticleUIpanel.hciBarr[i] != rs.getInt("student_number")) {
-										String to = Integer.toString(rs.getInt("student_number"));
-										artic.trackBText.setText(to);
-									}
-								}//안쪽for
-							}//바깥쪽 for
-							
-						}// while
-					}catch(Exception e) {
-							System.out.print("error arraylist");
+//					try {			         
+//						sql = "select * from userinfo where student_number = ?";
+//						pstmt = conn.prepareStatement(sql);
+//						pstmt.setInt(2, tempnumber);
+//						rs = pstmt.executeQuery();
+//						while(rs.next()) {
+//							int i = 0;
+//							comparedArr.add(rs.getInt("student_number"));
+//							System.out.println(comparedArr.get(0));
+//							i++;
+//						}// while
+//					}catch(Exception e) {
+//							System.out.print("error arraylist");
+//					}
+					
+					for(int i = 0 ; i < comparedArr.size(); i++) {
+						System.out.println(comparedArr.get(i));
 					}
 					
-					
-					
+//					for(int i = 0 ; i < ArticleUIpanel.hciBarr.length ; i++) {
+//						for(int j = 0 ; j < ArticleUIpanel.hciBarr.length ; j++) {
+//							if(ArticleUIpanel.hciBarr[i] != rs.getInt("student_number")) {
+//								String to = Integer.toString(rs.getInt("student_number"));
+//								artic.trackBText.setText(to);
+//							}
+//						}//안쪽for
+//					}//바깥쪽 for
 					
 					
 					System.out.println(sideTxt[0]);
