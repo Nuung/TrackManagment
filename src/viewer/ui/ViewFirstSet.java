@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 import controller.db.DBconnection;
 import viewer.ViewFrame;
+import viewer.components.PlaceholderJTextField;
 /*
  * 가장 첫 화면 [ 학생 ] [ 관리자 ]
  * 클릭시 newFrame -> 로그인

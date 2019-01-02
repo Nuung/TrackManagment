@@ -35,6 +35,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import event.ButtonClickViewSecond;
 import viewer.ViewFrame;
+import viewer.components.PlaceholderJTextField;
 
 /*
  * 회원가입 Frame

@@ -1,4 +1,4 @@
-package viewer.ui;
+package viewer.components;
 
 import java.awt.Font;
 import java.awt.Graphics;
