@@ -2,14 +2,6 @@ package controller;
 
 import java.util.ArrayList;
 
-import viewer.ui.ViewThirdSet;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.PreparedStatement;
 import controller.db.DBconnection;
 
 public class ChangeLecture {
@@ -19,10 +11,10 @@ public class ChangeLecture {
 	
 	public ChangeLecture(int stnum, ArrayList<String> subject){
 		this.dbcon = new DBconnection();
-		changeLecture = new int[subject.size()];
+		this.changeLecture = new int[subject.size()];
 		
 		for(int i = 0 ; i < subject.size() ; i++) {
-			if(subject.get(i).equals("션형대수및프로그래밍")) {
+			if(subject.get(i).equals("선형대수및프로그래밍")) {
 				changeLecture[i] = 1;
 			}else if(subject.get(i).equals("컴퓨터그래픽스")) {
 				changeLecture[i] = 2;
@@ -192,7 +184,9 @@ public class ChangeLecture {
 		}//for
 		
 		for (int j = 0; j < changeLecture.length; j++) {
-//			dbcon.registUserSubject(stnum, changeLecture[j]);
+			if(dbcon.registUserSubject(stnum, changeLecture[j])) {
+				System.out.println("in test");
+			}
 		} // for
 	}
 }

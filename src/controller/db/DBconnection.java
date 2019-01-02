@@ -48,6 +48,29 @@ public class DBconnection {
 		} // try - catch
 		this.closeDB();
 	} // registUser()
+
+	public boolean registUserSubject(int stnum, int lecture_num) {
+		this.connectDB();
+		String SQL = "INSERT INTO userinfo(student_number, lecture_num) VALUES(?, ?)";
+		
+		if(lecture_num != 0) {
+			try {
+				this.pstmt = con.prepareStatement(SQL);
+				pstmt.setInt(1, stnum);
+				pstmt.setInt(2, lecture_num);
+				pstmt.executeUpdate();
+				return true;
+			}
+			catch(SQLException e) {
+				e.printStackTrace();
+			} // try - catch
+		} // if
+		else {
+			return false;
+		} // else
+		this.closeDB();
+		return false;
+	} // registUserSubject
 	
 	public boolean findUser(int studentnum, String password) {
 		this.connectDB();
