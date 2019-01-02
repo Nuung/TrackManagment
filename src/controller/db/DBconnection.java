@@ -31,7 +31,7 @@ public class DBconnection {
 		return null;
 	} // getRecodeAll()
 	
-	public void registUser(String name, int studentnum, String passwoard){
+	public void registUser(String name, int studentnum, String password){
 		this.connectDB();
 		String SQL = "INSERT INTO user(name, student_number, password) VALUES(?, ?, ?)";
 		try {
@@ -39,7 +39,7 @@ public class DBconnection {
 			this.pstmt = con.prepareStatement(SQL);
 			pstmt.setString(1, name);
 			pstmt.setInt(2, studentnum);
-			pstmt.setString(3, passwoard);
+			pstmt.setString(3, password);
 			
 			// 4단계 : SQL 문 쿼리 전송
 			pstmt.executeUpdate();
@@ -48,6 +48,45 @@ public class DBconnection {
 		} // try - catch
 		this.closeDB();
 	} // registUser()
+
+	public boolean registUserSubject(int stnum, int lecture_num) {
+		this.connectDB();
+		String SQL = "INSERT INTO userinfo(student_number, lecture_num) VALUES(?, ?)";
+		
+		if(lecture_num != 0) {
+			try {
+				this.pstmt = con.prepareStatement(SQL);
+				pstmt.setInt(1, stnum);
+				pstmt.setInt(2, lecture_num);
+				pstmt.executeUpdate();
+				return true;
+			}
+			catch(SQLException e) {
+				e.printStackTrace();
+			} // try - catch
+		} // if
+		else {
+			return false;
+		} // else
+		this.closeDB();
+		return false;
+	} // registUserSubject
+	
+	public boolean findUser(int studentnum, String password) {
+		this.connectDB();
+		String SQL = "SELECT * FROM user WHERE student_number="+studentnum; 
+		SQL += " AND password="+password;
+		try {
+			this.rs = st.executeQuery(SQL); // rs가 SQL 구문의 결과 행 값들을 가지게 된다.
+			if(rs != null) { // SQL구문의 결과값이 존재한다면
+				return true; // 성공시 여기서 true 리턴
+			} // if
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} // try - catch
+		this.closeDB();
+		return false; // 실패했을 경우 여기서 false 리턴
+	}
 	
 	// Printing All Elements
 	public void printList(){

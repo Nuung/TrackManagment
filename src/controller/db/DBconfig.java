@@ -12,7 +12,7 @@ public class DBconfig {
 	// Constructer
 	public DBconfig() {
 		this.dbName = "root";
-		this.dbPass = "45812qlgks!#";
+		this.dbPass = "tpwhd324423!";
 	}
 	
 	// -------------------------------------------------------- Getter -------------------------------------------------------- //

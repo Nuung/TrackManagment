@@ -22,6 +22,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import controller.ChangeLecture;
+import controller.db.DBconnection;
+
 import controller.db.DBconnection;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -30,6 +33,8 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import viewer.ViewFrame;
+import viewer.components.PlaceholderJPasswordField;
+import viewer.components.PlaceholderJTextField;
 
 /*
  * 회원가입 Frame
@@ -42,11 +47,13 @@ public class ViewThirdSet {
 	private JPanel p1;
 	private JLabel fileText;
 	// Name / student id / passwoard
-	protected PlaceholderJTextField nameText, idText, passText;
+	protected PlaceholderJTextField nameText, idText;
+	protected PlaceholderJPasswordField passText;
 	
-	private ArrayList<String> subject; // 기이수 강의 담아줄 ArrayList
+	protected ArrayList<String> subjectList; // 기이수 강의 담아줄 ArrayList
 	
 	public ViewThirdSet(ViewFrame viewFrame) {
+		this.subjectList = new ArrayList<String>();
 		this.viewFrame = viewFrame;
 		this.panelSetting();
 		this.RevisedFrame.transferFocus();
@@ -60,7 +67,7 @@ public class ViewThirdSet {
 		nameText.setPlaceholder("Name");
 		this.idText = new PlaceholderJTextField("");
 		idText.setPlaceholder("Student Num");
-		this.passText = new PlaceholderJTextField("");
+		this.passText = new PlaceholderJPasswordField("");
 		passText.setPlaceholder("Passward");
 		Font f = nameText.getFont();
 		nameText.setFont(new Font(f.getName(), f.getStyle(), 35));
@@ -168,9 +175,7 @@ public class ViewThirdSet {
 				    		            } // inner if - else
 
 				    		            if(columnindex == 3) {// 수업명 출력 
-				    		            	
-				    		            	subject = new ArrayList<String>();
-				    		            	subject.add(value);
+				    		            	subjectList.add(value);
 					    		           	System.out.print("교과목명 : "+value + " / ");
 				    		            }
 				    		            
@@ -182,9 +187,14 @@ public class ViewThirdSet {
 		    		} // for
 		        } // if 첨부파일
 		        else if(butSrcTxt == "가입하기") {
+		        	// DB setting
 		        	DBconnection dbcon = new DBconnection();
-		        	dbcon.registUser(nameText.getText(), Integer.parseInt(idText.getText()), passText.getText());
+	                String passString = new String(passText.getPassword(), 0, passText.getPassword().length);
+	                dbcon.registUser(nameText.getText(), Integer.parseInt(idText.getText()), passString);
+		        	new ChangeLecture(Integer.parseInt(idText.getText()), subjectList);
 		        	dbcon.printList();
+		        	
+		        	// panel setting
 			    	viewFrame.remove(p1); // delete 'p1' Panel
 			    	new ViewSecondSet(viewFrame); // Make Second Layout Setting
 			    	viewFrame.revalidate(); // ReLoading
