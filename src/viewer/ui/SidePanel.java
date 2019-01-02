@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import controller.StudentInfo;
+import controller.StudentInfo.StudentSubject;
 import controller.db.DBconnection;
 import viewer.ViewFrame;
 
@@ -101,30 +102,12 @@ public class SidePanel {
 				if (butSrcTxt == sideTxt[0]) {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
+
+					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
+					for (int i = 0; i < tempStudentinfo.size(); i++) {
+						tempStudentinfo.get(i).getLectureNum();
+					} // for
 					
-					
-					DBconnection dbcon = new DBconnection();
-					
-					ArrayList<Integer> comparedArr = new ArrayList<Integer>();
-					String sql ="";
-//					try {			         
-//						sql = "select * from userinfo where student_number = ?";
-//						pstmt = conn.prepareStatement(sql);
-//						pstmt.setInt(2, tempnumber);
-//						rs = pstmt.executeQuery();
-//						while(rs.next()) {
-//							int i = 0;
-//							comparedArr.add(rs.getInt("student_number"));
-//							System.out.println(comparedArr.get(0));
-//							i++;
-//						}// while
-//					}catch(Exception e) {
-//							System.out.print("error arraylist");
-//					}
-					
-					for(int i = 0 ; i < comparedArr.size(); i++) {
-						System.out.println(comparedArr.get(i));
-					}
 					
 //					for(int i = 0 ; i < ArticleUIpanel.hciBarr.length ; i++) {
 //						for(int j = 0 ; j < ArticleUIpanel.hciBarr.length ; j++) {

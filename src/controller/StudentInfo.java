@@ -9,7 +9,7 @@ import controller.db.DBconnection;
 public class StudentInfo {
 
 	// inner class like Structer [ 구조체적 요소, id : 과목 쌍을 가지는 object ]
-	protected class StudentSubject {
+	public class StudentSubject {
 		private int studentid;
 		private int lecture_num;
 		public StudentSubject(int studentid, int lecture_num) {
@@ -19,6 +19,9 @@ public class StudentInfo {
 		
 		public void printingStudent() {
 			System.out.println(this.studentid+", "+this.lecture_num);
+		}
+		public int getLectureNum() {
+			return this.lecture_num;
 		}
 	}
 	
@@ -60,5 +63,9 @@ public class StudentInfo {
 			this.studentSubject.get(i).printingStudent();
 		} // for
 	} // gettingStudentInfo
+	
+	public int getStudentId() {
+		return this.studentid;
+	}
 	
 }
