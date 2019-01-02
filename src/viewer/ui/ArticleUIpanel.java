@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -32,7 +33,7 @@ public class ArticleUIpanel extends JPanel {
 	protected JTextArea topRankText;
 	private JPanel addPanel; // 콤보박스 추가 할 패널
 	protected JComboBox addCombo; // 추가할 교과
-	protected String[] addStr;
+	ArrayList<String> addArray = new ArrayList<String>();
 
 	// fidArticle
 	protected JTextArea fidIdText;
@@ -43,16 +44,14 @@ public class ArticleUIpanel extends JPanel {
 	protected JTextArea infoText;
 
 	public ArticleUIpanel() {
-		simulArticle();
+		welcomeArticle();
 	}
-	
-	// At first
+
 	public void welcomeArticle() {
 		super.setLayout(new BorderLayout());
 		super.add(new JLabel("WELCOME"));
 	} // welcomeArticle()
 
-	// Click the 
 	public void trackArticle() {
 		gbl = new GridBagLayout();
 		gbc = new GridBagConstraints();
@@ -97,7 +96,18 @@ public class ArticleUIpanel extends JPanel {
 		inCompleteText = new JTextArea("불이수 트랙");
 		topRankText = new JTextArea("트랙 랭킹 순으로");
 		addPanel = new JPanel(); // 콤보박스 추가 할 패널
-		addCombo = new JComboBox(); // 추가할 교과
+
+		addArray.add("임시로 추가할 교과");
+		JComboBox<String> addCombo = new JComboBox<String>(addArray.toArray(new String[addArray.size()]));
+		// addCombo = new JComboBox(); // 추가할 교과
+		addPanel.setLayout(new BorderLayout());
+		addPanel.setSize(100, 100);
+		addPanel.add(addCombo);
+
+		super.add(completeText);
+		super.add(inCompleteText);
+		super.add(addPanel);
+		super.add(topRankText);
 
 	} // simulArticle()
 
