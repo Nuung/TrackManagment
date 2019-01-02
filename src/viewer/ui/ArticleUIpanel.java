@@ -45,12 +45,14 @@ public class ArticleUIpanel extends JPanel {
 	public ArticleUIpanel() {
 		simulArticle();
 	}
-
+	
+	// At first
 	public void welcomeArticle() {
 		super.setLayout(new BorderLayout());
 		super.add(new JLabel("WELCOME"));
 	} // welcomeArticle()
 
+	// Click the 
 	public void trackArticle() {
 		gbl = new GridBagLayout();
 		gbc = new GridBagConstraints();
@@ -95,7 +97,7 @@ public class ArticleUIpanel extends JPanel {
 		inCompleteText = new JTextArea("불이수 트랙");
 		topRankText = new JTextArea("트랙 랭킹 순으로");
 		addPanel = new JPanel(); // 콤보박스 추가 할 패널
-		addCombo = JComboBox(); // 추가할 교과
+		addCombo = new JComboBox(); // 추가할 교과
 
 	} // simulArticle()
 
