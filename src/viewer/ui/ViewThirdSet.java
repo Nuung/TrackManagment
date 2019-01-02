@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
@@ -21,10 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import controller.db.DBconnection;
 
 import controller.db.DBconnection;
 
@@ -33,7 +31,6 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-import event.ButtonClickViewSecond;
 import viewer.ViewFrame;
 
 /*
@@ -48,6 +45,8 @@ public class ViewThirdSet {
 	private JLabel fileText;
 	// Name / student id / passwoard
 	protected PlaceholderJTextField nameText, idText, passText;
+	
+	private ArrayList<String> subject; // 기이수 강의 담아줄 ArrayList
 	
 	public ViewThirdSet(ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;
@@ -170,8 +169,13 @@ public class ViewThirdSet {
 				    		                } // switch()
 				    		            } // inner if - else
 
-				    		            if(columnindex == 3) // 수업명 출력 
+				    		            if(columnindex == 3) {// 수업명 출력 
+				    		            	
+				    		            	subject = new ArrayList<String>();
+				    		            	subject.add(value);
 					    		           	System.out.print("교과목명 : "+value + " / ");
+				    		            }
+				    		            
 					    		        else // 구분 출력(전필/전선)
 					    		           	System.out.println("구분 : "+value);
 		    		            } // gubun if
