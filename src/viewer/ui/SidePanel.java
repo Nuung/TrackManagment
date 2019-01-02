@@ -103,25 +103,25 @@ public class SidePanel {
 				if (butSrcTxt == sideTxt[0]) {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
-
+					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
-					for (int i = 0; i < tempStudentinfo.size(); i++) {
-						for(int j = i; j < ArticleUIpanel.hciBarr.length; j++) {
-							if(ArticleUIpanel.hciBarr[j] == tempStudentinfo.get(i).getLectureNum()) {
-								String to = Integer.toString(ArticleUIpanel.hciBarr[j]);
-								//to.setTextColor(Color.getColor("#FFFFFF"));
-								//텍스트뷰.setTextColor(Color.parseColor(strColor));
-								//String strColor = "#00FFFF";
-								//artic.trackBText.setForeground(Color.GREEN);
-								System.out.println("if");
-								artic.trackBText.setText(to+"\n");
+					
+					
+					for (int i = 0 ; i < ArticleUIpanel.hciBarr.length;i++) {
+						int count = 0;
+						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							if(ArticleUIpanel.hciBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								String to = Integer.toString(ArticleUIpanel.hciBarr[i]);
+								artic.trackBText.append("이수 "+to+"\n");
 							}else {
-								System.out.println("else");
-								String too = Integer.toString(tempStudentinfo.get(i).getLectureNum());
-								artic.trackBText.setText(too);
+								count++;
+								if(count == tempStudentinfo.size()) {
+									String too = Integer.toString(ArticleUIpanel.hciBarr[i]);
+									artic.trackBText.append("미이수 "+too+"\n");
+									count = 0;
+								}
 							}
 						}
-						
 					} // for
 					
 					
