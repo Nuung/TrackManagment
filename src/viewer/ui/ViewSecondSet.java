@@ -63,10 +63,6 @@ public class ViewSecondSet {
 
 		// Main Frame Setting
 		articleUIpanel = new ArticleUIpanel();
-		JPanel articleWrapArticlePanel = new JPanel();
-		articleWrapArticlePanel.setLayout(new CardLayout());
-		
-//		articleWrapArticlePanel.add(articleUIpanel.trackArticle(), "trackArticle");
 
 		this.viewFrame.setLayout(new BorderLayout());
 		this.viewFrame.add(this.p1, BorderLayout.NORTH);
@@ -98,22 +94,31 @@ public class ViewSecondSet {
 
 				if (butSrcTxt == topBar[0]) {
 					System.out.println("TRACK");
+					articleUIpanel.resetArticleUI();
+					articleUIpanel.trackArticle();
 					cardLayout.show(p2, "tP");
 				} // TRACK tP
 				else if (butSrcTxt == topBar[1]) {
 					System.out.println("TRACK SIMULATION");
+					articleUIpanel.resetArticleUI();
+					articleUIpanel.simulArticle();
 					cardLayout.show(p2, "sP");
 				} // TRACK SIMULATION sP
 				else if (butSrcTxt == topBar[2]) {
 					System.out.println("FEED BACK");
+					articleUIpanel.resetArticleUI();
+					articleUIpanel.fidArticle();
 					cardLayout.show(p2, "fP");
 				} // FEED BACK fP
 				else if (butSrcTxt == topBar[3]) {
 					System.out.println("INFO ");
+					articleUIpanel.resetArticleUI();
+					articleUIpanel.infoArticle();
 					cardLayout.show(p2, "iP");
 				} // INFO iP
 				else if (butSrcTxt == topBar[4]) {
 					System.out.println("LOGOUT");
+					articleUIpanel.resetArticleUI();
 					cardLayout.show(p2, "lP");
 				} // LOGOUT lP
 			} // actionPerformed()
