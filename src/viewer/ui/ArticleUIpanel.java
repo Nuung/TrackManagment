@@ -34,7 +34,7 @@ public class ArticleUIpanel extends JPanel {
 	protected JTextArea infoText;
 
 	public ArticleUIpanel() {
-		fidArticle();
+		trackArticle();
 	}
 
 	public void welcomeArticle() {

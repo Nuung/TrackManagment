@@ -31,7 +31,7 @@ public class SidePanel {
 	} // 생성자
 
 	public Component trackSide() {
-		trackSidePanel.setLayout(new GridLayout(11, 1));
+		trackSidePanel.setLayout(new GridLayout(10, 1));
 		SideBarBtn(trackSidePanel);
 		btnListener(trackSidePanel, btnclick);
 
@@ -40,12 +40,11 @@ public class SidePanel {
 
 	public Component simulSide() {
 		simulSidePanel.setVisible(false);
-		btnListener(simulSidePanel, btnclick);
 		return simulSidePanel;
 	} // simulSidePanel()
 
 	public Component fidSide() {
-		fidSidePanel.setLayout(new GridLayout(11, 1));
+		fidSidePanel.setLayout(new GridLayout(10, 1));
 		SideBarBtn(fidSidePanel);
 		btnListener(fidSidePanel, btnclick);
 
@@ -53,7 +52,7 @@ public class SidePanel {
 	} // simulSidePanel()
 
 	public Component infoSide() {
-		infoSidePanel.setLayout(new GridLayout(11, 1));
+		infoSidePanel.setLayout(new GridLayout(10, 1));
 		SideBarBtn(infoSidePanel);
 		btnListener(infoSidePanel, btnclick);
 
@@ -62,14 +61,13 @@ public class SidePanel {
 
 	public Component logOutSide() {
 		logOutSidePanel.setVisible(false);
-		btnListener(infoSidePanel, btnclick);
 		return logOutSidePanel;
 	} // simulSidePanel()
 
 	public void SideBarBtn(JPanel tempPanel) {
-		tempBtn = new JButton[11];
-		for (int i = 0; i < 11; i++) {
-			tempBtn[i] = new JButton("btn" + i);
+		tempBtn = new JButton[10];
+		for (int i = 0; i < 10; i++) {
+			tempBtn[i] = new JButton(sideTxt[i]);
 			tempPanel.add(tempBtn[i]);
 		}
 	} // SideBarBtn()
@@ -78,7 +76,7 @@ public class SidePanel {
 		btnclickEvent = new ButtonClickViewSecond(panel);
 		JButton[] btn = btnclickEvent.getButton();
 		// adding Event to All Button
-		for (int i = 0; i < btn.length; i++) {
+		for (int i = 0; i < 10; i++) {
 			btn[i].addActionListener(btnclickEvent);
 		} // for
 	} // btn add Event

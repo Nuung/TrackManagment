@@ -22,7 +22,9 @@ public class ViewSecondSet {
 	private ViewFrame viewFrame;
 	private JPanel p1, p2, p3;
 	private ButtonClickViewSecond btnclick;
-	private String topBar[] = { "트랙", "트랙시물레이션", "피드백", "INFO", "LogOut" };
+
+	private String topBar[] = { "트랙", "트랙시뮬레이션", "피드백", "INFO", "LogOut" };
+	String[] sideTxt = { "HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육", "사이버국방" };
 
 	// sideBar
 	CardLayout cardLayout;
