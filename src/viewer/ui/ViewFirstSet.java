@@ -1,5 +1,6 @@
 package viewer.ui;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,11 +8,18 @@ import java.awt.event.ActionListener;
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import controller.db.DBconnection;
 import viewer.ViewFrame;
-
+/*
+ * 가장 첫 화면 [ 학생 ] [ 관리자 ]
+ * 클릭시 newFrame -> 로그인
+ */
 public class ViewFirstSet {
 
 	// Default Swing
@@ -19,6 +27,7 @@ public class ViewFirstSet {
 	JFrame newFrame;
 	private JPanel p1;
 	private JButton btn1, btn2;
+	private PlaceholderJTextField idText, passText;
 	
 	// 생성자
 	public ViewFirstSet(ViewFrame viewFrame) {
@@ -45,11 +54,17 @@ public class ViewFirstSet {
 	void newFrameSet() {
 		newFrame = new JFrame();
 		JPanel tempP = new JPanel();
-		JTextField idText = new JTextField();
-		JTextField passText = new JTextField();
+		
+		this.idText = new PlaceholderJTextField("");
+		idText.setPlaceholder("Student Num");
+		Font f = idText.getFont();
+		idText.setFont(new Font(f.getName(), f.getStyle(), 40));
+		this.passText = new PlaceholderJTextField("");
+		passText.setPlaceholder("Passward");
+        passText.setFont(new Font(f.getName(), f.getStyle(), 40));
 		JButton loginBtn = new JButton("로그인");
 		JButton signupBtn = new JButton("회원가입");
-		
+	
 		// adding event
 		this.btnAction(loginBtn);
 		this.btnAction(signupBtn);
@@ -57,15 +72,16 @@ public class ViewFirstSet {
 		newFrame.setSize(512, 512);
 		newFrame.setVisible(true);
 		newFrame.setLayout(null);
-		newFrame.add(tempP);
 		tempP.setBounds(100, 80, 300, 300);
 		tempP.setLayout(new GridLayout(4, 1));
 		tempP.add(idText);
 		tempP.add(passText);
 		tempP.add(loginBtn);
 		tempP.add(signupBtn);
+		newFrame.add(tempP);
 	} // newFrameSet()
 	
+	// 각 버튼의 액션 이벤트 세팅과 명시
 	private void btnAction(JButton inBtn) {
 		inBtn.addActionListener ( new ActionListener() {
 		    public void actionPerformed(ActionEvent ev) {
@@ -79,8 +95,12 @@ public class ViewFirstSet {
 		    		newFrameSet();
 		        }
 		        else if(butSrcTxt == "로그인") {
+		        	DBconnection dbcon = new DBconnection();
+		        	// TO DO
+		        	
+		        	
 			    	viewFrame.remove(p1); // delete 'p1' Panel
-			    	new ViewSecondSet(viewFrame); // Make Second Layout Setting
+			    	new ViewSecondSet(viewFrame); // Make Second Layout Setting			   
 			    	// New Frame이 아니라, 기존에 있는 Frame Re Setting -> ReLoading
 			    	viewFrame.revalidate(); // ReLoading
 			    	newFrame.dispose();
@@ -88,9 +108,7 @@ public class ViewFirstSet {
 		        else if(butSrcTxt == "회원가입") {
 		        	viewFrame.remove(p1);
 		        	// SignUp button --> 새로운 프레임 띄우기
-		        	new ViewThirdSet(viewFrame);
-		        	
-		    		System.out.print("회원가입");
+		        	new ViewThirdSet(viewFrame); // -> 실제 이벤트 액션은 ThirdSet에서 명시
 		    		newFrame.dispose();
 		    	}
 		    	

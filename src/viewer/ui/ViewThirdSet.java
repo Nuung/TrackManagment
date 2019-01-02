@@ -1,5 +1,6 @@
 package viewer.ui;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,26 +9,26 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import controller.db.DBconnection;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-import event.ButtonClickViewSecond;
 import viewer.ViewFrame;
 
 /*
@@ -39,6 +40,11 @@ public class ViewThirdSet {
 	ViewFrame viewFrame;
 	JFrame RevisedFrame;
 	private JPanel p1;
+	private JLabel fileText;
+	// Name / student id / passwoard
+	protected PlaceholderJTextField nameText, idText, passText;
+	
+	private ArrayList<String> subject; // 기이수 강의 담아줄 ArrayList
 	
 	public ViewThirdSet(ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;
@@ -50,11 +56,20 @@ public class ViewThirdSet {
 		
 		this.RevisedFrame = new JFrame();
 		p1 = new JPanel();
-		JTextField nameText = new JTextField();
-		JTextField idText = new JTextField();
-		JTextField passText = new JTextField();
+		this.nameText = new PlaceholderJTextField("");
+		nameText.setPlaceholder("Name");
+		this.idText = new PlaceholderJTextField("");
+		idText.setPlaceholder("Student Num");
+		this.passText = new PlaceholderJTextField("");
+		passText.setPlaceholder("Passward");
+		Font f = nameText.getFont();
+		nameText.setFont(new Font(f.getName(), f.getStyle(), 35));
+        idText.setFont(new Font(f.getName(), f.getStyle(), 35));
+        passText.setFont(new Font(f.getName(), f.getStyle(), 35));
+
 		JButton uploadBtn = new JButton("첨부파일");
 		JButton signupBtn = new JButton("가입하기");
+		this.fileText = new JLabel("");
 		
 		// Frame Setting
 		RevisedFrame.setSize(512, 512);
@@ -62,12 +77,13 @@ public class ViewThirdSet {
 		RevisedFrame.setLayout(null);
 		RevisedFrame.add(p1);
 		p1.setBounds(100, 80, 300, 300);
-		p1.setLayout(new GridLayout(5, 1));
+		p1.setLayout(new GridLayout(6, 1));
 		p1.add(nameText);
 		p1.add(idText);
 		p1.add(passText);
 		p1.add(uploadBtn);
 		p1.add(signupBtn);
+		p1.add(fileText);
 		
 		this.btnAction(uploadBtn);
 		this.btnAction(signupBtn);
@@ -95,7 +111,12 @@ public class ViewThirdSet {
 	    		    
 	    		    // Open 다이얼로그 -> 선택자로 가져온 파일, FileInputStream으로 엑셀파일 입력
 	    		    if(returnVal == JFileChooser.APPROVE_OPTION) {
-		    		       System.out.println("You chose to open this file: " + choosed.getSelectedFile().getName());
+		    		       // JLabel Text Setting 
+		    		       fileText.setVerticalAlignment(SwingConstants.CENTER);
+		    		       fileText.setHorizontalAlignment(SwingConstants.CENTER);
+		    		       fileText.setFont(new Font("Serif", Font.BOLD, 20));
+		    		       fileText.setText("가져온 파일 : "+choosed.getSelectedFile().getName());
+		    		       
 		    		       try {
 		    		    	   File f = choosed.getSelectedFile();
 		    		    	   fis = new FileInputStream(f);
@@ -144,22 +165,26 @@ public class ViewThirdSet {
 				    		                    value = cell.getErrorCellValue()+"";
 				    		                    break;
 				    		                } // switch()
-
 				    		            } // inner if - else
-				    		            
+
+				    		            if(columnindex == 3) {// 수업명 출력 
 				    		            	
-				    		            if(columnindex == 3) // 수업명 출력 
+				    		            	subject = new ArrayList<String>();
+				    		            	subject.add(value);
 					    		           	System.out.print("교과목명 : "+value + " / ");
+				    		            }
+				    		            
 					    		        else // 구분 출력(전필/전선)
 					    		           	System.out.println("구분 : "+value);
-		    		            		
 		    		            } // gubun if
-
 		    		        } // inner for
 		    		    } // if
 		    		} // for
 		        } // if 첨부파일
 		        else if(butSrcTxt == "가입하기") {
+		        	DBconnection dbcon = new DBconnection();
+		        	dbcon.registUser(nameText.getText(), Integer.parseInt(idText.getText()), passText.getText());
+		        	dbcon.printList();
 			    	viewFrame.remove(p1); // delete 'p1' Panel
 			    	new ViewSecondSet(viewFrame); // Make Second Layout Setting
 			    	viewFrame.revalidate(); // ReLoading
