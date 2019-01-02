@@ -24,7 +24,7 @@ public class ViewSecondSet {
 	// Default Swing
 	private ViewFrame viewFrame;
 	private ArticleUIpanel articleUi;
-
+	
 	protected JPanel p1, p2, p3;
 	protected String topBar[] = { "트랙", "트랙시뮬레이션", "피드백", "INFO", "LogOut" };
 	String[] sideTxt = { "HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육", "사이버국방" };
@@ -32,9 +32,8 @@ public class ViewSecondSet {
 	// sideBar
 	protected CardLayout cardLayout;
 	SidePanel sidePanel;
-
 	ArticleUIpanel articleUIpanel;
-	
+
 	public ViewSecondSet(ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;
 		this.panelSetting();
@@ -46,7 +45,6 @@ public class ViewSecondSet {
 		this.p2 = new JPanel();
 		// Main Frame Setting
 		this.articleUi = new ArticleUIpanel();
-//		this.p3 = new JPanel();
 
 		// p2패널 - sideBar
 		cardLayout = new CardLayout();
