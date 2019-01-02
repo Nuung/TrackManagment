@@ -35,6 +35,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import event.ButtonClickViewSecond;
 import viewer.ViewFrame;
+import viewer.components.PlaceholderJPasswordField;
 import viewer.components.PlaceholderJTextField;
 
 /*
@@ -48,7 +49,8 @@ public class ViewThirdSet {
 	private JPanel p1;
 	private JLabel fileText;
 	// Name / student id / passwoard
-	protected PlaceholderJTextField nameText, idText, passText;
+	protected PlaceholderJTextField nameText, idText;
+	protected PlaceholderJPasswordField passText;
 	
 	public ViewThirdSet(ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;
@@ -64,7 +66,7 @@ public class ViewThirdSet {
 		nameText.setPlaceholder("Name");
 		this.idText = new PlaceholderJTextField("");
 		idText.setPlaceholder("Student Num");
-		this.passText = new PlaceholderJTextField("");
+		this.passText = new PlaceholderJPasswordField("");
 		passText.setPlaceholder("Passward");
 		Font f = nameText.getFont();
 		nameText.setFont(new Font(f.getName(), f.getStyle(), 35));

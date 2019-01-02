@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 import controller.db.DBconnection;
 import viewer.ViewFrame;
+import viewer.components.PlaceholderJPasswordField;
 import viewer.components.PlaceholderJTextField;
 /*
  * 가장 첫 화면 [ 학생 ] [ 관리자 ]
@@ -28,7 +29,8 @@ public class ViewFirstSet {
 	JFrame newFrame;
 	private JPanel p1;
 	private JButton btn1, btn2;
-	private PlaceholderJTextField idText, passText;
+	private PlaceholderJTextField idText;
+	private PlaceholderJPasswordField passText;
 	
 	// 생성자
 	public ViewFirstSet(ViewFrame viewFrame) {
@@ -60,7 +62,7 @@ public class ViewFirstSet {
 		idText.setPlaceholder("Student Num");
 		Font f = idText.getFont();
 		idText.setFont(new Font(f.getName(), f.getStyle(), 40));
-		this.passText = new PlaceholderJTextField("");
+		this.passText = new PlaceholderJPasswordField("");
 		passText.setPlaceholder("Passward");
         passText.setFont(new Font(f.getName(), f.getStyle(), 40));
 		JButton loginBtn = new JButton("로그인");
