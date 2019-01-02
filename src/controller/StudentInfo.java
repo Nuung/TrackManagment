@@ -24,7 +24,11 @@ public class StudentInfo {
 	protected Vector<StudentSubject> studentSubject; // 동시다발적으로 일어날 가능성 
 	private DBconnection dbcon;
 	
-	public StudentInfo() {
+	public StudentInfo(int studentid, String name) {
+		// Member Set
+		this.studentid = studentid;
+		this.name = name;
+		// DB SET
 		this.dbcon = new DBconnection();
 		this.studentSubject = new Vector<StudentSubject>();
 		this.gettingStuentValue();
@@ -41,4 +45,9 @@ public class StudentInfo {
 			e.printStackTrace();
 		} // try - catch
 	} // gettingStuentValue()
+	
+	// Getter
+	public Vector<StudentSubject> getStudentSubject(){
+		return this.studentSubject;
+	} // getStudent
 }

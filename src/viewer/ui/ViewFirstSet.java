@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import controller.StudentInfo;
 import controller.db.DBconnection;
 import viewer.ViewFrame;
 import viewer.components.PlaceholderJPasswordField;
@@ -72,13 +73,16 @@ public class ViewFirstSet {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					DBconnection dbcon = new DBconnection();
-					String passString = new String(passText.getPassword(), 0, passText.getPassword().length);
-					if (dbcon.findUser(Integer.parseInt(idText.getText()), passString)) { // login 성공
+					String passString = new String(passText.getPassword(), 0,
+					passText.getPassword().length);
+					StudentInfo newStudent = dbcon.findUser(Integer.parseInt(idText.getText()), passString);
+					if(newStudent != null) { // login
+						// 로그인 성공
+						newFrame.dispose();
 						viewFrame.remove(p1); // delete 'p1' Panel
 						new ViewSecondSet(viewFrame); // Make Second Layout Setting
 						// New Frame이 아니라, 기존에 있는 Frame Re Setting -> ReLoading
 						viewFrame.revalidate(); // ReLoading
-						newFrame.dispose();
 					} // inner if
 				} else {
 					if (passText.getPassword().length > 7) {
@@ -125,13 +129,14 @@ public class ViewFirstSet {
 					DBconnection dbcon = new DBconnection();
 					String passString = new String(passText.getPassword(), 0,
 					passText.getPassword().length);
-					if(dbcon.findUser(Integer.parseInt(idText.getText()), passString)) { // login
+					StudentInfo newStudent = dbcon.findUser(Integer.parseInt(idText.getText()), passString);
+					if(newStudent != null) { // login
 						// 로그인 성공
+						newFrame.dispose();
 						viewFrame.remove(p1); // delete 'p1' Panel
 						new ViewSecondSet(viewFrame); // Make Second Layout Setting
 						// New Frame이 아니라, 기존에 있는 Frame Re Setting -> ReLoading
 						viewFrame.revalidate(); // ReLoading
-						newFrame.dispose();
 					}
 					else 
 					{ // 로그인 실패
