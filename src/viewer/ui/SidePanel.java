@@ -640,9 +640,7 @@ public class SidePanel {
 							} // if - else
 						} // inner for
 					}
-					
-					
-					
+
 					//artic2.trackAText.setText("b222bbb");
 					viewFrame.add(artic);
 					//viewFrame.add(artic2);
@@ -706,9 +704,7 @@ public class SidePanel {
 								} // inner if
 							} // if - else
 						} // inner for
-					}
-					
-					
+					}					
 					
 					//artic2.trackAText.setText("b222bbb");
 					viewFrame.add(artic);
@@ -728,11 +724,6 @@ public class SidePanel {
 				// getting btn text value
 				Object source = ev.getSource();
 				String butSrcTxt = ((AbstractButton) source).getText();
-				
-				
-				if (butSrcTxt == sideTxt[0]) {
-					
-				} // 왼쪽 첫번째 버튼
 			} // actionPerformed()
 		}); // addActionListener
 	} // simulBtnAction()
