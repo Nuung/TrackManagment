@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import controller.StudentInfo;
+
 import java.sql.PreparedStatement;
 
 public class DBconnection {
@@ -72,20 +75,23 @@ public class DBconnection {
 		return false;
 	} // registUserSubject
 	
-	public boolean findUser(int studentnum, String password) {
+	public StudentInfo findUser(int studentnum, String password) {
 		this.connectDB();
 		String SQL = "SELECT * FROM user WHERE student_number="+studentnum; 
 		SQL += " AND password="+password;
 		try {
 			this.rs = st.executeQuery(SQL); // rs가 SQL 구문의 결과 행 값들을 가지게 된다.
 			if(rs != null) { // SQL구문의 결과값이 존재한다면
-				return true; // 성공시 여기서 true 리턴
+				rs.next();
+				String result_name = rs.getString("name");
+				StudentInfo newStudent = new StudentInfo(studentnum, result_name);
+				return newStudent;
 			} // if
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} // try - catch
 		this.closeDB();
-		return false; // 실패했을 경우 여기서 false 리턴
+		return null; // 실패했을 경우 여기서 null 리턴
 	} // findUser()
 	
 	public ResultSet findUserSubject(int studentnum) {
