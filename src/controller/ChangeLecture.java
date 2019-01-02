@@ -7,8 +7,8 @@ import controller.db.DBconnection;
 public class ChangeLecture {
 	private int[] changeLecture; // 변환 기이수 강의 담아줄 ArrayList
 	private DBconnection dbcon;
-//	registUser
 	
+	// 생성자에서 바로 subject를 int형으로 변환 실시
 	public ChangeLecture(int stnum, ArrayList<String> subject){
 		this.dbcon = new DBconnection();
 		this.changeLecture = new int[subject.size()];
