@@ -23,6 +23,7 @@ import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controller.ChangeLecture;
+import controller.StudentInfo;
 import controller.db.DBconnection;
 
 import controller.db.DBconnection;
@@ -191,12 +192,13 @@ public class ViewThirdSet {
 		        	DBconnection dbcon = new DBconnection();
 	                String passString = new String(passText.getPassword(), 0, passText.getPassword().length);
 	                dbcon.registUser(nameText.getText(), Integer.parseInt(idText.getText()), passString);
-		        	new ChangeLecture(Integer.parseInt(idText.getText()), subjectList);
+	                new ChangeLecture(Integer.parseInt(idText.getText()), subjectList);
 		        	dbcon.printList();
 		        	
 		        	// panel setting
 			    	viewFrame.remove(p1); // delete 'p1' Panel
-			    	new ViewSecondSet(viewFrame); // Make Second Layout Setting
+			    	StudentInfo newStudent = dbcon.findUser(Integer.parseInt(idText.getText()), passString);
+			    	new ViewSecondSet(viewFrame, newStudent); // Make Second Layout Setting
 			    	viewFrame.revalidate(); // ReLoading
 			    	RevisedFrame.dispose();
 		    	} // if - else

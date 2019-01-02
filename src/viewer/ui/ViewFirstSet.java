@@ -80,7 +80,7 @@ public class ViewFirstSet {
 						// 로그인 성공
 						newFrame.dispose();
 						viewFrame.remove(p1); // delete 'p1' Panel
-						new ViewSecondSet(viewFrame); // Make Second Layout Setting
+						new ViewSecondSet(viewFrame, newStudent); // Make Second Layout Setting
 						// New Frame이 아니라, 기존에 있는 Frame Re Setting -> ReLoading
 						viewFrame.revalidate(); // ReLoading
 					} // inner if
@@ -134,7 +134,7 @@ public class ViewFirstSet {
 						// 로그인 성공
 						newFrame.dispose();
 						viewFrame.remove(p1); // delete 'p1' Panel
-						new ViewSecondSet(viewFrame); // Make Second Layout Setting
+						new ViewSecondSet(viewFrame, newStudent); // Make Second Layout Setting
 						// New Frame이 아니라, 기존에 있는 Frame Re Setting -> ReLoading
 						viewFrame.revalidate(); // ReLoading
 					}

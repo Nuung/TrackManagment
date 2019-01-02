@@ -16,6 +16,10 @@ public class StudentInfo {
 			this.studentid = studentid;
 			this.lecture_num = lecture_num;
 		}
+		
+		public void printingStudent() {
+			System.out.println(this.studentid+", "+this.lecture_num);
+		}
 	}
 	
 	// member
@@ -50,4 +54,11 @@ public class StudentInfo {
 	public Vector<StudentSubject> getStudentSubject(){
 		return this.studentSubject;
 	} // getStudent
+	
+	public void gettingStudentInfo() { // StudentSubject object ( 학번, 이수 수업 번호 짝 구조체 ) 그 짝 모두 출력하기
+		for (int i = 0; i < this.studentSubject.size(); i++) {
+			this.studentSubject.get(i).printingStudent();
+		} // for
+	} // gettingStudentInfo
+	
 }

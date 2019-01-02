@@ -17,8 +17,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import controller.StudentInfo;
 import controller.db.DBconnection;
-import javaproject1227.Product;
 import viewer.ViewFrame;
 
 public class SidePanel {
@@ -33,9 +33,11 @@ public class SidePanel {
 	protected ViewFrame viewFrame;
 	// 이벤트처리
 	protected String sideTxt[] = { "HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육" };
-
-	public SidePanel(ViewFrame viewFrame) {
+	protected StudentInfo studentinfo;
+	
+	public SidePanel(ViewFrame viewFrame, StudentInfo studentinfo) {
 		this.viewFrame = viewFrame;
+		this.studentinfo = studentinfo;
 		trackSidePanel = new JPanel();
 		simulSidePanel = new JPanel();
 		fidSidePanel = new JPanel();
@@ -90,14 +92,14 @@ public class SidePanel {
 	private void btnAction(JButton inBtn) {
 		inBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {				
-				ArticleUIpanel articleUi = new ArticleUIpanel();
+				ArticleUIpanel articleUi = new ArticleUIpanel(studentinfo);
 				// getting btn text value
 				Object source = ev.getSource();
 				String butSrcTxt = ((AbstractButton) source).getText();
 				int tempnumber = 13011038;
 				
 				if (butSrcTxt == sideTxt[0]) {
-					ArticleUIpanel artic = new ArticleUIpanel();
+					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
 					
@@ -147,7 +149,7 @@ public class SidePanel {
 				}
 				else if (butSrcTxt == sideTxt[1]) {
 					System.out.println(sideTxt[1]);
-					ArticleUIpanel artic = new ArticleUIpanel();
+					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					artic.trackBText.setText("11");
 					artic.trackAText.setText("22");
