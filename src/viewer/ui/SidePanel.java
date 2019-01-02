@@ -149,43 +149,579 @@ public class SidePanel {
 					} // for
 					//왼쪽 text
 					
-					System.out.println(sideTxt[0]);
+					//System.out.println(sideTxt[0]);
 					//오른쪽 text
 					
-					artic.trackAText.setText("bbbbbbb");
+					
+
+					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
+					//artic2.trackArticle();
+					
+					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
+
+					for (int i = 0 ; i < ArticleUIpanel.hciSarr.length;i++) {
+						int count2 = 0;
+						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							if(ArticleUIpanel.hciSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								String to2 = Integer.toString(ArticleUIpanel.hciSarr[i]);
+								ChangeLecture cl2 = new ChangeLecture();
+								to2 = cl2.numToSubject(ArticleUIpanel.hciSarr[i]);
+								artic.trackAText.append("이수 "+to2+"\n");
+							}else {
+								count2++;
+								if(count2 == tempStudentinfo2.size()) {
+									String too2 = Integer.toString(ArticleUIpanel.hciSarr[i]);
+									ChangeLecture cl2 = new ChangeLecture();
+									too2 = cl2.numToSubject(ArticleUIpanel.hciSarr[i]);
+									artic.trackAText.append("미이수 "+too2+"\n");
+									count2 = 0;
+								} // inner if
+							} // if - else
+						} // inner for
+					}
+					
+					
+					
+					//artic2.trackAText.setText("b222bbb");
 					viewFrame.add(artic);
+					//viewFrame.add(artic2);
 					viewFrame.revalidate();
 				}//if
 				else if (butSrcTxt == sideTxt[1]) {
-					System.out.println(sideTxt[1]);
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
-					artic.trackBText.setText("11");
-					artic.trackAText.setText("22");
+					
+					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
+
+					for (int i = 0 ; i < ArticleUIpanel.multimediaBarr.length;i++) {
+						int count = 0;
+						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							if(ArticleUIpanel.multimediaBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								String to = Integer.toString(ArticleUIpanel.multimediaBarr[i]);
+								ChangeLecture cl = new ChangeLecture();
+								to = cl.numToSubject(ArticleUIpanel.multimediaBarr[i]);
+								artic.trackBText.append("이수 "+to+"\n");
+							}else {
+								count++;
+								if(count == tempStudentinfo.size()) {
+									String too = Integer.toString(ArticleUIpanel.multimediaBarr[i]);
+									ChangeLecture cl = new ChangeLecture();
+									too = cl.numToSubject(ArticleUIpanel.multimediaBarr[i]);
+									artic.trackBText.append("미이수 "+too+"\n");
+									count = 0;
+								} // inner if
+							} // if - else
+						} // inner for
+					} // for
+					//왼쪽 text
+					
+					//System.out.println(sideTxt[0]);
+					//오른쪽 text
+					
+					
+
+					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
+					//artic2.trackArticle();
+					
+					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
+
+					for (int i = 0 ; i < ArticleUIpanel.multimediaSarr.length;i++) {
+						int count2 = 0;
+						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							if(ArticleUIpanel.multimediaSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								String to2 = Integer.toString(ArticleUIpanel.multimediaSarr[i]);
+								ChangeLecture cl2 = new ChangeLecture();
+								to2 = cl2.numToSubject(ArticleUIpanel.multimediaSarr[i]);
+								artic.trackAText.append("이수 "+to2+"\n");
+							}else {
+								count2++;
+								if(count2 == tempStudentinfo2.size()) {
+									String too2 = Integer.toString(ArticleUIpanel.multimediaSarr[i]);
+									ChangeLecture cl2 = new ChangeLecture();
+									too2 = cl2.numToSubject(ArticleUIpanel.multimediaSarr[i]);
+									artic.trackAText.append("미이수 "+too2+"\n");
+									count2 = 0;
+								} // inner if
+							} // if - else
+						} // inner for
+					}
+					
+					
+					
+					//artic2.trackAText.setText("b222bbb");
 					viewFrame.add(artic);
+					//viewFrame.add(artic2);
 					viewFrame.revalidate();
-//					articleUi.
+				
 				}
 				else if (butSrcTxt == sideTxt[2]) {
-					System.out.println(sideTxt[2]);
+					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
+					artic.trackArticle();
+					
+					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
+
+					for (int i = 0 ; i < ArticleUIpanel.iotBarr.length;i++) {
+						int count = 0;
+						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							if(ArticleUIpanel.iotBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								String to = Integer.toString(ArticleUIpanel.iotBarr[i]);
+								ChangeLecture cl = new ChangeLecture();
+								to = cl.numToSubject(ArticleUIpanel.iotBarr[i]);
+								artic.trackBText.append("이수 "+to+"\n");
+							}else {
+								count++;
+								if(count == tempStudentinfo.size()) {
+									String too = Integer.toString(ArticleUIpanel.iotBarr[i]);
+									ChangeLecture cl = new ChangeLecture();
+									too = cl.numToSubject(ArticleUIpanel.iotBarr[i]);
+									artic.trackBText.append("미이수 "+too+"\n");
+									count = 0;
+								} // inner if
+							} // if - else
+						} // inner for
+					} // for
+					//왼쪽 text
+					
+					//System.out.println(sideTxt[0]);
+					//오른쪽 text
+					
+					
+
+					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
+					//artic2.trackArticle();
+					
+					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
+
+					for (int i = 0 ; i < ArticleUIpanel.iotSarr.length;i++) {
+						int count2 = 0;
+						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							if(ArticleUIpanel.iotSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								String to2 = Integer.toString(ArticleUIpanel.iotSarr[i]);
+								ChangeLecture cl2 = new ChangeLecture();
+								to2 = cl2.numToSubject(ArticleUIpanel.iotSarr[i]);
+								artic.trackAText.append("이수 "+to2+"\n");
+							}else {
+								count2++;
+								if(count2 == tempStudentinfo2.size()) {
+									String too2 = Integer.toString(ArticleUIpanel.iotSarr[i]);
+									ChangeLecture cl2 = new ChangeLecture();
+									too2 = cl2.numToSubject(ArticleUIpanel.iotSarr[i]);
+									artic.trackAText.append("미이수 "+too2+"\n");
+									count2 = 0;
+								} // inner if
+							} // if - else
+						} // inner for
+					}
+					
+					
+					
+					//artic2.trackAText.setText("b222bbb");
+					viewFrame.add(artic);
+					//viewFrame.add(artic2);
+					viewFrame.revalidate();
+				
 				}
 				else if (butSrcTxt == sideTxt[3]) {
-					System.out.println(sideTxt[3]);
+					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
+					artic.trackArticle();
+					
+					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
+
+					for (int i = 0 ; i < ArticleUIpanel.systemappBarr.length;i++) {
+						int count = 0;
+						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							if(ArticleUIpanel.systemappBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								String to = Integer.toString(ArticleUIpanel.systemappBarr[i]);
+								ChangeLecture cl = new ChangeLecture();
+								to = cl.numToSubject(ArticleUIpanel.systemappBarr[i]);
+								artic.trackBText.append("이수 "+to+"\n");
+							}else {
+								count++;
+								if(count == tempStudentinfo.size()) {
+									String too = Integer.toString(ArticleUIpanel.systemappBarr[i]);
+									ChangeLecture cl = new ChangeLecture();
+									too = cl.numToSubject(ArticleUIpanel.systemappBarr[i]);
+									artic.trackBText.append("미이수 "+too+"\n");
+									count = 0;
+								} // inner if
+							} // if - else
+						} // inner for
+					} // for
+					//왼쪽 text
+					
+					//System.out.println(sideTxt[0]);
+					//오른쪽 text
+					
+					
+
+					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
+					//artic2.trackArticle();
+					
+					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
+
+					for (int i = 0 ; i < ArticleUIpanel.systemappSarr.length;i++) {
+						int count2 = 0;
+						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							if(ArticleUIpanel.systemappSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								String to2 = Integer.toString(ArticleUIpanel.systemappSarr[i]);
+								ChangeLecture cl2 = new ChangeLecture();
+								to2 = cl2.numToSubject(ArticleUIpanel.systemappSarr[i]);
+								artic.trackAText.append("이수 "+to2+"\n");
+							}else {
+								count2++;
+								if(count2 == tempStudentinfo2.size()) {
+									String too2 = Integer.toString(ArticleUIpanel.systemappSarr[i]);
+									ChangeLecture cl2 = new ChangeLecture();
+									too2 = cl2.numToSubject(ArticleUIpanel.systemappSarr[i]);
+									artic.trackAText.append("미이수 "+too2+"\n");
+									count2 = 0;
+								} // inner if
+							} // if - else
+						} // inner for
+					}
+					
+					
+					
+					//artic2.trackAText.setText("b222bbb");
+					viewFrame.add(artic);
+					//viewFrame.add(artic2);
+					viewFrame.revalidate();
+				
 				}
 				else if (butSrcTxt == sideTxt[4]) {
-					System.out.println(sideTxt[4]);
+					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
+					artic.trackArticle();
+					
+					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
+
+					for (int i = 0 ; i < ArticleUIpanel.aiBarr.length;i++) {
+						int count = 0;
+						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							if(ArticleUIpanel.aiBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								String to = Integer.toString(ArticleUIpanel.aiBarr[i]);
+								ChangeLecture cl = new ChangeLecture();
+								to = cl.numToSubject(ArticleUIpanel.aiBarr[i]);
+								artic.trackBText.append("이수 "+to+"\n");
+							}else {
+								count++;
+								if(count == tempStudentinfo.size()) {
+									String too = Integer.toString(ArticleUIpanel.aiBarr[i]);
+									ChangeLecture cl = new ChangeLecture();
+									too = cl.numToSubject(ArticleUIpanel.aiBarr[i]);
+									artic.trackBText.append("미이수 "+too+"\n");
+									count = 0;
+								} // inner if
+							} // if - else
+						} // inner for
+					} // for
+					//왼쪽 text
+					
+					//System.out.println(sideTxt[0]);
+					//오른쪽 text
+					
+					
+
+					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
+					//artic2.trackArticle();
+					
+					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
+
+					for (int i = 0 ; i < ArticleUIpanel.aiSarr.length;i++) {
+						int count2 = 0;
+						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							if(ArticleUIpanel.aiSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								String to2 = Integer.toString(ArticleUIpanel.aiSarr[i]);
+								ChangeLecture cl2 = new ChangeLecture();
+								to2 = cl2.numToSubject(ArticleUIpanel.aiSarr[i]);
+								artic.trackAText.append("이수 "+to2+"\n");
+							}else {
+								count2++;
+								if(count2 == tempStudentinfo2.size()) {
+									String too2 = Integer.toString(ArticleUIpanel.aiSarr[i]);
+									ChangeLecture cl2 = new ChangeLecture();
+									too2 = cl2.numToSubject(ArticleUIpanel.aiSarr[i]);
+									artic.trackAText.append("미이수 "+too2+"\n");
+									count2 = 0;
+								} // inner if
+							} // if - else
+						} // inner for
+					}
+					
+					
+					
+					//artic2.trackAText.setText("b222bbb");
+					viewFrame.add(artic);
+					//viewFrame.add(artic2);
+					viewFrame.revalidate();
+				
 				}
 				else if (butSrcTxt == sideTxt[5]) {
-					System.out.println(sideTxt[5]);
+					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
+					artic.trackArticle();
+					
+					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
+
+					for (int i = 0 ; i < ArticleUIpanel.virtualrealityBarr.length;i++) {
+						int count = 0;
+						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							if(ArticleUIpanel.virtualrealityBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								String to = Integer.toString(ArticleUIpanel.virtualrealityBarr[i]);
+								ChangeLecture cl = new ChangeLecture();
+								to = cl.numToSubject(ArticleUIpanel.virtualrealityBarr[i]);
+								artic.trackBText.append("이수 "+to+"\n");
+							}else {
+								count++;
+								if(count == tempStudentinfo.size()) {
+									String too = Integer.toString(ArticleUIpanel.virtualrealityBarr[i]);
+									ChangeLecture cl = new ChangeLecture();
+									too = cl.numToSubject(ArticleUIpanel.virtualrealityBarr[i]);
+									artic.trackBText.append("미이수 "+too+"\n");
+									count = 0;
+								} // inner if
+							} // if - else
+						} // inner for
+					} // for
+					//왼쪽 text
+					
+					//System.out.println(sideTxt[0]);
+					//오른쪽 text
+					
+					
+
+					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
+					//artic2.trackArticle();
+					
+					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
+
+					for (int i = 0 ; i < ArticleUIpanel.virtualrealitySarr.length;i++) {
+						int count2 = 0;
+						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							if(ArticleUIpanel.virtualrealitySarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								String to2 = Integer.toString(ArticleUIpanel.virtualrealitySarr[i]);
+								ChangeLecture cl2 = new ChangeLecture();
+								to2 = cl2.numToSubject(ArticleUIpanel.virtualrealitySarr[i]);
+								artic.trackAText.append("이수 "+to2+"\n");
+							}else {
+								count2++;
+								if(count2 == tempStudentinfo2.size()) {
+									String too2 = Integer.toString(ArticleUIpanel.virtualrealitySarr[i]);
+									ChangeLecture cl2 = new ChangeLecture();
+									too2 = cl2.numToSubject(ArticleUIpanel.virtualrealitySarr[i]);
+									artic.trackAText.append("미이수 "+too2+"\n");
+									count2 = 0;
+								} // inner if
+							} // if - else
+						} // inner for
+					}
+					
+					
+					
+					//artic2.trackAText.setText("b222bbb");
+					viewFrame.add(artic);
+					//viewFrame.add(artic2);
+					viewFrame.revalidate();
+				
 				}
 				else if (butSrcTxt == sideTxt[6]) {
-					System.out.println(sideTxt[6]);
+					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
+					artic.trackArticle();
+					
+					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
+
+					for (int i = 0 ; i < ArticleUIpanel.infoprotectBarr.length;i++) {
+						int count = 0;
+						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							if(ArticleUIpanel.infoprotectBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								String to = Integer.toString(ArticleUIpanel.infoprotectBarr[i]);
+								ChangeLecture cl = new ChangeLecture();
+								to = cl.numToSubject(ArticleUIpanel.infoprotectBarr[i]);
+								artic.trackBText.append("이수 "+to+"\n");
+							}else {
+								count++;
+								if(count == tempStudentinfo.size()) {
+									String too = Integer.toString(ArticleUIpanel.infoprotectBarr[i]);
+									ChangeLecture cl = new ChangeLecture();
+									too = cl.numToSubject(ArticleUIpanel.infoprotectBarr[i]);
+									artic.trackBText.append("미이수 "+too+"\n");
+									count = 0;
+								} // inner if
+							} // if - else
+						} // inner for
+					} // for
+					//왼쪽 text
+					
+					//System.out.println(sideTxt[0]);
+					//오른쪽 text
+					
+					
+
+					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
+					//artic2.trackArticle();
+					
+					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
+
+					for (int i = 0 ; i < ArticleUIpanel.infoprotectSarr.length;i++) {
+						int count2 = 0;
+						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							if(ArticleUIpanel.infoprotectSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								String to2 = Integer.toString(ArticleUIpanel.infoprotectSarr[i]);
+								ChangeLecture cl2 = new ChangeLecture();
+								to2 = cl2.numToSubject(ArticleUIpanel.infoprotectSarr[i]);
+								artic.trackAText.append("이수 "+to2+"\n");
+							}else {
+								count2++;
+								if(count2 == tempStudentinfo2.size()) {
+									String too2 = Integer.toString(ArticleUIpanel.infoprotectSarr[i]);
+									ChangeLecture cl2 = new ChangeLecture();
+									too2 = cl2.numToSubject(ArticleUIpanel.infoprotectSarr[i]);
+									artic.trackAText.append("미이수 "+too2+"\n");
+									count2 = 0;
+								} // inner if
+							} // if - else
+						} // inner for
+					}
+					
+					
+					
+					//artic2.trackAText.setText("b222bbb");
+					viewFrame.add(artic);
+					//viewFrame.add(artic2);
+					viewFrame.revalidate();
+				
 				}
 				else if (butSrcTxt == sideTxt[7]) {
-					System.out.println(sideTxt[7]);
+					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
+					artic.trackArticle();
+					
+					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
+
+					for (int i = 0 ; i < ArticleUIpanel.datascienceBarr.length;i++) {
+						int count = 0;
+						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							if(ArticleUIpanel.datascienceBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								String to = Integer.toString(ArticleUIpanel.datascienceBarr[i]);
+								ChangeLecture cl = new ChangeLecture();
+								to = cl.numToSubject(ArticleUIpanel.datascienceBarr[i]);
+								artic.trackBText.append("이수 "+to+"\n");
+							}else {
+								count++;
+								if(count == tempStudentinfo.size()) {
+									String too = Integer.toString(ArticleUIpanel.datascienceBarr[i]);
+									ChangeLecture cl = new ChangeLecture();
+									too = cl.numToSubject(ArticleUIpanel.datascienceBarr[i]);
+									artic.trackBText.append("미이수 "+too+"\n");
+									count = 0;
+								} // inner if
+							} // if - else
+						} // inner for
+					} // for
+					//왼쪽 text
+					
+					//System.out.println(sideTxt[0]);
+					//오른쪽 text
+					
+					
+
+					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
+					//artic2.trackArticle();
+					
+					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
+
+					for (int i = 0 ; i < ArticleUIpanel.datascienceSarr.length;i++) {
+						int count2 = 0;
+						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							if(ArticleUIpanel.datascienceSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								String to2 = Integer.toString(ArticleUIpanel.datascienceSarr[i]);
+								ChangeLecture cl2 = new ChangeLecture();
+								to2 = cl2.numToSubject(ArticleUIpanel.datascienceSarr[i]);
+								artic.trackAText.append("이수 "+to2+"\n");
+							}else {
+								count2++;
+								if(count2 == tempStudentinfo2.size()) {
+									String too2 = Integer.toString(ArticleUIpanel.datascienceSarr[i]);
+									ChangeLecture cl2 = new ChangeLecture();
+									too2 = cl2.numToSubject(ArticleUIpanel.datascienceSarr[i]);
+									artic.trackAText.append("미이수 "+too2+"\n");
+									count2 = 0;
+								} // inner if
+							} // if - else
+						} // inner for
+					}
+					
+					
+					
+					//artic2.trackAText.setText("b222bbb");
+					viewFrame.add(artic);
+					//viewFrame.add(artic2);
+					viewFrame.revalidate();
+				
 				}
 				else if (butSrcTxt == sideTxt[8]) {
-					System.out.println(sideTxt[8]);
+					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
+					artic.trackArticle();
+					
+					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
+
+					for (int i = 0 ; i < ArticleUIpanel.sweduBarr.length;i++) {
+						int count = 0;
+						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							if(ArticleUIpanel.sweduBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								String to = Integer.toString(ArticleUIpanel.sweduBarr[i]);
+								ChangeLecture cl = new ChangeLecture();
+								to = cl.numToSubject(ArticleUIpanel.sweduBarr[i]);
+								artic.trackBText.append("이수 "+to+"\n");
+							}else {
+								count++;
+								if(count == tempStudentinfo.size()) {
+									String too = Integer.toString(ArticleUIpanel.sweduBarr[i]);
+									ChangeLecture cl = new ChangeLecture();
+									too = cl.numToSubject(ArticleUIpanel.sweduBarr[i]);
+									artic.trackBText.append("미이수 "+too+"\n");
+									count = 0;
+								} // inner if
+							} // if - else
+						} // inner for
+					} // for
+					//왼쪽 text
+					
+					//System.out.println(sideTxt[0]);
+					//오른쪽 text
+					
+					
+
+					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
+					//artic2.trackArticle();
+					
+					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
+
+					for (int i = 0 ; i < ArticleUIpanel.sweduSarr.length;i++) {
+						int count2 = 0;
+						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							if(ArticleUIpanel.sweduSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								String to2 = Integer.toString(ArticleUIpanel.sweduSarr[i]);
+								ChangeLecture cl2 = new ChangeLecture();
+								to2 = cl2.numToSubject(ArticleUIpanel.sweduSarr[i]);
+								artic.trackAText.append("이수 "+to2+"\n");
+							}else {
+								count2++;
+								if(count2 == tempStudentinfo2.size()) {
+									String too2 = Integer.toString(ArticleUIpanel.sweduSarr[i]);
+									ChangeLecture cl2 = new ChangeLecture();
+									too2 = cl2.numToSubject(ArticleUIpanel.sweduSarr[i]);
+									artic.trackAText.append("미이수 "+too2+"\n");
+									count2 = 0;
+								} // inner if
+							} // if - else
+						} // inner for
+					}
+					
+					
+					
+					//artic2.trackAText.setText("b222bbb");
+					viewFrame.add(artic);
+					//viewFrame.add(artic2);
+					viewFrame.revalidate();
+				
 				} // if -- else
 				
 			} // actionPerformed()
