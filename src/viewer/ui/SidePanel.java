@@ -20,6 +20,7 @@ import javax.swing.JTextArea;
 
 import controller.StudentInfo;
 import controller.StudentInfo.StudentSubject;
+import controller.ChangeLecture;
 import controller.db.DBconnection;
 import viewer.ViewFrame;
 
@@ -130,40 +131,30 @@ public class SidePanel {
 						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
 							if(ArticleUIpanel.hciBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
 								String to = Integer.toString(ArticleUIpanel.hciBarr[i]);
+								ChangeLecture cl = new ChangeLecture();
+								to = cl.numToSubject(ArticleUIpanel.hciBarr[i]);
 								artic.trackBText.append("이수 "+to+"\n");
 							}else {
 								count++;
 								if(count == tempStudentinfo.size()) {
 									String too = Integer.toString(ArticleUIpanel.hciBarr[i]);
+									ChangeLecture cl = new ChangeLecture();
+									too = cl.numToSubject(ArticleUIpanel.hciBarr[i]);
 									artic.trackBText.append("미이수 "+too+"\n");
 									count = 0;
 								} // inner if
 							} // if - else
 						} // inner for
 					} // for
-					
-					
-//					for(int i = 0 ; i < ArticleUIpanel.hciBarr.length ; i++) {
-//						for(int j = 0 ; j < ArticleUIpanel.hciBarr.length ; j++) {
-//							if(ArticleUIpanel.hciBarr[i] != rs.getInt("student_number")) {
-//								String to = Integer.toString(rs.getInt("student_number"));
-//								artic.trackBText.setText(to);
-//							}
-//						}//안쪽for
-//					}//바깥쪽 for
-					
+					//왼쪽 text
 					
 					System.out.println(sideTxt[0]);
-//					JTextArea firta = new JTextArea()
-					//System.out.println(ArticleUIpanel.hciBarr[0]);
-					
-					//int[] hcib = new int[3];
-					
+					//오른쪽 text
 					
 					artic.trackAText.setText("bbbbbbb");
 					viewFrame.add(artic);
 					viewFrame.revalidate();
-				}
+				}//if
 				else if (butSrcTxt == sideTxt[1]) {
 					System.out.println(sideTxt[1]);
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
