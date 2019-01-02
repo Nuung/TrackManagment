@@ -31,6 +31,8 @@ public class ViewSecondSet {
 	protected CardLayout cardLayout;
 	SidePanel sidePanel;
 
+	ArticleUIpanel articleUIpanel;
+
 	public ViewSecondSet(ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;
 		this.panelSetting();
@@ -62,12 +64,18 @@ public class ViewSecondSet {
 		this.p3.add(jsp); // p3 (MAIN)
 
 		// Main Frame Setting
-		ArticleUIpanel au = new ArticleUIpanel();
+		articleUIpanel = new ArticleUIpanel();
+		JPanel articleWrapArticlePanel = new JPanel();
+		articleWrapArticlePanel.setLayout(new CardLayout());
+		
+//		articleWrapArticlePanel.add(articleUIpanel.trackArticle(), "trackArticle");
 
 		this.viewFrame.setLayout(new BorderLayout());
 		this.viewFrame.add(this.p1, BorderLayout.NORTH);
 		this.viewFrame.add(this.p2, BorderLayout.WEST);
-		this.viewFrame.add(au, BorderLayout.CENTER);
+
+		this.viewFrame.add(articleUIpanel, BorderLayout.CENTER);
+
 	} // panelSetting()
 
 	public void btnBarSetting(JPanel tempP, int btnNum) {
@@ -79,7 +87,6 @@ public class ViewSecondSet {
 			// P1 패널 버튼에만 P2 패널 카드 레이아웃 조절 권한
 			if (tempP.getName() == "p1") {
 				btnAction(tempBtn[i]);
-				System.out.println("check");
 			} // if
 		} // for
 	} // btnBarSetting()
