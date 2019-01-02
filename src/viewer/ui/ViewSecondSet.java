@@ -13,8 +13,8 @@ import event.ButtonClickViewSecond;
 import viewer.ViewFrame;
 
 /*
- * 媛��옣 硫붿씤 �솕硫� MainFrame!
- * �긽�떒 硫붾돱, �꽕鍮꾧쾶�씠�뀡 硫붾돱 �룞�쟻 �깮�꽦 �븘�슂
+ * 가장 메인 화면 MainFrame!
+ * 상단 메뉴, 네비게이션 메뉴 동적 생성 필요
  */
 public class ViewSecondSet {
 
@@ -22,9 +22,7 @@ public class ViewSecondSet {
 	private ViewFrame viewFrame;
 	private JPanel p1, p2, p3;
 	private ButtonClickViewSecond btnclick;
-	private String topBar[] = { "�듃�옓", "�듃�옓�떆臾쇰젅�씠�뀡", "�뵾�뱶諛�", "INFO", "LogOut" };
-	String trackName[] = { "HCI&鍮꾩�ъ뼹而댄벂�똿", "硫��떚誘몃뵒�뼱", "�궗臾쇱씤�꽣�꽬", "�떆�뒪�뀥�쓳�슜", "�씤怨듭��뒫", "媛��긽�쁽�떎", "�젙蹂대낫�샇",
-			"�뜲�씠�꽣�궗�씠�뼵�뒪", "SW援먯쑁", "�궗�씠踰꾧뎅諛�" };
+	private String topBar[] = { "트랙", "트랙시물레이션", "피드백", "INFO", "LogOut" };
 
 	// sideBar
 	CardLayout cardLayout;
@@ -43,7 +41,7 @@ public class ViewSecondSet {
 
 		this.p1.setLayout(new GridLayout(1, 5));
 		this.p1.setName("p1");
-		this.btnBarSetting(this.p1, 5); // p1 �뙣�꼸�뿉 5媛� 踰꾪듉 異붽�
+		this.btnBarSetting(this.p1, 5); // p1 패널에 5개 버튼 추가
 		this.btnAddListener(this.p1, btnclick);
 
 //		this.p2.setLayout(new GridLayout(10, 1));
@@ -64,12 +62,12 @@ public class ViewSecondSet {
 
 		cardLayout.show(p2, "tP");
 
-		// this.p2.setVisible(false); // topBar(�듃�옓, �뵾�뱶諛�, INFO) �겢由��떆
+		// this.p2.setVisible(false); // topBar(트랙, 피드백, INFO) 클릭시 setVisible(true)
 		// setVisible(true)
 
 		this.p3.setLayout(new GridLayout(1, 1));
 		JScrollPane jsp = new JScrollPane(new JTextArea("TEST"));
-		this.p3.add(jsp); // p3 �뙣�꼸�� article 遺�遺� (MAIN)
+		this.p3.add(jsp); // p3 패널은 article 부분 (MAIN)
 
 		// Main Frame Setting
 		ArticleUIpanel au = new ArticleUIpanel();
@@ -89,7 +87,7 @@ public class ViewSecondSet {
 		} // for
 	} // btnBarSetting()
 
-	// Inner Btn Action -> 媛꾪렪�븯寃� �슦�꽑 �씡紐낇븿�닔濡� 留뚮뱾�뼱�몺
+	// Inner Btn Action -> 간편하게 우선 익명함수로 만들어둠
 	private void btnAddListener(JPanel panel, ButtonClickViewSecond btnclickEvent) {
 		btnclickEvent = new ButtonClickViewSecond(panel);
 		JButton[] btn = btnclickEvent.getButton();

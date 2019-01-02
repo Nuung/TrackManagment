@@ -20,7 +20,7 @@ public class SidePanel {
 	// 이벤트처리
 	private ButtonClickViewSecond btnclick;
 
-	String[] sideTxt = { "HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육", "사이버국방" };
+	String sideTxt[] = { "HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육", "사이버국방" };
 
 	public SidePanel() {
 		trackSidePanel = new JPanel();
@@ -80,7 +80,6 @@ public class SidePanel {
 		// adding Event to All Button
 		for (int i = 0; i < btn.length; i++) {
 			btn[i].addActionListener(btnclickEvent);
-			System.out.println(btn[i].toString());
 		} // for
 	} // btn add Event
 
