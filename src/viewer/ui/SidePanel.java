@@ -763,8 +763,6 @@ public class SidePanel {
 				Object source = ev.getSource();
 				String butSrcTxt = ((AbstractButton) source).getText();
 				
-				articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
-				
 				//"HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육" };
 				if (butSrcTxt == sideTxt[0]) {
 					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "HCI");
@@ -835,7 +833,6 @@ public class SidePanel {
 						articleUi.resetArticleUI(); 	// 버튼 클릭 시 패널에 있는 UI 초기화를 해주기 위한 메소드
 						ArticleUIpanel articleUi = new ArticleUIpanel(studentinfo); 
 						articleUi.infoArticle();
-						articleUi.welcomelbl.setText("");
 						//article의 trackTextField에 문자열 넣기
 						articleUi.infoTrackText.setText(sideTxt[i]);
 						articleUi.infoTrackText.setHorizontalAlignment(JTextField.CENTER);

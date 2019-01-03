@@ -31,7 +31,7 @@ public class SimulationFX extends Application{
 		launch();
 	}
 
-	private double[] translaterReaching() {
+	protected double[] translaterReaching() {
 		double persentReaching[] = new double[9];
 		for (int i = 0; i < 9; i++) {
 			if(ArticleUIpanel.totalReaching[i][1] >= 6) {

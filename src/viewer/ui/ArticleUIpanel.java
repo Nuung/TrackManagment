@@ -94,7 +94,7 @@ public class ArticleUIpanel extends JPanel {
 	static int[] sweduSarr = {77,8,24,78,79,80,81,40,82,47,83};
 	
 	// java fx frame (Application)
-	SimulationFX simluFx;
+	SimulationFX simulFx;
 	
 	public ArticleUIpanel(StudentInfo studentinfo) {
 		this.studentinfo = studentinfo;
@@ -159,7 +159,7 @@ public class ArticleUIpanel extends JPanel {
 	// -------------------------------------------------------------------------------------------------------------------------------------- // 
 	// Track simulation setting method
 	public void simulArticle() {
-		/*
+		
 		// Layout and Componets
 		JLabel tempOne[] = new JLabel[sideTxt.length];
 		JLabel tempTwo[] = new JLabel[sideTxt.length];
@@ -172,14 +172,6 @@ public class ArticleUIpanel extends JPanel {
 		innerP[0].setLayout(new GridLayout(9, 1));
 		innerP[1].setLayout(new GridLayout(9, 1));
 		innerP[2].setLayout(new GridLayout(2, 1));
-	
-		// adding Label Components
-		for (int i = 0; i < sideTxt.length; i++) {
-			tempOne[i] = new JLabel(sideTxt[i]);
-			innerP[0].add(tempOne[i]);
-			tempTwo[i] = new JLabel("****************");
-			innerP[1].add(tempTwo[i]);
-		} // for
 		 
 		// adding JButton to Panel3 (that located in right side)
 		innerP[2].add(new JButton("새로고침"));
@@ -187,7 +179,7 @@ public class ArticleUIpanel extends JPanel {
 		super.add(innerP[0], BorderLayout.WEST);
 		super.add(innerP[1], BorderLayout.CENTER);
 		super.add(innerP[2], BorderLayout.EAST); 
-		*/
+		
 		for(String subjectText : this.sideTxt) {
 			// -------------------------------------------------------------------------------------------------------------------------------- //
 			if (subjectText == sideTxt[0]) {
@@ -669,9 +661,9 @@ public class ArticleUIpanel extends JPanel {
 		}// Large for
 		
 		// Sendding to JAVAFX Main thread the Val and Start (launch)
-		if(this.simluFx == null) {
-			this.simluFx = new SimulationFX();
-			simluFx.main(sideTxt);
+		if(this.simulFx == null) {
+			this.simulFx = new SimulationFX();
+			simulFx.main(sideTxt);
 		}
 		else {
 			try {
@@ -681,6 +673,19 @@ public class ArticleUIpanel extends JPanel {
 			} // try - catch
 		} // if - else
 		
+		// adding Label Components
+		for (int i = 0; i < sideTxt.length; i++) {
+			tempOne[i] = new JLabel(sideTxt[i]);
+			innerP[0].add(tempOne[i]);
+			tempTwo[i] = new JLabel("       ");
+			String tempS = "";
+			double tempPersent[] = simulFx.translaterReaching();
+			for (int j = 0; j < totalReaching[i][0] + totalReaching[i][1]; j++) {
+				tempS+="★ ";
+			} // for
+			tempTwo[i].setText(tempS+"      ("+String.format("%.2f", tempPersent[i])+")  ");
+			innerP[1].add(tempTwo[i]);
+		} // for		
 	} // simulArticle()
 
 	// 피드백 
