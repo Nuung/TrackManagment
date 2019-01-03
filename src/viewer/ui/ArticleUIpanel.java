@@ -2,6 +2,7 @@ package viewer.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -50,6 +51,7 @@ public class ArticleUIpanel extends JPanel {
 	protected JTextPane trackAPane;
 	protected SimpleAttributeSet set;
 	protected Document doc;
+	protected Font font;
 
 	// simulArticle
 	protected JTextArea completeText;
@@ -341,7 +343,11 @@ public class ArticleUIpanel extends JPanel {
 	public void ConvertRedColor(Document tempDoc, JTextPane tempPane, String tempStr) {
 		tempDoc = tempPane.getStyledDocument();
 		this.set = new SimpleAttributeSet();
-		StyleConstants.setForeground(this.set, Color.red);
+		this.font = new Font("Dialog", Font.BOLD, 16);
+		
+		tempPane.setFont(font);
+		StyleConstants.setForeground(this.set, Color.blue); //폰트색갈 블루
+
 		try {
 			tempDoc.insertString(tempDoc.getLength(), tempStr, this.set);
 		} catch (BadLocationException e) {
@@ -353,7 +359,11 @@ public class ArticleUIpanel extends JPanel {
 	public void ConvertBlueColor(Document tempDoc, JTextPane tempPane, String tempStr) {
 		tempDoc = tempPane.getStyledDocument();
 		this.set = new SimpleAttributeSet();
-		StyleConstants.setForeground(this.set, Color.blue);
+		this.font = new Font("Dejavu Sans", Font.BOLD, 16);
+		
+		tempPane.setFont(font);
+		StyleConstants.setForeground(this.set, Color.red); //폰트색깔 레드
+		
 		try {
 			tempDoc.insertString(tempDoc.getLength(), tempStr, this.set);
 		} catch (BadLocationException e) {
