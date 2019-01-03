@@ -49,9 +49,7 @@ public class ViewFirstSet {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-//		this.viewFrame.setLayout(null);
 		this.viewFrame.add(this.p1);
-//		this.p1.setBounds(100, 100, 800, 256);
 	}
 
 	// Private Panel Setting
@@ -60,6 +58,7 @@ public class ViewFirstSet {
 		this.p1.setLayout(new GridLayout(1, 3, 50, 0));
 		this.p1.setBackground(Color.WHITE);
 		this.p1.setForeground(Color.WHITE);
+		
 		// reading the Image file to Main Front
 		JLabel ImagIcon = new JLabel(new ImageIcon("res/image_main.png"));
 
