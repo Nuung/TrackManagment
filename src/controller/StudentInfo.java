@@ -68,4 +68,8 @@ public class StudentInfo {
 		return this.studentid;
 	}
 	
+	public String getStudentName() {
+		return this.name;
+	}
+	
 }
