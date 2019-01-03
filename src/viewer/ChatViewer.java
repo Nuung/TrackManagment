@@ -20,11 +20,12 @@ public class ChatViewer extends JFrame {
 	// Login Button
 	protected JButton loginButton;
 	
+
 	// Label for Ncikname 
 	private JLabel inLabel;
 	// Label for output Nickname
 	protected JLabel outLabel;
-	// Textfiel for input Nickname
+	// Textfield for input Nickname
 	protected JTextField idInput;
 	
 	// Logout Panel
@@ -32,6 +33,8 @@ public class ChatViewer extends JFrame {
 	// Logout Button
 	protected JButton logoutButton;
 	
+	JLabel chLabel;
+
 	// Message input Panel
 	private JPanel msgPanel;
 	// Message input Textfield / OutPut Area
@@ -81,7 +84,10 @@ public class ChatViewer extends JFrame {
 		msgPanel = new JPanel();
 		msgPanel.setLayout(new BorderLayout());
 		msgInput = new JTextField();
+    
+		chLabel = new JLabel("채널");
 		setExitButton(new JButton("EXIT"));
+		msgPanel.add(chLabel, BorderLayout.NORTH);
 		msgPanel.add(msgInput, BorderLayout.CENTER);
 		msgPanel.add(getExitButton(), BorderLayout.EAST);
 		
@@ -228,4 +234,8 @@ public class ChatViewer extends JFrame {
 		return cardLayout;
 	}
 	
+	public JLabel getChLabel() {
+		return chLabel;
+	}
+
 }
