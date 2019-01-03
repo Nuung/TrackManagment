@@ -92,11 +92,12 @@ public class ArticleUIpanel extends JPanel {
 	static int[] infoprotectSarr = {60,611,622,63,64,65,30,67,68,69,66};
 	static int[] datascienceSarr = {51,70,48,71,72,73,74,75,2,17};
 	static int[] sweduSarr = {77,8,24,78,79,80,81,40,82,47,83};
-	static ArrayList<int[]> totalSubjectNumber = new ArrayList<int[]>();
+	
+	// java fx frame (Application)
+	SimulationFX simluFx;
 	
 	public ArticleUIpanel(StudentInfo studentinfo) {
 		this.studentinfo = studentinfo;
-		welcomeArticle();
 	}
 
 	public void welcomeArticle() {
@@ -668,8 +669,17 @@ public class ArticleUIpanel extends JPanel {
 		}// Large for
 		
 		// Sendding to JAVAFX Main thread the Val and Start (launch)
-		SimulationFX simluFx = new SimulationFX();
-		simluFx.main(sideTxt);
+		if(this.simluFx == null) {
+			this.simluFx = new SimulationFX();
+			simluFx.main(sideTxt);
+		}
+		else {
+			try {
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} // try - catch
+		} // if - else
 		
 	} // simulArticle()
 
