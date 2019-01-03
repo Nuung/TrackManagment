@@ -16,6 +16,15 @@ import javax.swing.text.StyleConstants;
 import controller.StudentInfo;
 import controller.StudentInfo.StudentSubject;
 import controller.ChangeLecture;
+
+import chat.controller.ChatControl;
+import chat.model.ChatData;
+import viewer.ChatViewer;
+
+
+import controller.StudentInfo;
+import controller.StudentInfo.StudentSubject;
+import controller.ChangeLecture;
 import viewer.ViewFrame;
 
 public class SidePanel {
@@ -774,11 +783,55 @@ public class SidePanel {
 				// getting btn text value
 				Object source = ev.getSource();
 				String butSrcTxt = ((AbstractButton) source).getText();
+
+				articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
 				
-				
+				//"HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육" };
 				if (butSrcTxt == sideTxt[0]) {
-					
+					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "HCI");
+					chat.appMain();
 				} // 왼쪽 첫번째 버튼
+				
+				else if (butSrcTxt == sideTxt[1]) {
+					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "MULTIMEDIA");
+					chat.appMain();
+				} // 왼쪽 첫번째 버튼
+				
+				else if (butSrcTxt == sideTxt[2]) {
+					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "IOT");
+					chat.appMain();
+				} // 왼쪽 첫번째 버튼
+				
+				else if (butSrcTxt == sideTxt[3]) {
+					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "SYSTEMAPPLICATION");
+					chat.appMain();
+				} // 왼쪽 첫번째 버튼
+				
+				else if (butSrcTxt == sideTxt[4]) {
+					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "AI");
+					chat.appMain();
+				} // 왼쪽 첫번째 버튼
+				
+				else if (butSrcTxt == sideTxt[5]) {
+					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "VR");
+					chat.appMain();
+				} // 왼쪽 첫번째 버튼
+				
+				else if (butSrcTxt == sideTxt[6]) {
+					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "SECURITY");
+					chat.appMain();
+				} // 왼쪽 첫번째 버튼
+				
+				else if (butSrcTxt == sideTxt[7]) {
+					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "DATASCIENCE");
+					chat.appMain();
+				} // 왼쪽 첫번째 버튼
+				
+				else{
+					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "SWEDU");
+					chat.appMain();
+				} // 왼쪽 첫번째 버튼
+
 			} // actionPerformed()
 		}); // addActionListener
 	} // fidBtnAction()

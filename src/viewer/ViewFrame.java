@@ -32,10 +32,11 @@ public class ViewFrame extends JFrame{
 	private void SettingLookAndFeel() {
 		// look and fell setting
 		try {
-			 //Nimbus
+
+			// Nimbus
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
-			// Windows
-			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+//			// Windows
+//			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} // try - catch
