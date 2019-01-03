@@ -112,6 +112,11 @@ public class ViewFirstSet {
 						// New Frame이 아니라, 기존에 있는 Frame Re Setting -> ReLoading
 						viewFrame.revalidate(); // ReLoading
 					} // inner if
+					else {
+						// 로그인 실패
+						 JOptionPane.showMessageDialog(viewFrame, "아이디 또는 비밀번호를 확인해 주세요", "Message",
+								 JOptionPane.ERROR_MESSAGE); 
+					}
 				} else {
 					if (passText.getPassword().length >= 7) {
 						signUpPASSLenCk = true;
@@ -168,8 +173,7 @@ public class ViewFirstSet {
 						// New Frame이 아니라, 기존에 있는 Frame Re Setting -> ReLoading
 						viewFrame.revalidate(); // ReLoading
 					}
-					else 
-					{ // 로그인 실패
+					else { // 로그인 실패
 					 JOptionPane.showMessageDialog(viewFrame, "아이디 또는 비밀번호를 확인해 주세요", "Message",
 					 JOptionPane.ERROR_MESSAGE); 
 					} // if - else

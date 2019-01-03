@@ -10,7 +10,10 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
  
  
@@ -67,8 +70,24 @@ public class SimulationFX extends Application{
         	series.getData().add(new XYChart.Data(sideTxt[i], persentReaching[i]));
 		} // for
         
-        Scene scene  = new Scene(barChart,1024,600);
-        barChart.getData().add(series);
+        // Layout Setting to adding the button to Chart
+        StackPane spbarChart = new StackPane();
+        spbarChart.getChildren().add(barChart);
+
+        Button buttonRefreash = new Button("Click Me!");
+        buttonRefreash.setOnMouseClicked((event)->{
+            System.out.println("You just clicked me");
+        }); // button action
+        
+        StackPane spButton = new StackPane();
+        spButton.getChildren().add(buttonRefreash);
+
+        VBox vbox = new VBox();
+        VBox.setVgrow(spbarChart, Priority.ALWAYS);//Make line chart always grow vertically
+        vbox.getChildren().addAll(spbarChart, spButton);
+
+        Scene scene  = new Scene(vbox, 1024,600);
+        barChart.getData().add(series);       
         stage.setScene(scene);
         stage.show();
     }
