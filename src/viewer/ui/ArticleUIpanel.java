@@ -158,6 +158,7 @@ public class ArticleUIpanel extends JPanel {
 	// -------------------------------------------------------------------------------------------------------------------------------------- // 
 	// Track simulation setting method
 	public void simulArticle() {
+		/*
 		// Layout and Componets
 		JLabel tempOne[] = new JLabel[sideTxt.length];
 		JLabel tempTwo[] = new JLabel[sideTxt.length];
@@ -185,7 +186,7 @@ public class ArticleUIpanel extends JPanel {
 		super.add(innerP[0], BorderLayout.WEST);
 		super.add(innerP[1], BorderLayout.CENTER);
 		super.add(innerP[2], BorderLayout.EAST); 
-		
+		*/
 		for(String subjectText : this.sideTxt) {
 			// -------------------------------------------------------------------------------------------------------------------------------- //
 			if (subjectText == sideTxt[0]) {
@@ -642,22 +643,22 @@ public class ArticleUIpanel extends JPanel {
 				} // for
 				// 선택 이수 과목 체킹
 				Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
-				for (int i = 0 ; i < ArticleUIpanel.sweduBarr.length;i++) {
+				for (int i = 0 ; i < ArticleUIpanel.sweduSarr.length;i++) {
 					int count2 = 0;
 					for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
-						if(ArticleUIpanel.sweduBarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+						if(ArticleUIpanel.sweduSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
 							// 이수 부분
-							String to2 = Integer.toString(ArticleUIpanel.sweduBarr[i]);
+							String to2 = Integer.toString(ArticleUIpanel.sweduSarr[i]);
 							ChangeLecture cl2 = new ChangeLecture();
-							to2 = cl2.numToSubject(ArticleUIpanel.sweduBarr[i]);
+							to2 = cl2.numToSubject(ArticleUIpanel.sweduSarr[i]);
 							totalReaching[8][1]++;
 						}else {
 							count2++;
 							if(count2 == tempStudentinfo2.size()) {
 								// 미이수 부분
-								String too2 = Integer.toString(ArticleUIpanel.sweduBarr[i]);
+								String too2 = Integer.toString(ArticleUIpanel.sweduSarr[i]);
 								ChangeLecture cl2 = new ChangeLecture();
-								too2 = cl2.numToSubject(ArticleUIpanel.sweduBarr[i]);
+								too2 = cl2.numToSubject(ArticleUIpanel.sweduSarr[i]);
 								count2 = 0;
 							} // inner if
 						} // if - else
