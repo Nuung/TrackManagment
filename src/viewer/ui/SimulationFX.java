@@ -1,6 +1,7 @@
 package viewer.ui;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -30,7 +31,7 @@ public class SimulationFX extends Application{
 		launch();
 	}
 
-	private double[] translaterReaching() {
+	protected double[] translaterReaching() {
 		double persentReaching[] = new double[9];
 		for (int i = 0; i < 9; i++) {
 			if(ArticleUIpanel.totalReaching[i][1] >= 6) {
@@ -45,7 +46,6 @@ public class SimulationFX extends Application{
 	} // translaterReaching()
 	
     @Override public void start(Stage stage) {
-    	
     	// local val
     	double[] persentReaching = translaterReaching();
     	String sideTxt[] = { "HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육" };
@@ -76,6 +76,8 @@ public class SimulationFX extends Application{
 
         Button buttonRefreash = new Button("Click Me!");
         buttonRefreash.setOnMouseClicked((event)->{
+        	stage.hide();
+        	Platform.exit();
             System.out.println("You just clicked me");
         }); // button action
         
@@ -85,11 +87,10 @@ public class SimulationFX extends Application{
         VBox vbox = new VBox();
         VBox.setVgrow(spbarChart, Priority.ALWAYS);//Make line chart always grow vertically
         vbox.getChildren().addAll(spbarChart, spButton);
-
+        
         Scene scene  = new Scene(vbox, 1024,600);
         barChart.getData().add(series);       
         stage.setScene(scene);
         stage.show();
     }
-
 }
