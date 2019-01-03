@@ -45,8 +45,6 @@ public class ArticleUIpanel extends JPanel {
 	// trackArticle
 	private JLabel trackBlbl;
 	private JLabel trackAlbl;
-//	protected JTextArea trackBText;
-//	protected JTextArea trackAText;
 	protected JTextPane trackBPane;
 	protected JTextPane trackAPane;
 	protected SimpleAttributeSet set;
@@ -100,8 +98,13 @@ public class ArticleUIpanel extends JPanel {
 
 	public void welcomeArticle() {
 		super.setLayout(new BorderLayout());
-		welcomelbl = new JLabel("WELCOME");
-
+		int userId = this.studentinfo.getStudentId();
+		welcomelbl = new JLabel(userId + "님 환영합니다!!\n");
+		welcomelbl.setFont(new Font("맑은고딕", Font.BOLD, 20));
+		welcomelbl.setForeground(Color.DARK_GRAY);
+		
+		welcomelbl.setHorizontalAlignment(JLabel.CENTER);
+		
 		super.add(welcomelbl);
 		this.studentinfo.gettingStudentInfo();
 	} // welcomeArticle()
