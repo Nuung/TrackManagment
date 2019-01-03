@@ -33,6 +33,7 @@ public class ChatViewer extends JFrame {
 	// Logout Button
 	protected JButton logoutButton;
 	
+
 	JLabel chLabel; // 채널 명을 담아줄 라벨
 
 	// Message input Panel

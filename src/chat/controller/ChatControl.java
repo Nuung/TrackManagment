@@ -56,6 +56,7 @@ public class ChatControl implements Runnable {
 	// 컨트롤러 클래스의 메인 로직 부분, UI에서 발생한 이벤트를 위임받아 처리
 	public void appMain() {
 
+
 		// 데이터 객체에서 테이터 변화를 처리할 UI 객체 추가
 		this.chatData.addObj(v.msgOut); // Adding UI object that dealing with the change of the data
 		
@@ -71,6 +72,7 @@ public class ChatControl implements Runnable {
 				// 각 버튼 이벤트 핸들링
 				if(obj == v.getExitButton()) { // 종료 버튼 처리
 					System.exit(0);
+
 				} else if(obj == v.getLoginButton()) { 	// 로그인 버튼 클릭 시
 					id = v.getIdInput().getText(); // 대화명 값 저장
 					v.getChLabel().setText(channel + " 채널"); // label에 채널명 표시
@@ -85,6 +87,7 @@ public class ChatControl implements Runnable {
 
 					v.getMsgOut().setText(""); // 대화창을 초기화시킨다.
 					v.getCardLayout().show(v.getTab(), "login"); // 로그인 panel로 전환한다.
+
 					outMsg.close();
 					
 					// 로그아웃 했으므로 소켓 및 입력 스트림 연결을 닫는다.
@@ -167,6 +170,6 @@ public class ChatControl implements Runnable {
         logger.info("[ChatViewer]" + thread.getName()+ " 메시지 수신 스레드 종료됨!!");
     } // run() 
 
-    
+
 
 } // Class MultiChatController
