@@ -197,6 +197,8 @@ public class ChangeLecture {
 		//
 	}
 	
+	
+	// 수업 번호를 다시 교과목명(스트링)으로 변환해주는 메서드
 	public String numToSubject(int lecNum) {
 		String ss="";
 		
