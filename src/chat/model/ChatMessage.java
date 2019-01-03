@@ -13,11 +13,13 @@ public class ChatMessage {
 	}
 	
 	public ChatMessage(String id, String passwd, String msg, String type, String channel) {
+
 		this.id = id;
 		this.passwd = passwd;
 		this.msg = msg;
 		this.type = type;
 		this.channel = channel;
+
 	}
 
 	// ----------------------------------- getter and setter ---------------------------------- //
@@ -41,4 +43,5 @@ public class ChatMessage {
 	public String getChannel() {
 		return channel;
 	}
+
 }

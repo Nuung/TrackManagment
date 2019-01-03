@@ -51,6 +51,7 @@ public class ChatControl implements Runnable {
 	}
 	
 	public void appMain() {
+
 		this.chatData.addObj(v.msgOut); // Adding UI object that dealing with the change of the data
 		v.addButtonActionListener(new ActionListener() {
 
@@ -66,11 +67,13 @@ public class ChatControl implements Runnable {
 				} else if(obj == v.getLoginButton()) { 	// Login Button Action
 					id = v.getIdInput().getText();
 					v.getChLabel().setText(channel + " 채널");
+
 					v.getOutLabel().setText(" 대화명 : " + id);
 					v.getCardLayout().show(v.getTab(), "logout"); // Change the tab panel
 					connectServer(); // connect to the server
 				} else if(obj == v.getLogoutButton()) {	// Logout Button Action
 					outMsg.println(gson.toJson(new ChatMessage(id, "", "", "logout", channel)));
+
 					v.getMsgOut().setText(""); // Clear the 대화창
 					v.getCardLayout().show(v.getTab(), "login"); // Change the tab panel
 					outMsg.close();
@@ -86,6 +89,7 @@ public class ChatControl implements Runnable {
 				} else if(obj == v.getMsgInput()) {
 					// Sending the Message
 					outMsg.println(gson.toJson(new ChatMessage(id, "", v.getMsgInput().getText(), "msg", channel)));
+
 //					chatData.refreshData(v.getMsgInput().getText());
 					v.getMsgInput().setText(""); // Clear the 대화창
 				} // if - else
@@ -106,6 +110,7 @@ public class ChatControl implements Runnable {
             
             // 서버에 로그인 메시지 전달
             m = new ChatMessage(id,"","","login", channel);
+
             outMsg.println(gson.toJson(m));
             
             // 메시지 수신을 위한 스레드 생성
@@ -148,4 +153,5 @@ public class ChatControl implements Runnable {
 //        ChatControl app = new ChatControl(new ChatData(),new ChatViewer());
 //        app.appMain();
 //    } // main()
+
 } // Class MultiChatController

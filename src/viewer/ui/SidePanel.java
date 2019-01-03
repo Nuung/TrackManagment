@@ -21,6 +21,10 @@ import chat.controller.ChatControl;
 import chat.model.ChatData;
 import viewer.ChatViewer;
 
+
+import controller.StudentInfo;
+import controller.StudentInfo.StudentSubject;
+import controller.ChangeLecture;
 import viewer.ViewFrame;
 
 public class SidePanel {
@@ -843,7 +847,7 @@ public class SidePanel {
 					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "SWEDU");
 					chat.appMain();
 				} // 왼쪽 첫번째 버튼
-				
+
 			} // actionPerformed()
 		}); // addActionListener
 	} // fidBtnAction()

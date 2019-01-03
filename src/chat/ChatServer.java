@@ -22,12 +22,7 @@ public class ChatServer {
 	// ArrayList for managing Thread that connected Clients 
 	ArrayList<ChatThread> chatThreads = new ArrayList<ChatThread>();
 	
-	public ChatServer() {
-//		for(int i=0; i<9; i++) {
-//			chatThreads[i] = new ArrayList<ChatThreads>();
-//		}
-	}
-	
+
 	// Object for Logger
 	Logger logger;
 	
@@ -54,6 +49,7 @@ public class ChatServer {
 	} // start()
 	
 	// 연결된 모든 클라이언트에 메시지 중계
+
 	void msgSendAll(String msg, String channel) {
 		for(ChatThread ct : chatThreads) {
 			if(ct.m.getChannel().equals(channel))
@@ -98,6 +94,7 @@ public class ChatServer {
 					if(m.getType().equals("logout")) { //수신한 메시지가 Logout 일때
 						chatThreads.remove(this);
 						msgSendAll(gson.toJson(new ChatMessage(m.getId(), "", "님이 종료했습니다.", "server", m.getChannel())), m.getChannel());
+
 						// 해당 클라이언트 스레드 종료로 status를 false로 설정
 						status = false;
 					} // if
