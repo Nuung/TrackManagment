@@ -7,13 +7,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 
 import javax.swing.AbstractButton;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import controller.StudentInfo;
 import controller.db.DBconnection;
 import viewer.ViewFrame;
 import viewer.components.PlaceholderJPasswordField;
@@ -33,23 +37,35 @@ public class ViewFirstSet {
 	protected PlaceholderJTextField idText;
 	protected PlaceholderJPasswordField passText;
 
+	// For testing the Length of ID and PASS
+	protected boolean signUpIDLenCk = false;
+	protected boolean signUpPASSLenCk = false;
+
 	// 생성자
 	public ViewFirstSet(ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;
-		this.btnSetting();
-		this.viewFrame.setLayout(null);
+		try {
+			this.btnSetting();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		this.viewFrame.add(this.p1);
-		this.p1.setBounds(100, 100, 800, 256);
 	}
 
 	// Private Panel Setting
-	private void btnSetting() {
+	private void btnSetting() throws IOException {
 		this.p1 = new JPanel();
-		this.p1.setLayout(new GridLayout(1, 2, 100, 0));
+		this.p1.setLayout(new GridLayout(1, 3, 50, 0));
+		this.p1.setBackground(Color.WHITE);
+		this.p1.setForeground(Color.WHITE);
+		
+		// reading the Image file to Main Front
+		JLabel ImagIcon = new JLabel(new ImageIcon("res/image_main.png"));
 
 		this.btn1 = new JButton("학생");
 		this.btn2 = new JButton("관리자");
 		this.p1.add(btn1);
+		this.p1.add(ImagIcon);
 		this.p1.add(btn2);
 		// adding event
 		this.btnAction(this.btn1);
@@ -64,31 +80,49 @@ public class ViewFirstSet {
 		idText.setPlaceholder("Student Num");
 		Font f = idText.getFont();
 		idText.setFont(new Font(f.getName(), f.getStyle(), 40));
+		idText.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (idText.getText().length() >= 7) {
+					signUpIDLenCk = true;
+					idText.setBackground(new Color(102, 255, 102)); // GREEN
+				} else {
+					signUpIDLenCk = false;
+					idText.setBackground(new Color(204, 102, 102)); // RED
+				} // inner if -else
+			} // keyPressed()
+		}); // idText Key input Action
+		
 		this.passText = new PlaceholderJPasswordField("");
 		passText.setPlaceholder("Passward");
 		passText.setFont(new Font(f.getName(), f.getStyle(), 40));
 		passText.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER && signUpPASSLenCk && signUpIDLenCk) {
 					DBconnection dbcon = new DBconnection();
-					String passString = new String(passText.getPassword(), 0, passText.getPassword().length);
-					if (dbcon.findUser(Integer.parseInt(idText.getText()), passString)) { // login 성공
+					String passString = new String(passText.getPassword(), 0,
+					passText.getPassword().length);
+					StudentInfo newStudent = dbcon.findUser(Integer.parseInt(idText.getText()), passString);
+					if(newStudent != null) { // login
+						// 로그인 성공
+						newFrame.dispose();
 						viewFrame.remove(p1); // delete 'p1' Panel
-						new ViewSecondSet(viewFrame); // Make Second Layout Setting
+						new ViewSecondSet(viewFrame, newStudent); // Make Second Layout Setting
 						// New Frame이 아니라, 기존에 있는 Frame Re Setting -> ReLoading
 						viewFrame.revalidate(); // ReLoading
-						newFrame.dispose();
 					} // inner if
 				} else {
-					if (passText.getPassword().length > 7) {
+					if (passText.getPassword().length >= 7) {
+						signUpPASSLenCk = true;
 						passText.setBackground(new Color(102, 255, 102)); // GREEN
 					} else {
+						signUpPASSLenCk = false;
 						passText.setBackground(new Color(204, 102, 102)); // RED
 					} // inner if -else
 				} // if - else
 			} // keyPressed()
-		});
+		}); // passText Key input Action
 		JButton loginBtn = new JButton("로그인");
 		JButton signupBtn = new JButton("회원가입");
 
@@ -121,17 +155,18 @@ public class ViewFirstSet {
 					// test, making new frame
 					newFrameSet();
 				} // STUDENT
-				else if (butSrcTxt == "로그인") {
+				else if (butSrcTxt == "로그인" && signUpPASSLenCk && signUpIDLenCk) {
 					DBconnection dbcon = new DBconnection();
 					String passString = new String(passText.getPassword(), 0,
 					passText.getPassword().length);
-					if(dbcon.findUser(Integer.parseInt(idText.getText()), passString)) { // login
+					StudentInfo newStudent = dbcon.findUser(Integer.parseInt(idText.getText()), passString);
+					if(newStudent != null) { // login
 						// 로그인 성공
+						newFrame.dispose();
 						viewFrame.remove(p1); // delete 'p1' Panel
-						new ViewSecondSet(viewFrame); // Make Second Layout Setting
+						new ViewSecondSet(viewFrame, newStudent); // Make Second Layout Setting
 						// New Frame이 아니라, 기존에 있는 Frame Re Setting -> ReLoading
 						viewFrame.revalidate(); // ReLoading
-						newFrame.dispose();
 					}
 					else 
 					{ // 로그인 실패
