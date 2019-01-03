@@ -120,6 +120,8 @@ public class SidePanel {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
+					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
+					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.hciBarr.length;i++) {
@@ -193,6 +195,8 @@ public class SidePanel {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
+					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
+					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.multimediaBarr.length;i++) {
@@ -261,6 +265,8 @@ public class SidePanel {
 				else if (butSrcTxt == sideTxt[2]) {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
+					
+					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
 					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
@@ -332,6 +338,8 @@ public class SidePanel {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
+					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
+					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.systemappBarr.length;i++) {
@@ -400,6 +408,8 @@ public class SidePanel {
 				else if (butSrcTxt == sideTxt[4]) {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
+					
+					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
 					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
@@ -472,6 +482,8 @@ public class SidePanel {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
+					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
+					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.virtualrealityBarr.length;i++) {
@@ -542,6 +554,8 @@ public class SidePanel {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
+					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
+					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.infoprotectBarr.length;i++) {
@@ -610,6 +624,8 @@ public class SidePanel {
 				else if (butSrcTxt == sideTxt[7]) {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
+					
+					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
 					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
@@ -680,6 +696,8 @@ public class SidePanel {
 				else if (butSrcTxt == sideTxt[8]) {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
+					
+					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
 					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
@@ -758,6 +776,9 @@ public class SidePanel {
 				// getting btn text value
 				Object source = ev.getSource();
 				String butSrcTxt = ((AbstractButton) source).getText();
+				
+				articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
+				
 			} // actionPerformed()
 		}); // addActionListener
 	} // simulBtnAction()
@@ -769,6 +790,8 @@ public class SidePanel {
 				// getting btn text value
 				Object source = ev.getSource();
 				String butSrcTxt = ((AbstractButton) source).getText();
+				
+				articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
 				
 				
 				if (butSrcTxt == sideTxt[0]) {
