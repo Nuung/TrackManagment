@@ -575,6 +575,7 @@ public class SidePanel {
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.infoprotectSarr[i]);
 									artic.trackAText.append("미이수 "+too2+"\n");
+									System.out.println(ArticleUIpanel.infoprotectSarr[i]);
 									count2 = 0;
 								} // inner if
 							} // if - else
