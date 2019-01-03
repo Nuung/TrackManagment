@@ -22,6 +22,7 @@ public class ChatServer {
 	// ArrayList for managing Thread that connected Clients 
 	ArrayList<ChatThread> chatThreads = new ArrayList<ChatThread>();
 	
+
 	// Object for Logger
 	Logger logger;
 	
@@ -48,9 +49,11 @@ public class ChatServer {
 	} // start()
 	
 	// 연결된 모든 클라이언트에 메시지 중계
-	void msgSendAll(String msg) {
+
+	void msgSendAll(String msg, String channel) {
 		for(ChatThread ct : chatThreads) {
-			ct.outMsg.println(msg);
+			if(ct.m.getChannel().equals(channel))
+				ct.outMsg.println(msg);
 		} // for
 	} // msgSendAll
 	
@@ -90,15 +93,16 @@ public class ChatServer {
 			
 					if(m.getType().equals("logout")) { //수신한 메시지가 Logout 일때
 						chatThreads.remove(this);
-						msgSendAll(gson.toJson(new ChatMessage(m.getId(), "", "님이 종료했습니다.", "server")));
+						msgSendAll(gson.toJson(new ChatMessage(m.getId(), "", "님이 종료했습니다.", "server", m.getChannel())), m.getChannel());
+
 						// 해당 클라이언트 스레드 종료로 status를 false로 설정
 						status = false;
 					} // if
 					else if(m.getType().equals("login")) { //수신한 메시지가 LogIn 일때
-						msgSendAll(gson.toJson(new ChatMessage(m.getId(), "", "님이 로그인했습니다.", "server")));
+						msgSendAll(gson.toJson(new ChatMessage(m.getId(), "", "님이 로그인했습니다.", "server", m.getChannel())), m.getChannel());
 					}
 					else { // 그 밖의 메시지 일때 -> 바로 샌딩
-						msgSendAll(msg);
+						msgSendAll(msg, m.getChannel());
 					} // if - else
 				} // while
 			}catch (IOException e1) {
