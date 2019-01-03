@@ -96,7 +96,7 @@ public class ArticleUIpanel extends JPanel {
 	
 	public ArticleUIpanel(StudentInfo studentinfo) {
 		this.studentinfo = studentinfo;
-		welcomeArticle();
+//		welcomeArticle();
 	}
 
 	public void welcomeArticle() {

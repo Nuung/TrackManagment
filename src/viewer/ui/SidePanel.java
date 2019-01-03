@@ -99,9 +99,6 @@ public class SidePanel {
 			if(tempPanel.getName() == "trackSidePanel") {
 				this.trackBtnAction(tempBtn[i]);
 				tempPanel.add(tempBtn[i]);
-			} else if(tempPanel.getName() == "simulSidePanel") {
-				this.simulBtnAction(tempBtn[i]);
-				tempPanel.add(tempBtn[i]);
 			} else if(tempPanel.getName() == "fidSidePanel") {
 				this.fidBtnAction(tempBtn[i]);
 				tempPanel.add(tempBtn[i]);
@@ -126,11 +123,7 @@ public class SidePanel {
 				
 				
 				if (butSrcTxt == sideTxt[0]) {
-					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
-					artic.trackArticle();
-					
-					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
-					
+					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);	artic.trackArticle();				
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.hciBarr.length;i++) {
@@ -202,10 +195,7 @@ public class SidePanel {
 				}//if
 				else if (butSrcTxt == sideTxt[1]) {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
-					artic.trackArticle();
-					
-					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
-					
+					artic.trackArticle();					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.multimediaBarr.length;i++) {
@@ -275,8 +265,7 @@ public class SidePanel {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
-					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
-					
+
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.iotBarr.length;i++) {
@@ -347,8 +336,6 @@ public class SidePanel {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
-					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
-					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.systemappBarr.length;i++) {
@@ -417,8 +404,6 @@ public class SidePanel {
 				else if (butSrcTxt == sideTxt[4]) {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
-					
-					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
 					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
@@ -491,8 +476,6 @@ public class SidePanel {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
-					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
-					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.virtualrealityBarr.length;i++) {
@@ -563,8 +546,6 @@ public class SidePanel {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
-					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
-					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.infoprotectBarr.length;i++) {
@@ -633,8 +614,6 @@ public class SidePanel {
 				else if (butSrcTxt == sideTxt[7]) {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
-					
-					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
 					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
@@ -706,8 +685,6 @@ public class SidePanel {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
-					articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
-					
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.sweduBarr.length;i++) {
@@ -777,20 +754,6 @@ public class SidePanel {
 			} // actionPerformed()
 		});
 	} // btnAction()
-
-	// simulSidePanel
-	private void simulBtnAction(JButton inBtn) {
-		inBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {
-				// getting btn text value
-				Object source = ev.getSource();
-				String butSrcTxt = ((AbstractButton) source).getText();
-				
-				articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
-				
-			} // actionPerformed()
-		}); // addActionListener
-	} // simulBtnAction()
 	
 	// fidSidePanel
 	private void fidBtnAction(JButton inBtn) {
