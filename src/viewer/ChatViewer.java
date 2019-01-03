@@ -20,7 +20,7 @@ public class ChatViewer extends JFrame {
 	// Login Button
 	protected JButton loginButton;
 	
-	
+
 	// Label for Ncikname 
 	private JLabel inLabel;
 	// Label for output Nickname
@@ -33,7 +33,8 @@ public class ChatViewer extends JFrame {
 	// Logout Button
 	protected JButton logoutButton;
 	
-	JLabel chLabel;
+	JLabel chLabel; // 채널 명을 담아줄 라벨
+
 	// Message input Panel
 	private JPanel msgPanel;
 	// Message input Textfield / OutPut Area
@@ -83,6 +84,7 @@ public class ChatViewer extends JFrame {
 		msgPanel = new JPanel();
 		msgPanel.setLayout(new BorderLayout());
 		msgInput = new JTextField();
+    
 		chLabel = new JLabel("채널");
 		setExitButton(new JButton("EXIT"));
 		msgPanel.add(chLabel, BorderLayout.NORTH);
@@ -235,4 +237,5 @@ public class ChatViewer extends JFrame {
 	public JLabel getChLabel() {
 		return chLabel;
 	}
+
 }
