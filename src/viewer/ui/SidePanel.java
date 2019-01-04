@@ -235,9 +235,11 @@ public class SidePanel {
 					
 					// 결과 화면을 띄워주기 위해 객체 생성
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
+
 					artic.trackArticle();
 					
 					// 유저가 이수한 수업 정보를 담아주기 위해 벡터로 객체 선언
+
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 					
 					// 멀티미디어 트랙 기초 교과와 유저의 수업 비교
@@ -331,6 +333,7 @@ public class SidePanel {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
+
 					// 유저의 수업 정보를 담아줄 벡터 생성
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
@@ -769,6 +772,7 @@ public class SidePanel {
 									String too2 = Integer.toString(ArticleUIpanel.infoprotectSarr[i]);
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.infoprotectSarr[i]);
+
 			
 									// 빨간색으로 표시
 									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
@@ -959,6 +963,7 @@ public class SidePanel {
 			} // actionPerformed()
 		});
 	} // btnAction()
+
 	
 	// fidSidePanel
 	private void fidBtnAction(JButton inBtn) {
@@ -967,6 +972,7 @@ public class SidePanel {
 				// getting btn text value
 				Object source = ev.getSource();
 				String butSrcTxt = ((AbstractButton) source).getText();
+
 				
 				//"HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육" };
 				if (butSrcTxt == sideTxt[0]) {
