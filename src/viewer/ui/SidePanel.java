@@ -99,9 +99,6 @@ public class SidePanel {
 			if(tempPanel.getName() == "trackSidePanel") {
 				this.trackBtnAction(tempBtn[i]);
 				tempPanel.add(tempBtn[i]);
-			} else if(tempPanel.getName() == "simulSidePanel") {
-				this.simulBtnAction(tempBtn[i]);
-				tempPanel.add(tempBtn[i]);
 			} else if(tempPanel.getName() == "fidSidePanel") {
 				this.fidBtnAction(tempBtn[i]);
 				tempPanel.add(tempBtn[i]);
@@ -126,9 +123,13 @@ public class SidePanel {
 				
 				
 				if (butSrcTxt == sideTxt[0]) {
+<<<<<<< HEAD
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
+=======
+					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);	artic.trackArticle();				
+>>>>>>> f12b4ebfda52e45185f9c6c541564e4a0189ae39
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.hciBarr.length;i++) {
@@ -200,8 +201,12 @@ public class SidePanel {
 				}//if
 				else if (butSrcTxt == sideTxt[1]) {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
+<<<<<<< HEAD
 					artic.trackArticle();
 					
+=======
+					artic.trackArticle();					
+>>>>>>> f12b4ebfda52e45185f9c6c541564e4a0189ae39
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.multimediaBarr.length;i++) {
@@ -271,6 +276,10 @@ public class SidePanel {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
+<<<<<<< HEAD
+=======
+
+>>>>>>> f12b4ebfda52e45185f9c6c541564e4a0189ae39
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.iotBarr.length;i++) {
@@ -764,6 +773,7 @@ public class SidePanel {
 			} // actionPerformed()
 		});
 	} // btnAction()
+<<<<<<< HEAD
 
 	// simulSidePanel
 	private void simulBtnAction(JButton inBtn) {
@@ -775,6 +785,8 @@ public class SidePanel {
 			} // actionPerformed()
 		}); // addActionListener
 	} // simulBtnAction()
+=======
+>>>>>>> f12b4ebfda52e45185f9c6c541564e4a0189ae39
 	
 	// fidSidePanel
 	private void fidBtnAction(JButton inBtn) {
@@ -783,8 +795,11 @@ public class SidePanel {
 				// getting btn text value
 				Object source = ev.getSource();
 				String butSrcTxt = ((AbstractButton) source).getText();
+<<<<<<< HEAD
 
 				articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
+=======
+>>>>>>> f12b4ebfda52e45185f9c6c541564e4a0189ae39
 				
 				//"HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육" };
 				if (butSrcTxt == sideTxt[0]) {
@@ -856,7 +871,6 @@ public class SidePanel {
 						articleUi.resetArticleUI(); 	// 버튼 클릭 시 패널에 있는 UI 초기화를 해주기 위한 메소드
 						ArticleUIpanel articleUi = new ArticleUIpanel(studentinfo); 
 						articleUi.infoArticle();
-						articleUi.welcomelbl.setText("");
 						//article의 trackTextField에 문자열 넣기
 						articleUi.infoTrackText.setText(sideTxt[i]);
 						articleUi.infoTrackText.setHorizontalAlignment(JTextField.CENTER);

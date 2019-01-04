@@ -92,11 +92,12 @@ public class ArticleUIpanel extends JPanel {
 	static int[] infoprotectSarr = {60,61,62,63,64,65,30,67,68,69,66};
 	static int[] datascienceSarr = {51,70,48,71,72,73,74,75,2,17};
 	static int[] sweduSarr = {77,8,24,78,79,80,81,40,82,47,83};
-	static ArrayList<int[]> totalSubjectNumber = new ArrayList<int[]>();
+	
+	// java fx frame (Application)
+	SimulationFX simulFx;
 	
 	public ArticleUIpanel(StudentInfo studentinfo) {
 		this.studentinfo = studentinfo;
-		welcomeArticle();
 	}
 
 	public void welcomeArticle() {
@@ -158,6 +159,7 @@ public class ArticleUIpanel extends JPanel {
 	// -------------------------------------------------------------------------------------------------------------------------------------- // 
 	// Track simulation setting method
 	public void simulArticle() {
+		
 		// Layout and Componets
 		JLabel tempOne[] = new JLabel[sideTxt.length];
 		JLabel tempTwo[] = new JLabel[sideTxt.length];
@@ -170,14 +172,6 @@ public class ArticleUIpanel extends JPanel {
 		innerP[0].setLayout(new GridLayout(9, 1));
 		innerP[1].setLayout(new GridLayout(9, 1));
 		innerP[2].setLayout(new GridLayout(2, 1));
-	
-		// adding Label Components
-		for (int i = 0; i < sideTxt.length; i++) {
-			tempOne[i] = new JLabel(sideTxt[i]);
-			innerP[0].add(tempOne[i]);
-			tempTwo[i] = new JLabel("****************");
-			innerP[1].add(tempTwo[i]);
-		} // for
 		 
 		// adding JButton to Panel3 (that located in right side)
 		innerP[2].add(new JButton("새로고침"));
@@ -642,22 +636,22 @@ public class ArticleUIpanel extends JPanel {
 				} // for
 				// 선택 이수 과목 체킹
 				Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
-				for (int i = 0 ; i < ArticleUIpanel.sweduBarr.length;i++) {
+				for (int i = 0 ; i < ArticleUIpanel.sweduSarr.length;i++) {
 					int count2 = 0;
 					for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
-						if(ArticleUIpanel.sweduBarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+						if(ArticleUIpanel.sweduSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
 							// 이수 부분
-							String to2 = Integer.toString(ArticleUIpanel.sweduBarr[i]);
+							String to2 = Integer.toString(ArticleUIpanel.sweduSarr[i]);
 							ChangeLecture cl2 = new ChangeLecture();
-							to2 = cl2.numToSubject(ArticleUIpanel.sweduBarr[i]);
+							to2 = cl2.numToSubject(ArticleUIpanel.sweduSarr[i]);
 							totalReaching[8][1]++;
 						}else {
 							count2++;
 							if(count2 == tempStudentinfo2.size()) {
 								// 미이수 부분
-								String too2 = Integer.toString(ArticleUIpanel.sweduBarr[i]);
+								String too2 = Integer.toString(ArticleUIpanel.sweduSarr[i]);
 								ChangeLecture cl2 = new ChangeLecture();
-								too2 = cl2.numToSubject(ArticleUIpanel.sweduBarr[i]);
+								too2 = cl2.numToSubject(ArticleUIpanel.sweduSarr[i]);
 								count2 = 0;
 							} // inner if
 						} // if - else
@@ -667,9 +661,31 @@ public class ArticleUIpanel extends JPanel {
 		}// Large for
 		
 		// Sendding to JAVAFX Main thread the Val and Start (launch)
-		SimulationFX simluFx = new SimulationFX();
-		simluFx.main(sideTxt);
+		if(this.simulFx == null) {
+			this.simulFx = new SimulationFX();
+			simulFx.main(sideTxt);
+		}
+		else {
+			try {
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} // try - catch
+		} // if - else
 		
+		// adding Label Components
+		for (int i = 0; i < sideTxt.length; i++) {
+			tempOne[i] = new JLabel(sideTxt[i]);
+			innerP[0].add(tempOne[i]);
+			tempTwo[i] = new JLabel("       ");
+			String tempS = "";
+			double tempPersent[] = simulFx.translaterReaching();
+			for (int j = 0; j < totalReaching[i][0] + totalReaching[i][1]; j++) {
+				tempS+="★ ";
+			} // for
+			tempTwo[i].setText(tempS+"      ("+String.format("%.2f", tempPersent[i])+")  ");
+			innerP[1].add(tempTwo[i]);
+		} // for		
 	} // simulArticle()
 
 	// 피드백 

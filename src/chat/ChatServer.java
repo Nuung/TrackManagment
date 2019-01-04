@@ -19,28 +19,34 @@ public class ChatServer {
 	private ServerSocket ss = null;
 	private Socket s = null;
 	
-	// ArrayList for managing Thread that connected Clients 
+	// 연결된 클라이언트 스레드를 관리하는 ArrayList 
 	ArrayList<ChatThread> chatThreads = new ArrayList<ChatThread>();
 	
 
 	// Object for Logger
 	Logger logger;
 	
-	// Start the Server
+	// 서버의 메인 실행 메서드, 클라이어늩 연결 및 스레드 생성 처리
 	public void start() {
 		logger = Logger.getLogger(this.getClass().getName());
 		
 		try {
-			// make server socket
+			// 서버 소켓 생성
 			ss = new ServerSocket(8888);
 			logger.info("MultiChatServer start");
 			
-			// waiting the connection with infinte loop
+			// 무한루프 돌리면서 클라이언트 연결 대기
 			while(true) {
 				s = ss.accept();
+				
+				// 연결된 클라이언트에 대해 스레드 클래스 생성
 				ChatThread chat = new ChatThread(s); 
-				chatThreads.add(chat); // add list that clients
-				chat.start(); // thread start
+				
+				// ArrayList에 생성된 클래스 추가
+				chatThreads.add(chat);
+				
+				// 스레드 시작
+				chat.start();
 			} // while
 		} catch (Exception e) {
 			logger.info("[MultiChatServer]Start() Exception 발생!!!!");
@@ -48,36 +54,50 @@ public class ChatServer {
 		} // try -catch
 	} // start()
 	
+	
 	// 연결된 모든 클라이언트에 메시지 중계
 
 	void msgSendAll(String msg, String channel) {
 		for(ChatThread ct : chatThreads) {
+			// 인자로 받아온 채널 값을 통해 해당 채널로 메세지 전송
 			if(ct.m.getChannel().equals(channel))
 				ct.outMsg.println(msg);
 		} // for
 	} // msgSendAll
 	
+	
+	/* 각 클라이언트와 연결을 유지하며, 메세지 송수신을 담당하는 스레드 클래스 */
 	class ChatThread extends Thread {
-		// for recived msg
-		String msg;
-		ChatMessage m = new ChatMessage();
-		public Gson gson = new Gson(); // for JSON parser;
 		
+		String msg; // 수신 메세지 및 파싱 메세지 처리를 위한 변수
+		ChatMessage m = new ChatMessage(); // 메세지 객체
+		
+		// json 파서를 위해 gson 라이브러리를 사용
+		public Gson gson = new Gson();
+		
+		// 서버 연결을 위한 소켓
 		public Socket s;
-		// In out Stream
+		
+		// 입출력 스트림
 		private BufferedReader inMsg = null;
 		private PrintWriter outMsg = null;
+		
+		
 		public ChatThread(Socket s) {
 			this.s = s;
-		}
+		} // ChatThread 생성자
 		
+		// 스레드 동작 메소드, 생성된 각 스레드에서 따로 동작
 		@Override
 		public void run() {
 			
+			// 스레드 상태를 나타내기 위한 변수
 			boolean status = true;
 			logger.info("Chat Thread Start ... ");
 			
 			try {
+				
+				// 입출력 스트림 초기화, 안해주면 NullPointer 에러 발생
 				this.inMsg = new BufferedReader(new InputStreamReader(s.getInputStream()));
 				this.outMsg = new PrintWriter(s.getOutputStream(), true);
 				
@@ -116,7 +136,11 @@ public class ChatServer {
 	} // Inner Class ChatThread
 	
 	public static void main(String[] args) {
+		
+		// 메인 메서드에서 서버를 실행시키기 위해 ChatServer 인스턴스 생성
 		ChatServer server = new ChatServer();
+		
+		// 서버 실행
 		server.start();
 	} // main
 	

@@ -68,7 +68,7 @@ public class ViewSecondSet {
 		this.viewFrame.add(this.p1, BorderLayout.NORTH);
 		this.viewFrame.add(this.p2, BorderLayout.WEST);
 		this.viewFrame.add(articleUIpanel, BorderLayout.CENTER);
-
+		this.articleUIpanel.welcomeArticle();
 	} // panelSetting()
 
 	public void btnBarSetting(JPanel tempP, int btnNum) {
@@ -100,7 +100,6 @@ public class ViewSecondSet {
 				} // TRACK tP
 				else if (butSrcTxt == topBar[1]) {
 					System.out.println("TRACK SIMULATION");
-					articleUIpanel.resetArticleUI();
 					articleUIpanel.simulArticle();
 					cardLayout.show(p2, "sP");
 				} // TRACK SIMULATION sP
