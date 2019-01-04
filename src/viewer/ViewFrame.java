@@ -34,6 +34,7 @@ public class ViewFrame extends JFrame{
 	private void SettingLookAndFeel() {
 		// look and fell setting
 		try {
+
 			// Nimbus
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
 //			// Windows

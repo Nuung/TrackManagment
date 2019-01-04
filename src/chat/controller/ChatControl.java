@@ -57,7 +57,6 @@ public class ChatControl implements Runnable {
 	public void appMain() {
 
 
-		// 데이터 객체에서 테이터 변화를 처리할 UI 객체 추가
 		this.chatData.addObj(v.msgOut); // Adding UI object that dealing with the change of the data
 		
 		// UI 버튼 동작 리스너
