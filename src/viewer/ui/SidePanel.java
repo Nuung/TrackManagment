@@ -203,7 +203,8 @@ public class SidePanel {
 				}//if
 				else if (butSrcTxt == sideTxt[1]) {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
-					artic.trackArticle();					
+
+					artic.trackArticle();
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.multimediaBarr.length;i++) {
@@ -273,6 +274,7 @@ public class SidePanel {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
+
 
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
@@ -605,7 +607,12 @@ public class SidePanel {
 									String too2 = Integer.toString(ArticleUIpanel.infoprotectSarr[i]);
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.infoprotectSarr[i]);
+								//head	
+								//	artic.trackAText.append("미이수 "+too2+"\n");
+									System.out.println(ArticleUIpanel.infoprotectSarr[i]);
+									//여기까지 head
 			//						artic.trackAText.append("미이수 "+too2+"\n");
+
 									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
 									count2 = 0;
 								} // inner if
@@ -762,6 +769,7 @@ public class SidePanel {
 			} // actionPerformed()
 		});
 	} // btnAction()
+
 	
 	// fidSidePanel
 	private void fidBtnAction(JButton inBtn) {
@@ -770,6 +778,7 @@ public class SidePanel {
 				// getting btn text value
 				Object source = ev.getSource();
 				String butSrcTxt = ((AbstractButton) source).getText();
+
 				
 				//"HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육" };
 				if (butSrcTxt == sideTxt[0]) {
