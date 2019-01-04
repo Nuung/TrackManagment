@@ -31,6 +31,8 @@ import controller.db.DBconnection;
 
 import controller.db.DBconnection;
 
+
+/* 엑셀 파일 처리를 위한 poi 라이브러리 import */
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -47,13 +49,13 @@ public class ViewThirdSet {
 	
 	// Default Swing
 	ViewFrame viewFrame;
-	JFrame RevisedFrame;
+	JFrame RevisedFrame; // 회원가입 창을 담아줄 프레임
 	private JPanel p1;
 	private JLabel fileText;
 	
 	// Name / student id / passwoard
-	protected PlaceholderJTextField nameText, idText;
-	protected PlaceholderJPasswordField passText;
+	protected PlaceholderJTextField nameText, idText; // 이름, 학번을 입력할 텍스트 필드
+	protected PlaceholderJPasswordField passText; // 비밀번호를 입력할 텍스트 필드
 	
 	// For testing the Length of ID and PASS
 	protected boolean signUpIDLenCk = false;
