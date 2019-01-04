@@ -56,11 +56,7 @@ public class ChatControl implements Runnable {
 	// 컨트롤러 클래스의 메인 로직 부분, UI에서 발생한 이벤트를 위임받아 처리
 	public void appMain() {
 
-<<<<<<< HEAD
-=======
 
-		// 데이터 객체에서 테이터 변화를 처리할 UI 객체 추가
->>>>>>> f12b4ebfda52e45185f9c6c541564e4a0189ae39
 		this.chatData.addObj(v.msgOut); // Adding UI object that dealing with the change of the data
 		
 		// UI 버튼 동작 리스너

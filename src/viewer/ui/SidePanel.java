@@ -123,13 +123,8 @@ public class SidePanel {
 				
 				
 				if (butSrcTxt == sideTxt[0]) {
-<<<<<<< HEAD
-					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
-					artic.trackArticle();
-					
-=======
+
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);	artic.trackArticle();				
->>>>>>> f12b4ebfda52e45185f9c6c541564e4a0189ae39
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.hciBarr.length;i++) {
@@ -143,7 +138,7 @@ public class SidePanel {
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.hciBarr[i]);
 						//		artic.trackBText.append("이수 "+to+"\n");
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, "이수 "+to+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 								
 							}else {
 								count++;
@@ -152,7 +147,7 @@ public class SidePanel {
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.hciBarr[i]);
 						//			artic.trackBText.append("미이수 "+too+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, "미이수 "+too+"\n");
+									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
 									count = 0;
 								} // inner if
 							} // if - else
@@ -177,7 +172,7 @@ public class SidePanel {
 								String to2 = Integer.toString(ArticleUIpanel.hciSarr[i]);
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.hciSarr[i]);
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, "이수 "+to2+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
 								if(count2 == tempStudentinfo2.size()) {
@@ -185,7 +180,7 @@ public class SidePanel {
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.hciSarr[i]);
 //									artic.trackAText.append("미이수 "+too2+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, "미이수 "+too2+"\n");
+									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
 									count2 = 0;
 								} // inner if
 							} // if - else
@@ -201,12 +196,8 @@ public class SidePanel {
 				}//if
 				else if (butSrcTxt == sideTxt[1]) {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
-<<<<<<< HEAD
+
 					artic.trackArticle();
-					
-=======
-					artic.trackArticle();					
->>>>>>> f12b4ebfda52e45185f9c6c541564e4a0189ae39
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.multimediaBarr.length;i++) {
@@ -217,7 +208,7 @@ public class SidePanel {
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.multimediaBarr[i]);
 					//			artic.trackBText.append("이수 "+to+"\n");
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, "이수 "+to+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
 								if(count == tempStudentinfo.size()) {
@@ -225,7 +216,7 @@ public class SidePanel {
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.multimediaBarr[i]);
 						//			artic.trackBText.append("미이수 "+too+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, "미이수 "+too+"\n");
+									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
 									count = 0;
 								} // inner if
 							} // if - else
@@ -251,7 +242,7 @@ public class SidePanel {
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.multimediaSarr[i]);
 					//			artic.trackAText.append("이수 "+to2+"\n");
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, "이수 "+to2+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
 								if(count2 == tempStudentinfo2.size()) {
@@ -259,7 +250,7 @@ public class SidePanel {
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.multimediaSarr[i]);
 					//				artic.trackAText.append("미이수 "+too2+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, "미이수 "+too2+"\n");
+									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
 									count2 = 0;
 								} // inner if
 							} // if - else
@@ -276,10 +267,8 @@ public class SidePanel {
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
-<<<<<<< HEAD
-=======
 
->>>>>>> f12b4ebfda52e45185f9c6c541564e4a0189ae39
+
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.iotBarr.length;i++) {
@@ -290,7 +279,7 @@ public class SidePanel {
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.iotBarr[i]);
 					//			artic.trackBText.append("이수 "+to+"\n");
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, "이수 "+to+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
 								if(count == tempStudentinfo.size()) {
@@ -298,7 +287,7 @@ public class SidePanel {
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.iotBarr[i]);
 					//				artic.trackBText.append("미이수 "+too+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, "미이수 "+too+"\n");
+									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
 									count = 0;
 								} // inner if
 							} // if - else
@@ -324,7 +313,7 @@ public class SidePanel {
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.iotSarr[i]);
 				//				artic.trackAText.append("이수 "+to2+"\n");
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, "이수 "+to2+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
 								if(count2 == tempStudentinfo2.size()) {
@@ -332,7 +321,7 @@ public class SidePanel {
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.iotSarr[i]);
 				//					artic.trackAText.append("미이수 "+too2+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, "미이수 "+too2+"\n");
+									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
 									count2 = 0;
 								} // inner if
 							} // if - else
@@ -360,7 +349,7 @@ public class SidePanel {
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.systemappBarr[i]);
 				//				artic.trackBText.append("이수 "+to+"\n");
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, "이수 "+to+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
 								if(count == tempStudentinfo.size()) {
@@ -368,7 +357,7 @@ public class SidePanel {
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.systemappBarr[i]);
 				//					artic.trackBText.append("미이수 "+too+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, "미이수 "+too+"\n");
+									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
 									count = 0;
 								} // inner if
 							} // if - else
@@ -394,7 +383,7 @@ public class SidePanel {
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.systemappSarr[i]);
 				//				artic.trackAText.append("이수 "+to2+"\n");
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, "이수 "+to2+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
 								if(count2 == tempStudentinfo2.size()) {
@@ -402,7 +391,7 @@ public class SidePanel {
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.systemappSarr[i]);
 				//					artic.trackAText.append("미이수 "+too2+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, "미이수 "+too2+"\n");
+									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
 									count2 = 0;
 								} // inner if
 							} // if - else
@@ -429,7 +418,7 @@ public class SidePanel {
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.aiBarr[i]);
 					//			artic.trackBText.append("이수 "+to+"\n");
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, "이수 "+to+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
 								if(count == tempStudentinfo.size()) {
@@ -437,7 +426,7 @@ public class SidePanel {
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.aiBarr[i]);
 					//				artic.trackBText.append("미이수 "+too+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, "미이수 "+too+"\n");
+									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
 									count = 0;
 								} // inner if
 							} // if - else
@@ -463,7 +452,7 @@ public class SidePanel {
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.aiSarr[i]);
 				//				artic.trackAText.append("이수 "+to2+"\n");
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, "이수 "+to2+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
 								
 							}else {
 								count2++;
@@ -472,7 +461,7 @@ public class SidePanel {
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.aiSarr[i]);
 						//			artic.trackAText.append("미이수 "+too2+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, "미이수 "+too2+"\n");
+									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
 									count2 = 0;
 								} // inner if
 							} // if - else
@@ -500,7 +489,7 @@ public class SidePanel {
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.virtualrealityBarr[i]);
 			//					artic.trackBText.append("이수 "+to+"\n");
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, "이수 "+to+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
 								if(count == tempStudentinfo.size()) {
@@ -508,7 +497,7 @@ public class SidePanel {
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.virtualrealityBarr[i]);
 			//						artic.trackBText.append("미이수 "+too+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, "미이수 "+too+"\n");
+									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
 									count = 0;
 								} // inner if
 							} // if - else
@@ -534,7 +523,7 @@ public class SidePanel {
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.virtualrealitySarr[i]);
 			//					artic.trackAText.append("이수 "+to2+"\n");
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, "이수 "+to2+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
 								if(count2 == tempStudentinfo2.size()) {
@@ -542,7 +531,7 @@ public class SidePanel {
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.virtualrealitySarr[i]);
 			//						artic.trackAText.append("미이수 "+too2+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, "미이수 "+too2+"\n");
+									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
 									count2 = 0;
 								} // inner if
 							} // if - else
@@ -570,7 +559,7 @@ public class SidePanel {
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.infoprotectBarr[i]);
 		//						artic.trackBText.append("이수 "+to+"\n");
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, "이수 "+to+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
 								if(count == tempStudentinfo.size()) {
@@ -578,7 +567,7 @@ public class SidePanel {
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.infoprotectBarr[i]);
 		//							artic.trackBText.append("미이수 "+too+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, "미이수 "+too+"\n");
+									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
 									count = 0;
 								} // inner if
 							} // if - else
@@ -604,7 +593,7 @@ public class SidePanel {
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.infoprotectSarr[i]);
 			//					artic.trackAText.append("이수 "+to2+"\n");
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, "이수 "+to2+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
 								if(count2 == tempStudentinfo2.size()) {
@@ -616,8 +605,8 @@ public class SidePanel {
 									System.out.println(ArticleUIpanel.infoprotectSarr[i]);
 									//여기까지 head
 			//						artic.trackAText.append("미이수 "+too2+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, "미이수 "+too2+"\n");
-									//여기까지밑
+
+									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
 									count2 = 0;
 								} // inner if
 							} // if - else
@@ -644,7 +633,7 @@ public class SidePanel {
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.datascienceBarr[i]);
 			//					artic.trackBText.append("이수 "+to+"\n");
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, "이수 "+to+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 								
 							}else {
 								count++;
@@ -653,7 +642,7 @@ public class SidePanel {
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.datascienceBarr[i]);
 				//					artic.trackBText.append("미이수 "+too+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, "미이수 "+too+"\n");
+									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
 									count = 0;
 								} // inner if
 							} // if - else
@@ -679,7 +668,7 @@ public class SidePanel {
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.datascienceSarr[i]);
 		//						artic.trackAText.append("이수 "+to2+"\n");
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, "이수 "+to2+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
 								if(count2 == tempStudentinfo2.size()) {
@@ -687,7 +676,7 @@ public class SidePanel {
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.datascienceSarr[i]);
 		//							artic.trackAText.append("미이수 "+too2+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, "미이수 "+too2+"\n");
+									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
 									count2 = 0;
 								} // inner if
 							} // if - else
@@ -714,7 +703,7 @@ public class SidePanel {
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.sweduBarr[i]);
 	//							artic.trackBText.append("이수 "+to+"\n");
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, "이수 "+to+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
 								if(count == tempStudentinfo.size()) {
@@ -722,7 +711,7 @@ public class SidePanel {
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.sweduBarr[i]);
 	//								artic.trackBText.append("미이수 "+too+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, "미이수 "+too+"\n");
+									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
 									count = 0;
 								} // inner if
 							} // if - else
@@ -748,7 +737,7 @@ public class SidePanel {
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.sweduSarr[i]);
 	//							artic.trackAText.append("이수 "+to2+"\n");
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, "이수 "+to2+"\n");
+								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
 								if(count2 == tempStudentinfo2.size()) {
@@ -756,7 +745,7 @@ public class SidePanel {
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.sweduSarr[i]);
 	//								artic.trackAText.append("미이수 "+too2+"\n");
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, "미이수 "+too2+"\n");
+									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
 									count2 = 0;
 								} // inner if
 							} // if - else
@@ -773,20 +762,7 @@ public class SidePanel {
 			} // actionPerformed()
 		});
 	} // btnAction()
-<<<<<<< HEAD
 
-	// simulSidePanel
-	private void simulBtnAction(JButton inBtn) {
-		inBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {
-				// getting btn text value
-				Object source = ev.getSource();
-				String butSrcTxt = ((AbstractButton) source).getText();
-			} // actionPerformed()
-		}); // addActionListener
-	} // simulBtnAction()
-=======
->>>>>>> f12b4ebfda52e45185f9c6c541564e4a0189ae39
 	
 	// fidSidePanel
 	private void fidBtnAction(JButton inBtn) {
@@ -795,11 +771,7 @@ public class SidePanel {
 				// getting btn text value
 				Object source = ev.getSource();
 				String butSrcTxt = ((AbstractButton) source).getText();
-<<<<<<< HEAD
 
-				articleUi.welcomelbl.setText(""); //welcome 라벨 없애기
-=======
->>>>>>> f12b4ebfda52e45185f9c6c541564e4a0189ae39
 				
 				//"HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육" };
 				if (butSrcTxt == sideTxt[0]) {
