@@ -89,7 +89,7 @@ public class ArticleUIpanel extends JPanel {
 	static int[] systemappSarr = {40,41,42,43,36,44,45,28,46,13,47};
 	static int[] aiSarr = {4,21,42,43,36,44,45,28,46,13,47};
 	static int[] virtualrealitySarr = {14,12,16,54,55,56,57,5,4,13,15};
-	static int[] infoprotectSarr = {60,611,622,63,64,65,30,67,68,69,66};
+	static int[] infoprotectSarr = {60,61,62,63,64,65,30,67,68,69,66};
 	static int[] datascienceSarr = {51,70,48,71,72,73,74,75,2,17};
 	static int[] sweduSarr = {77,8,24,78,79,80,81,40,82,47,83};
 	

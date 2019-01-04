@@ -10,8 +10,6 @@ import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
 
 import controller.StudentInfo;
 import controller.StudentInfo.StudentSubject;
@@ -29,17 +27,22 @@ import viewer.ViewFrame;
 
 public class SidePanel {
 	// Jpanle
-	protected JPanel trackSidePanel;
-	protected JPanel simulSidePanel;
-	protected JPanel fidSidePanel;
-	protected JPanel infoSidePanel;
-	protected JPanel logOutSidePanel;
-	JButton tempBtn[];
+	protected JPanel trackSidePanel; // 상단 바에서 '트랙' 버튼 클릭 시 나타나는 좌측 메뉴 패널
+	protected JPanel simulSidePanel; // 상단 바에서 '트랙 시뮬레이션' 버튼 클릭 시 나타나는 좌측 메뉴 패널
+	protected JPanel fidSidePanel; // 상단 바에서 '피드백' 버튼 클릭 시 나타나는 좌측 메뉴 패널
+	protected JPanel infoSidePanel; // 상단 바에서 'information' 버튼 클릭 시 나타나는 좌측 메뉴 패널
+	protected JPanel logOutSidePanel; // 상단 바에서 '로그아웃' 버튼 클릭 시 나타나는 좌측 메뉴 패널
+	JButton tempBtn[]; // 각 메뉴 별로 좌측 메뉴에서의 버튼을 생성시켜주기 위해 선언한 JButton 배열
 
-	protected ViewFrame viewFrame;
-	// 이벤트처리
+	protected ViewFrame viewFrame; // 최상위 프레임과 연결시켜주기 위해 선언
+	
+	// 버튼의 텍스트 값들을 스트링 배열로 선언
 	protected String sideTxt[] = { "HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육" };
+	
+	// 로그인을 한 유저의 정보(학번 및 로그인한 유저가 이수한 강의들의 번호)를 가져오기 위해 선언한 클래스
 	protected StudentInfo studentinfo;
+	
+	// 버튼 클릭에 따른 결과 화면에 어떤 화면을 띄워줄 것인지를 결정하기 위해 선언한 클래스
 	protected ArticleUIpanel articleUi;
 	
 	public SidePanel(ViewFrame viewFrame, StudentInfo studentinfo) {
@@ -92,20 +95,21 @@ public class SidePanel {
 	} // simulSidePanel()
 
 	// adding the JButton to Panel
+	// 메뉴별로 그에 해당하는 패널에 각각 버튼을 동적으로 할당
 	public void SideBarBtn(JPanel tempPanel) {
 		tempBtn = new JButton[9];
 		for (int i = 0; i < 9; i++) {
 			tempBtn[i] = new JButton(sideTxt[i]);
-			if(tempPanel.getName() == "trackSidePanel") {
+			if(tempPanel.getName() == "trackSidePanel") { // 상단 바에서 '트랙' 버튼을 클릭 시에 대한 좌측 메뉴의 버튼 생성
 				this.trackBtnAction(tempBtn[i]);
 				tempPanel.add(tempBtn[i]);
-			} else if(tempPanel.getName() == "fidSidePanel") {
+			} else if(tempPanel.getName() == "fidSidePanel") { // 상단 바에서 '피드백' 버튼을 클릭 시에 대한 좌측 메뉴의 버튼 생성
 				this.fidBtnAction(tempBtn[i]);
 				tempPanel.add(tempBtn[i]);
-			} else if(tempPanel.getName() == "infoSidePanel") {
+			} else if(tempPanel.getName() == "infoSidePanel") { // 상단 바에서 'information' 버튼을 클릭 시에 대한 좌측 메뉴의 버튼 생성
 				this.infoBtnAction(tempBtn[i]);
 				tempPanel.add(tempBtn[i]);
-			} else if(tempPanel.getName() == "logOutSidePanel") {
+			} else if(tempPanel.getName() == "logOutSidePanel") { // 상단 바에서 '로그아웃' 버튼을 클릭 시에 대한 좌측 메뉴의 버튼 생성
 				this.logoutBtnAction(tempBtn[i]);
 				tempPanel.add(tempBtn[i]);
 			}
@@ -113,7 +117,7 @@ public class SidePanel {
 	} // SideBarBtn()
 	
 	// Side Bar Button의 액션 이벤트 세팅과 명시
-	// trackSidePanel
+	// trackSidePanel, 트랙 메뉴에 대한 좌측 메뉴 버튼 이벤트 처리
 	private void trackBtnAction(JButton inBtn) {
 		inBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {				
@@ -122,10 +126,14 @@ public class SidePanel {
 				String butSrcTxt = ((AbstractButton) source).getText();
 				
 				
-				if (butSrcTxt == sideTxt[0]) {
-					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);	artic.trackArticle();				
+				if (butSrcTxt == sideTxt[0]) { // HCI ~ 트랙 이수 여부를 판단하는 로직
+					// 결과화면에 도출된 이수 여부를 저장하기 위해 선언한 객체
+					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);	artic.trackArticle();
+					
+					// 로그인한 유저의 수업 이수 정보를 가져오기 위한 벡터 생성
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
+					// HCI ~ 트랙에서 필수 이수 수업과 학생이 이수한 수업들을 비교하는 로직
 					for (int i = 0 ; i < ArticleUIpanel.hciBarr.length;i++) {
 						int count = 0;
 						
