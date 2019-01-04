@@ -135,26 +135,44 @@ public class SidePanel {
 
 					// HCI ~ 트랙에서 필수 이수 수업과 학생이 이수한 수업들을 비교하는 로직
 					for (int i = 0 ; i < ArticleUIpanel.hciBarr.length;i++) {
+						
+						// 이수 여부를 확인해주는 변수
+						// 트랙 기초 교과에서 한 수업을 학생이 이수한 수업들과 비교를 진행해서 일치하지 않을 때마다 1씩 더해준다.
+						// 일치하는 수업이 있다면 최종적으로 count 변수에 저장된 값이 트랙 기초 교과의 갯수보다 부족하기 때문에 이는 이수한 수업으로 판정
 						int count = 0;
 						
+						// 교과목명의 폰트에 색을 추가해주기 위해 선언
 						artic.doc = artic.trackBPane.getStyledDocument();
 						
 						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							
+							// 트랙 기초 교과의 수업 넘버와 학생이 이수한 수업 넘버를 비교했을 때 값이 같을 경우
 							if(ArticleUIpanel.hciBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 교과목명 스트링으로 변환
 								String to = Integer.toString(ArticleUIpanel.hciBarr[i]);
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.hciBarr[i]);
-						//		artic.trackBText.append("이수 "+to+"\n");
+						
+								// 이수한 교과목명의 색은 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 								
+								// 트랙 기초 교과의 수업 넘버와 학생이 이수한 수업 넘버를 비교했을 때 값이 같을 경우
 							}else {
-								count++;
+								count++; // 수업이 일치하지 않으므로 count 변수에 저장된 값을 1 증가
+								
+								// 결과적으로 count의 값이 학생이 이수한 수업의 수와 같은 경우에는 이수한 수업이 아니라는 것을 의미
 								if(count == tempStudentinfo.size()) {
+									
+									// 수업 넘버를 교과목명 스트링으로 변환
 									String too = Integer.toString(ArticleUIpanel.hciBarr[i]);
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.hciBarr[i]);
-						//			artic.trackBText.append("미이수 "+too+"\n");
+						
+									// 이수하지 않은 교과목명은 빨간색으로 표시
 									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									
+									// count 변수 값을 초기화하여 다음 수업 비교를 진행
 									count = 0;
 								} // inner if
 							} // if - else
@@ -162,32 +180,43 @@ public class SidePanel {
 					} // for
 					//왼쪽 text
 					
-					//System.out.println(sideTxt[0]);
-					//오른쪽 text
 					
-					
-
-					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
-					//artic2.trackArticle();
-					
+					// 유저의 이수한 수업 정보를 가져온다.
 					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
 
+					// HCI~ 트랙의 응용 교과와 유저의 수업 정보를 비교하는 로직, 필수교과와의 비교 처리와 같은 로직
 					for (int i = 0 ; i < ArticleUIpanel.hciSarr.length;i++) {
-						int count2 = 0;
+						int count2 = 0; // 이수 여부를 판단하기 위한 변수
+						
 						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							
+							// 이수한 수업인 경우
 							if(ArticleUIpanel.hciSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 교과목명 스트링으로 변환
 								String to2 = Integer.toString(ArticleUIpanel.hciSarr[i]);
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.hciSarr[i]);
+								
+								// 이수한 수업은 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
+								
+							// 이수한 수업이 아닌 경우
 							}else {
-								count2++;
+								count2++; // 변수 값 ++
+								
+								
 								if(count2 == tempStudentinfo2.size()) {
+									
+									// 수업 넘버를 교과목명 스트링으로 변환
 									String too2 = Integer.toString(ArticleUIpanel.hciSarr[i]);
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.hciSarr[i]);
-//									artic.trackAText.append("미이수 "+too2+"\n");
+//									
+									// 이수하지 않은 수업은 빨간색으로 표시
 									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
+									
+									// 다음 수업 비교를 위해 변수 값 초기화
 									count2 = 0;
 								} // inner if
 							} // if - else
@@ -195,35 +224,55 @@ public class SidePanel {
 					}
 					
 					
-					
-					//artic2.trackAText.setText("b222bbb");
+					// 이수 결과를 프레임에 추가
 					viewFrame.add(artic);
-					//viewFrame.add(artic2);
+					
 					viewFrame.revalidate();
 				}//if
-				else if (butSrcTxt == sideTxt[1]) {
+				
+				
+				else if (butSrcTxt == sideTxt[1]) { // 멀티미디어 트랙과 비교를 하는 로직
+					
+					// 결과 화면을 띄워주기 위해 객체 생성
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 
 					artic.trackArticle();
-					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
+					
+					// 유저가 이수한 수업 정보를 담아주기 위해 벡터로 객체 선언
 
+					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
+					
+					// 멀티미디어 트랙 기초 교과와 유저의 수업 비교
 					for (int i = 0 ; i < ArticleUIpanel.multimediaBarr.length;i++) {
-						int count = 0;
+						int count = 0; // 수업 이수 여부를 확인하기 위한 변수
 						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							
+							// 일치하는 수업이 있으면
 							if(ArticleUIpanel.multimediaBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 교과목명 스트링으로 변환
 								String to = Integer.toString(ArticleUIpanel.multimediaBarr[i]);
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.multimediaBarr[i]);
-					//			artic.trackBText.append("이수 "+to+"\n");
+					
+								// 이수한 수업은 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
+								
+							// 일치하지 않으면
 							}else {
 								count++;
+								
 								if(count == tempStudentinfo.size()) {
+									
+									// 수업 넘버를 교과목명 스트링으로 변환
 									String too = Integer.toString(ArticleUIpanel.multimediaBarr[i]);
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.multimediaBarr[i]);
-						//			artic.trackBText.append("미이수 "+too+"\n");
+						
+									// 이수하지 않은 수업은 빨간색으로 표시
 									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									
+									// 다음 수업과의 비교를 위해 변수 값 초기화
 									count = 0;
 								} // inner if
 							} // if - else
@@ -231,70 +280,92 @@ public class SidePanel {
 					} // for
 					//왼쪽 text
 					
-					//System.out.println(sideTxt[0]);
-					//오른쪽 text
 					
-					
-
-					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
-					//artic2.trackArticle();
-					
+					// 유저의 수업 정보를 담아오기 위해 벡터 객체 선언
 					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
 
+					// 멀티미디어 트랙 응용 교과와 학생이 이수한 수업을 비교하는 로직
 					for (int i = 0 ; i < ArticleUIpanel.multimediaSarr.length;i++) {
-						int count2 = 0;
+						int count2 = 0; // 이수 여부를 판단하기 위한 변수
 						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							
+							// 이수한 수업이 있으면
 							if(ArticleUIpanel.multimediaSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 스트링으로 변환
 								String to2 = Integer.toString(ArticleUIpanel.multimediaSarr[i]);
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.multimediaSarr[i]);
-					//			artic.trackAText.append("이수 "+to2+"\n");
+					
+								// 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
+								
+								// 이수하지 않았으면
 								if(count2 == tempStudentinfo2.size()) {
+									
+									// 수업 넘버를 스트링으로 변환
 									String too2 = Integer.toString(ArticleUIpanel.multimediaSarr[i]);
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.multimediaSarr[i]);
-					//				artic.trackAText.append("미이수 "+too2+"\n");
+					
+									// 빨간색으로 표시
 									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
+									
+									//다음 수업과의 비교를 위해 변수 값 초기화
 									count2 = 0;
 								} // inner if
 							} // if - else
 						} // inner for
 					}
 					
-					//artic2.trackAText.setText("b222bbb");
+					// 결과를 프레임에 추가
 					viewFrame.add(artic);
-					//viewFrame.add(artic2);
+					
 					viewFrame.revalidate();
 				
 				}
-				else if (butSrcTxt == sideTxt[2]) {
+				
+				else if (butSrcTxt == sideTxt[2]) { // IOT 트랙 이수 여부를 처리하기 위한 로직
+					
+					// 결과를 화면에 담아줄 객체 생성
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
 
-
+					// 유저의 수업 정보를 담아줄 벡터 생성
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
+					// 트랙 기초 교과 비교 로직
 					for (int i = 0 ; i < ArticleUIpanel.iotBarr.length;i++) {
-						int count = 0;
+						int count = 0; // 이수 여부를 판단하기 위한 로직
 						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							
+							// 이수한 수업이 있으면
 							if(ArticleUIpanel.iotBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 스트링으로 변환
 								String to = Integer.toString(ArticleUIpanel.iotBarr[i]);
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.iotBarr[i]);
-					//			artic.trackBText.append("이수 "+to+"\n");
+					
+								// 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
+								
+								// 수업을 이수하지 않으면
 								if(count == tempStudentinfo.size()) {
+									// 수업 넘버를 스트링으로 변환
 									String too = Integer.toString(ArticleUIpanel.iotBarr[i]);
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.iotBarr[i]);
-					//				artic.trackBText.append("미이수 "+too+"\n");
+					
+									// 빨간색으로 변환
 									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									
+									// 다음 수업 비교를 위해 변수 초기화
 									count = 0;
 								} // inner if
 							} // if - else
@@ -302,33 +373,41 @@ public class SidePanel {
 					} // for
 					//왼쪽 text
 					
-					//System.out.println(sideTxt[0]);
-					//오른쪽 text
-					
-					
 
-					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
-					//artic2.trackArticle();
 					
+					// 유저의 이수한 수업 정보를 담아줄 벡터 생성
 					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
 
+					// IOT 트랙 응용 교과와의 비교 로직
 					for (int i = 0 ; i < ArticleUIpanel.iotSarr.length;i++) {
 						int count2 = 0;
 						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							
+							// 이수한 수업이 있다면
 							if(ArticleUIpanel.iotSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 스트링으로 변환
 								String to2 = Integer.toString(ArticleUIpanel.iotSarr[i]);
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.iotSarr[i]);
-				//				artic.trackAText.append("이수 "+to2+"\n");
+				
+								// 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
+								
+								// 수업을 이수하지 않았으면
 								if(count2 == tempStudentinfo2.size()) {
+									
+									// 수업 넘버를 스트링으로 변환
 									String too2 = Integer.toString(ArticleUIpanel.iotSarr[i]);
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.iotSarr[i]);
-				//					artic.trackAText.append("미이수 "+too2+"\n");
+				
+									// 빨간색으로 표시
 									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
+									
+									// 다음 수업 비교를 위해 변수 초기화
 									count2 = 0;
 								} // inner if
 							} // if - else
@@ -336,68 +415,87 @@ public class SidePanel {
 					}
 					
 					
-					//artic2.trackAText.setText("b222bbb");
+					// 프레임에 결과 화면 추가
 					viewFrame.add(artic);
-					//viewFrame.add(artic2);
+					
 					viewFrame.revalidate();
 				
 				}
-				else if (butSrcTxt == sideTxt[3]) {
+				else if (butSrcTxt == sideTxt[3]) { // 시스템응용 트랙 이수 여부 판단 로직
+					
+					// 결과를 담아줄 객체 생성
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
+					// 유저가 이수한 수업 정보를 담아줄 벡터 생성
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
+					// 시스템 응용 트랙 필수 교과 비교 로직
 					for (int i = 0 ; i < ArticleUIpanel.systemappBarr.length;i++) {
 						int count = 0;
 						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							
+							// 이수한 수업이 있다면
 							if(ArticleUIpanel.systemappBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 스트링으로 변환
 								String to = Integer.toString(ArticleUIpanel.systemappBarr[i]);
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.systemappBarr[i]);
-				//				artic.trackBText.append("이수 "+to+"\n");
+				
+								// 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
+								
+								// 이수하지 않았다면
 								if(count == tempStudentinfo.size()) {
+									
+									// 수업 넘버를 스트링으로 변환
 									String too = Integer.toString(ArticleUIpanel.systemappBarr[i]);
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.systemappBarr[i]);
-				//					artic.trackBText.append("미이수 "+too+"\n");
+				
+									// 빨간색으로 표시
 									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									
+									// 다음 수업과의 비교를 위해 변수 초기화
 									count = 0;
 								} // inner if
 							} // if - else
 						} // inner for
 					} // for
-					//왼쪽 text
 					
-					//System.out.println(sideTxt[0]);
-					//오른쪽 text
-					
-					
-
-					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
-					//artic2.trackArticle();
-					
+					// 유저의 수업 정보를 가져와 벡터에 저장
 					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
 
+					// 시스템 응용 트랙 응용 교과와 비교하는 로직
 					for (int i = 0 ; i < ArticleUIpanel.systemappSarr.length;i++) {
 						int count2 = 0;
 						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							
+							// 이수한 수업이 있다면
 							if(ArticleUIpanel.systemappSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 스트링으로 변환
 								String to2 = Integer.toString(ArticleUIpanel.systemappSarr[i]);
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.systemappSarr[i]);
-				//				artic.trackAText.append("이수 "+to2+"\n");
+				
+								// 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
+								
+								// 이수하지 않았다면
 								if(count2 == tempStudentinfo2.size()) {
+									
+									// 수업 넘버를 스트링으로 변환
 									String too2 = Integer.toString(ArticleUIpanel.systemappSarr[i]);
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.systemappSarr[i]);
-				//					artic.trackAText.append("미이수 "+too2+"\n");
+				
+									// 빨간색으로 표시
 									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
 									count2 = 0;
 								} // inner if
@@ -405,35 +503,51 @@ public class SidePanel {
 						} // inner for
 					}
 					
-					//artic2.trackAText.setText("b222bbb");
+					// 결과 화면을 프레임에 추가
 					viewFrame.add(artic);
-					//viewFrame.add(artic2);
+					
 					viewFrame.revalidate();
 				
 				}
-				else if (butSrcTxt == sideTxt[4]) {
+				else if (butSrcTxt == sideTxt[4]) { // 인공지능 트랙 이수 여부 처리
+					
+					// 결과를 출력하는 화면 객체 생성
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
+					// 유저의 수업 정보를 벡터에 저장
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
+					// 인공지능 트랙 기초 교과 이수 여부 판단
 					for (int i = 0 ; i < ArticleUIpanel.aiBarr.length;i++) {
 						int count = 0;
 						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							
+							// 이수한 수업이 있다면
 							if(ArticleUIpanel.aiBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 스트링으로 변환
 								String to = Integer.toString(ArticleUIpanel.aiBarr[i]);
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.aiBarr[i]);
-					//			artic.trackBText.append("이수 "+to+"\n");
+					
+								// 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
+								
+								// 이수하지 않았다면
 								if(count == tempStudentinfo.size()) {
+									
+									// 수업 넘버를 스트링으로 변환
 									String too = Integer.toString(ArticleUIpanel.aiBarr[i]);
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.aiBarr[i]);
-					//				artic.trackBText.append("미이수 "+too+"\n");
+					
+									// 빨간색으로 표시
 									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									
+									// 다음 수업 비교를 위해 변수 초기화
 									count = 0;
 								} // inner if
 							} // if - else
@@ -441,34 +555,41 @@ public class SidePanel {
 					} // for
 					//왼쪽 text
 					
-					//System.out.println(sideTxt[0]);
-					//오른쪽 text
 					
-					
-
-					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
-					//artic2.trackArticle();
-					
+					// 유저의 수업 정보를 담는 벡터 생성
 					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
 
+					// 인공지능 트랙 응용 교과 이수 여부 판단 로직
 					for (int i = 0 ; i < ArticleUIpanel.aiSarr.length;i++) {
 						int count2 = 0;
 						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							
+							// 이수한 수업이라면
 							if(ArticleUIpanel.aiSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 스트링으로 변환
 								String to2 = Integer.toString(ArticleUIpanel.aiSarr[i]);
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.aiSarr[i]);
-				//				artic.trackAText.append("이수 "+to2+"\n");
+				
+								// 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
 								
 							}else {
 								count2++;
+								
+								// 이수하지 않았다면
 								if(count2 == tempStudentinfo2.size()) {
+									
+									// 수업 넘버를 스트링으로 변환
 									String too2 = Integer.toString(ArticleUIpanel.aiSarr[i]);
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.aiSarr[i]);
-						//			artic.trackAText.append("미이수 "+too2+"\n");
+						
+									// 빨간색으로 표시
 									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
+									
+									// 다음 수업 비교를 위해 변수 초기화
 									count2 = 0;
 								} // inner if
 							} // if - else
@@ -476,35 +597,51 @@ public class SidePanel {
 					}
 					
 					
-					//artic2.trackAText.setText("b222bbb");
+					// 결과 화면을 프레임에 추가
 					viewFrame.add(artic);
-					//viewFrame.add(artic2);
+					
 					viewFrame.revalidate();
 				
 				}
-				else if (butSrcTxt == sideTxt[5]) {
+				else if (butSrcTxt == sideTxt[5]) { // 가상현실 트랙 이수 여부 비교
+					
+					// 결과를 담아줄 화면 객체 생성
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
+					// 유저의 수업 정보를 담아줄 벡터 생성
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
+					// 가상현실 트랙 기초 교과 이수 여부 비교 로직
 					for (int i = 0 ; i < ArticleUIpanel.virtualrealityBarr.length;i++) {
 						int count = 0;
 						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							
+							// 이수한 수업이라면
 							if(ArticleUIpanel.virtualrealityBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 스트링으로 변환
 								String to = Integer.toString(ArticleUIpanel.virtualrealityBarr[i]);
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.virtualrealityBarr[i]);
-			//					artic.trackBText.append("이수 "+to+"\n");
+			
+								// 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
+								
+								// 이수하지 않았다면
 								if(count == tempStudentinfo.size()) {
+									
+									// 수업 넘버를 스트링으로 표시
 									String too = Integer.toString(ArticleUIpanel.virtualrealityBarr[i]);
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.virtualrealityBarr[i]);
-			//						artic.trackBText.append("미이수 "+too+"\n");
+			
+									// 빨간색으로 표시
 									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									
+									// 다음 수업 비교를 위해 변수 초기화
 									count = 0;
 								} // inner if
 							} // if - else
@@ -512,33 +649,41 @@ public class SidePanel {
 					} // for
 					//왼쪽 text
 					
-					//System.out.println(sideTxt[0]);
-					//오른쪽 text
-					
-					
 
-					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
-					//artic2.trackArticle();
 					
+					// 유저의 수업 정보를 담아줄 벡터 생성
 					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
 
+					// 가상현실 트랙 응용 교과 이수 여부 판단 로직
 					for (int i = 0 ; i < ArticleUIpanel.virtualrealitySarr.length;i++) {
 						int count2 = 0;
 						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							
+							// 이수한 수업이라면
 							if(ArticleUIpanel.virtualrealitySarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 스트링으로 변환
 								String to2 = Integer.toString(ArticleUIpanel.virtualrealitySarr[i]);
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.virtualrealitySarr[i]);
-			//					artic.trackAText.append("이수 "+to2+"\n");
+			
+								// 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
+								
+								// 이수하지 않았다면
 								if(count2 == tempStudentinfo2.size()) {
+									
+									// 수업 넘버를 스트링으로 변환
 									String too2 = Integer.toString(ArticleUIpanel.virtualrealitySarr[i]);
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.virtualrealitySarr[i]);
-			//						artic.trackAText.append("미이수 "+too2+"\n");
+			
+									// 빨간색으로 변환
 									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
+									
+									// 다음 수업 비교를 위해 변수 초기화
 									count2 = 0;
 								} // inner if
 							} // if - else
@@ -546,35 +691,51 @@ public class SidePanel {
 					}
 					
 					
-					//artic2.trackAText.setText("b222bbb");
+					// 결과 화면을 프레임에 추가
 					viewFrame.add(artic);
-					//viewFrame.add(artic2);
+					
 					viewFrame.revalidate();
 				
 				}
-				else if (butSrcTxt == sideTxt[6]) {
+				else if (butSrcTxt == sideTxt[6]) { // 정보보안 트랙 이수 여부 판단
+					
+					// 결과를 담아줄 화면 객체를 생성
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
+					// 유저의 수업 정보를 담아줄 객체 생성
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
+					// 정보보안 트랙 기초 교과 이수 여부 판단 로직
 					for (int i = 0 ; i < ArticleUIpanel.infoprotectBarr.length;i++) {
 						int count = 0;
 						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							
+							// 이수한 수업이라면
 							if(ArticleUIpanel.infoprotectBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 스트링으로 변환
 								String to = Integer.toString(ArticleUIpanel.infoprotectBarr[i]);
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.infoprotectBarr[i]);
-		//						artic.trackBText.append("이수 "+to+"\n");
+		
+								// 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
+								
+								// 이수하지 않았다면
 								if(count == tempStudentinfo.size()) {
+									
+									// 수업 넘버를 스트링으로 표시
 									String too = Integer.toString(ArticleUIpanel.infoprotectBarr[i]);
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.infoprotectBarr[i]);
-		//							artic.trackBText.append("미이수 "+too+"\n");
+		
+									//빨간색으로 표시
 									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									
+									// 다음 수업 비교를 위해 변수 초기화
 									count = 0;
 								} // inner if
 							} // if - else
@@ -582,74 +743,92 @@ public class SidePanel {
 					} // for
 					//왼쪽 text
 					
-					//System.out.println(sideTxt[0]);
-					//오른쪽 text
-					
-					
 
-					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
-					//artic2.trackArticle();
-					
+					// 수업 정보를 담아줄 벡터 생성
 					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
 
+					// 정보보안 트랙 응용 교과 이수 여부 판단 로직
 					for (int i = 0 ; i < ArticleUIpanel.infoprotectSarr.length;i++) {
 						int count2 = 0;
 						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							
+							// 이수한 수업이라면
 							if(ArticleUIpanel.infoprotectSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 스트링으로 변환
 								String to2 = Integer.toString(ArticleUIpanel.infoprotectSarr[i]);
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.infoprotectSarr[i]);
-			//					artic.trackAText.append("이수 "+to2+"\n");
+			
+								// 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
+								
+								// 이수하지 않았다면
 								if(count2 == tempStudentinfo2.size()) {
+									
+									// 수업 넘버를 스트링으로 변환
 									String too2 = Integer.toString(ArticleUIpanel.infoprotectSarr[i]);
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.infoprotectSarr[i]);
-								//head	
-								//	artic.trackAText.append("미이수 "+too2+"\n");
-									System.out.println(ArticleUIpanel.infoprotectSarr[i]);
-									//여기까지 head
-			//						artic.trackAText.append("미이수 "+too2+"\n");
 
+			
+									// 빨간색으로 표시
 									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
+									
+									// 다음 수업 비교를 위해 변수 초기화
 									count2 = 0;
 								} // inner if
 							} // if - else
 						} // inner for
 					}
 					
-					//artic2.trackAText.setText("b222bbb");
+					// 결과 화면을 프레임에 추가
 					viewFrame.add(artic);
-					//viewFrame.add(artic2);
+					
 					viewFrame.revalidate();
 				
 				}
-				else if (butSrcTxt == sideTxt[7]) {
+				else if (butSrcTxt == sideTxt[7]) { // 데이터 사이언스 트랙 이수 여부 판단
+					
+					// 결과를 담을 화면 객체 생성
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
+					// 유저의 수업 정보를 담을 벡터 생성
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.datascienceBarr.length;i++) {
 						int count = 0;
 						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							
+							// 이수한 수업이라면
 							if(ArticleUIpanel.datascienceBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 스트링으로 변환
 								String to = Integer.toString(ArticleUIpanel.datascienceBarr[i]);
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.datascienceBarr[i]);
-			//					artic.trackBText.append("이수 "+to+"\n");
+			
+								// 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 								
 							}else {
 								count++;
+								
+								// 이수하지 않았다면
 								if(count == tempStudentinfo.size()) {
+									
+									// 수업 넘버를 통해 스트링으로 변환
 									String too = Integer.toString(ArticleUIpanel.datascienceBarr[i]);
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.datascienceBarr[i]);
-				//					artic.trackBText.append("미이수 "+too+"\n");
+				
+									// 빨간색으로 표시
 									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									
+									// 다음 수업 비교를 위해 변수 초기화
 									count = 0;
 								} // inner if
 							} // if - else
@@ -657,59 +836,74 @@ public class SidePanel {
 					} // for
 					//왼쪽 text
 					
-					//System.out.println(sideTxt[0]);
-					//오른쪽 text
 					
-					
-
-					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
-					//artic2.trackArticle();
-					
+					// 유저의 수업 정보를 담을 벡터 생성
 					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
 
+					// 데이터 사이언스 트랙 응용 교과 이수 여부 판단 로직
 					for (int i = 0 ; i < ArticleUIpanel.datascienceSarr.length;i++) {
 						int count2 = 0;
 						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							
+							// 이수한 수업이라면
 							if(ArticleUIpanel.datascienceSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 스트링으로 변환
 								String to2 = Integer.toString(ArticleUIpanel.datascienceSarr[i]);
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.datascienceSarr[i]);
-		//						artic.trackAText.append("이수 "+to2+"\n");
+		
+								// 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
+								
+								// 이수하지 않았다면
 								if(count2 == tempStudentinfo2.size()) {
+									
+									// 수업 넘버를 스트링으로 변환
 									String too2 = Integer.toString(ArticleUIpanel.datascienceSarr[i]);
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.datascienceSarr[i]);
-		//							artic.trackAText.append("미이수 "+too2+"\n");
+									
+									// 빨간색으로 표시
 									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
+									
+									// 다음 수업을 위해 변수 초기화
 									count2 = 0;
 								} // inner if
 							} // if - else
 						} // inner for
 					}
 
-					//artic2.trackAText.setText("b222bbb");
+
+					// 결과 화면을 프레임에 추가
 					viewFrame.add(artic);
-					//viewFrame.add(artic2);
 					viewFrame.revalidate();
 				
 				}
-				else if (butSrcTxt == sideTxt[8]) {
+				else if (butSrcTxt == sideTxt[8]) { // SW 교육 트랙 이수 여부 판단
+					
+					// 결과를 담아줄 화면 객체 생성
 					ArticleUIpanel artic = new ArticleUIpanel(studentinfo);
 					artic.trackArticle();
 					
+					// 유저의 수업 정보를 담아줄 벡터 생성
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
 					for (int i = 0 ; i < ArticleUIpanel.sweduBarr.length;i++) {
 						int count = 0;
 						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
+							
+							// 이수한 수업이라면 
 							if(ArticleUIpanel.sweduBarr[i] == tempStudentinfo.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 스트링으로 변환
 								String to = Integer.toString(ArticleUIpanel.sweduBarr[i]);
 								ChangeLecture cl = new ChangeLecture();
 								to = cl.numToSubject(ArticleUIpanel.sweduBarr[i]);
-	//							artic.trackBText.append("이수 "+to+"\n");
+								
+								// 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
