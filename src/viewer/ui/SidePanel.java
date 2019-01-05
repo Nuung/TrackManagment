@@ -155,7 +155,7 @@ public class SidePanel {
 								to = cl.numToSubject(ArticleUIpanel.hciBarr[i]);
 						
 								// 이수한 교과목명의 색은 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackBPane, to+"\n");
 								
 								// 트랙 기초 교과의 수업 넘버와 학생이 이수한 수업 넘버를 비교했을 때 값이 같을 경우
 							}else {
@@ -170,7 +170,7 @@ public class SidePanel {
 									too = cl.numToSubject(ArticleUIpanel.hciBarr[i]);
 						
 									// 이수하지 않은 교과목명은 빨간색으로 표시
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackBPane, too+"\n");
 									
 									// count 변수 값을 초기화하여 다음 수업 비교를 진행
 									count = 0;
@@ -199,7 +199,7 @@ public class SidePanel {
 								to2 = cl2.numToSubject(ArticleUIpanel.hciSarr[i]);
 								
 								// 이수한 수업은 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackAPane, to2+"\n");
 								
 							// 이수한 수업이 아닌 경우
 							}else {
@@ -214,7 +214,7 @@ public class SidePanel {
 									too2 = cl2.numToSubject(ArticleUIpanel.hciSarr[i]);
 //									
 									// 이수하지 않은 수업은 빨간색으로 표시
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackAPane, too2+"\n");
 									
 									// 다음 수업 비교를 위해 변수 값 초기화
 									count2 = 0;
@@ -256,7 +256,7 @@ public class SidePanel {
 								to = cl.numToSubject(ArticleUIpanel.multimediaBarr[i]);
 					
 								// 이수한 수업은 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackBPane, to+"\n");
 								
 							// 일치하지 않으면
 							}else {
@@ -270,7 +270,7 @@ public class SidePanel {
 									too = cl.numToSubject(ArticleUIpanel.multimediaBarr[i]);
 						
 									// 이수하지 않은 수업은 빨간색으로 표시
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackBPane, too+"\n");
 									
 									// 다음 수업과의 비교를 위해 변수 값 초기화
 									count = 0;
@@ -298,7 +298,7 @@ public class SidePanel {
 								to2 = cl2.numToSubject(ArticleUIpanel.multimediaSarr[i]);
 					
 								// 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
 								
@@ -311,7 +311,7 @@ public class SidePanel {
 									too2 = cl2.numToSubject(ArticleUIpanel.multimediaSarr[i]);
 					
 									// 빨간색으로 표시
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackAPane, too2+"\n");
 									
 									//다음 수업과의 비교를 위해 변수 값 초기화
 									count2 = 0;
@@ -351,7 +351,7 @@ public class SidePanel {
 								to = cl.numToSubject(ArticleUIpanel.iotBarr[i]);
 					
 								// 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
 								
@@ -363,7 +363,7 @@ public class SidePanel {
 									too = cl.numToSubject(ArticleUIpanel.iotBarr[i]);
 					
 									// 빨간색으로 변환
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackBPane, too+"\n");
 									
 									// 다음 수업 비교를 위해 변수 초기화
 									count = 0;
@@ -392,7 +392,7 @@ public class SidePanel {
 								to2 = cl2.numToSubject(ArticleUIpanel.iotSarr[i]);
 				
 								// 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
 								
@@ -405,7 +405,7 @@ public class SidePanel {
 									too2 = cl2.numToSubject(ArticleUIpanel.iotSarr[i]);
 				
 									// 빨간색으로 표시
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackAPane, too2+"\n");
 									
 									// 다음 수업 비교를 위해 변수 초기화
 									count2 = 0;
@@ -444,7 +444,7 @@ public class SidePanel {
 								to = cl.numToSubject(ArticleUIpanel.systemappBarr[i]);
 				
 								// 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
 								
@@ -457,7 +457,7 @@ public class SidePanel {
 									too = cl.numToSubject(ArticleUIpanel.systemappBarr[i]);
 				
 									// 빨간색으로 표시
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackBPane, too+"\n");
 									
 									// 다음 수업과의 비교를 위해 변수 초기화
 									count = 0;
@@ -483,7 +483,7 @@ public class SidePanel {
 								to2 = cl2.numToSubject(ArticleUIpanel.systemappSarr[i]);
 				
 								// 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
 								
@@ -496,7 +496,7 @@ public class SidePanel {
 									too2 = cl2.numToSubject(ArticleUIpanel.systemappSarr[i]);
 				
 									// 빨간색으로 표시
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackAPane, too2+"\n");
 									count2 = 0;
 								} // inner if
 							} // if - else
@@ -532,7 +532,7 @@ public class SidePanel {
 								to = cl.numToSubject(ArticleUIpanel.aiBarr[i]);
 					
 								// 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
 								
@@ -545,7 +545,7 @@ public class SidePanel {
 									too = cl.numToSubject(ArticleUIpanel.aiBarr[i]);
 					
 									// 빨간색으로 표시
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackBPane, too+"\n");
 									
 									// 다음 수업 비교를 위해 변수 초기화
 									count = 0;
@@ -573,7 +573,7 @@ public class SidePanel {
 								to2 = cl2.numToSubject(ArticleUIpanel.aiSarr[i]);
 				
 								// 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackAPane, to2+"\n");
 								
 							}else {
 								count2++;
@@ -587,7 +587,7 @@ public class SidePanel {
 									too2 = cl2.numToSubject(ArticleUIpanel.aiSarr[i]);
 						
 									// 빨간색으로 표시
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackAPane, too2+"\n");
 									
 									// 다음 수업 비교를 위해 변수 초기화
 									count2 = 0;
@@ -626,7 +626,7 @@ public class SidePanel {
 								to = cl.numToSubject(ArticleUIpanel.virtualrealityBarr[i]);
 			
 								// 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
 								
@@ -639,7 +639,7 @@ public class SidePanel {
 									too = cl.numToSubject(ArticleUIpanel.virtualrealityBarr[i]);
 			
 									// 빨간색으로 표시
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackBPane, too+"\n");
 									
 									// 다음 수업 비교를 위해 변수 초기화
 									count = 0;
@@ -668,7 +668,7 @@ public class SidePanel {
 								to2 = cl2.numToSubject(ArticleUIpanel.virtualrealitySarr[i]);
 			
 								// 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
 								
@@ -681,7 +681,7 @@ public class SidePanel {
 									too2 = cl2.numToSubject(ArticleUIpanel.virtualrealitySarr[i]);
 			
 									// 빨간색으로 변환
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackAPane, too2+"\n");
 									
 									// 다음 수업 비교를 위해 변수 초기화
 									count2 = 0;
@@ -720,7 +720,7 @@ public class SidePanel {
 								to = cl.numToSubject(ArticleUIpanel.infoprotectBarr[i]);
 		
 								// 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
 								
@@ -733,7 +733,7 @@ public class SidePanel {
 									too = cl.numToSubject(ArticleUIpanel.infoprotectBarr[i]);
 		
 									//빨간색으로 표시
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackBPane, too+"\n");
 									
 									// 다음 수업 비교를 위해 변수 초기화
 									count = 0;
@@ -761,7 +761,7 @@ public class SidePanel {
 								to2 = cl2.numToSubject(ArticleUIpanel.infoprotectSarr[i]);
 			
 								// 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
 								
@@ -775,7 +775,7 @@ public class SidePanel {
 
 			
 									// 빨간색으로 표시
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackAPane, too2+"\n");
 									
 									// 다음 수업 비교를 위해 변수 초기화
 									count2 = 0;
@@ -812,7 +812,7 @@ public class SidePanel {
 								to = cl.numToSubject(ArticleUIpanel.datascienceBarr[i]);
 			
 								// 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackBPane, to+"\n");
 								
 							}else {
 								count++;
@@ -826,7 +826,7 @@ public class SidePanel {
 									too = cl.numToSubject(ArticleUIpanel.datascienceBarr[i]);
 				
 									// 빨간색으로 표시
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackBPane, too+"\n");
 									
 									// 다음 수업 비교를 위해 변수 초기화
 									count = 0;
@@ -854,7 +854,7 @@ public class SidePanel {
 								to2 = cl2.numToSubject(ArticleUIpanel.datascienceSarr[i]);
 		
 								// 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
 								
@@ -867,7 +867,7 @@ public class SidePanel {
 									too2 = cl2.numToSubject(ArticleUIpanel.datascienceSarr[i]);
 									
 									// 빨간색으로 표시
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackAPane, too2+"\n");
 									
 									// 다음 수업을 위해 변수 초기화
 									count2 = 0;
@@ -905,7 +905,7 @@ public class SidePanel {
 								to = cl.numToSubject(ArticleUIpanel.sweduBarr[i]);
 								
 								// 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
 								
@@ -918,7 +918,7 @@ public class SidePanel {
 									too = cl.numToSubject(ArticleUIpanel.sweduBarr[i]);
 									
 									// 빨간색으로 표시
-									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackBPane, too+"\n");
 									
 									// 다음 수업과의 비교를 위해 변수 초기화
 									count = 0;
@@ -946,7 +946,7 @@ public class SidePanel {
 								to2 = cl2.numToSubject(ArticleUIpanel.sweduSarr[i]);
 
 								// 파란색으로 표시
-								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
+								artic.ConvertBlueColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
 								
@@ -959,7 +959,7 @@ public class SidePanel {
 									too2 = cl2.numToSubject(ArticleUIpanel.sweduSarr[i]);
 
 									// 빨간색으로 표시
-									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
+									artic.ConvertRedColor(artic.doc, artic.trackAPane, too2+"\n");
 									
 									// 다음 수업 비교를 위해 변수 초기화
 									count2 = 0;
