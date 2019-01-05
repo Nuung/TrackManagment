@@ -891,6 +891,7 @@ public class SidePanel {
 					// 유저의 수업 정보를 담아줄 벡터 생성
 					Vector<StudentSubject> tempStudentinfo = studentinfo.getStudentSubject();
 
+					// SW 교육 트랙 기초 교과 이수 여부 판단 로직
 					for (int i = 0 ; i < ArticleUIpanel.sweduBarr.length;i++) {
 						int count = 0;
 						for(int j = 0 ; j < tempStudentinfo.size(); j++) {
@@ -907,12 +908,19 @@ public class SidePanel {
 								artic.ConvertRedColor(artic.doc, artic.trackBPane, to+"\n");
 							}else {
 								count++;
+								
+								// 이수하지 않았다면
 								if(count == tempStudentinfo.size()) {
+									
+									// 수업 넘버를 스트링으로 변환
 									String too = Integer.toString(ArticleUIpanel.sweduBarr[i]);
 									ChangeLecture cl = new ChangeLecture();
 									too = cl.numToSubject(ArticleUIpanel.sweduBarr[i]);
-	//								artic.trackBText.append("미이수 "+too+"\n");
+									
+									// 빨간색으로 표시
 									artic.ConvertBlueColor(artic.doc, artic.trackBPane, too+"\n");
+									
+									// 다음 수업과의 비교를 위해 변수 초기화
 									count = 0;
 								} // inner if
 							} // if - else
@@ -920,42 +928,49 @@ public class SidePanel {
 					} // for
 					//왼쪽 text
 					
-					//System.out.println(sideTxt[0]);
-					//오른쪽 text
-					
-					
 
-					//ArticleUIpanel artic2 = new ArticleUIpanel(studentinfo);
-					//artic2.trackArticle();
-					
+					// 유저의 수업 정보를 담기 위해 베터 생성
 					Vector<StudentSubject> tempStudentinfo2 = studentinfo.getStudentSubject();
 
+					// SW 교육 트랙 응용교과 이수 여부를 판단하기 위한 로직
 					for (int i = 0 ; i < ArticleUIpanel.sweduSarr.length;i++) {
 						int count2 = 0;
 						for(int j = 0 ; j < tempStudentinfo2.size(); j++) {
+							
+							// 이수한 수업이 있다면
 							if(ArticleUIpanel.sweduSarr[i] == tempStudentinfo2.get(j).getLectureNum()) {
+								
+								// 수업 넘버를 스트링으로 변환
 								String to2 = Integer.toString(ArticleUIpanel.sweduSarr[i]);
 								ChangeLecture cl2 = new ChangeLecture();
 								to2 = cl2.numToSubject(ArticleUIpanel.sweduSarr[i]);
-	//							artic.trackAText.append("이수 "+to2+"\n");
+
+								// 파란색으로 표시
 								artic.ConvertRedColor(artic.doc, artic.trackAPane, to2+"\n");
 							}else {
 								count2++;
+								
+								// 이수하지 않았다면
 								if(count2 == tempStudentinfo2.size()) {
+									
+									// 수업 넘버를 스트링으로 변환
 									String too2 = Integer.toString(ArticleUIpanel.sweduSarr[i]);
 									ChangeLecture cl2 = new ChangeLecture();
 									too2 = cl2.numToSubject(ArticleUIpanel.sweduSarr[i]);
-	//								artic.trackAText.append("미이수 "+too2+"\n");
+
+									// 빨간색으로 표시
 									artic.ConvertBlueColor(artic.doc, artic.trackAPane, too2+"\n");
+									
+									// 다음 수업 비교를 위해 변수 초기화
 									count2 = 0;
 								} // inner if
 							} // if - else
 						} // inner for
 					}					
 					
-					//artic2.trackAText.setText("b222bbb");
+					// 결과 화면을 프레임에 추가
 					viewFrame.add(artic);
-					//viewFrame.add(artic2);
+					
 					viewFrame.revalidate();
 				
 				} // if -- else
@@ -966,6 +981,7 @@ public class SidePanel {
 
 	
 	// fidSidePanel
+	// 피드백 메뉴에 대한 좌측 메뉴 버튼 이벤트 리스너 추가 메서드
 	private void fidBtnAction(JButton inBtn) {
 		inBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
@@ -974,57 +990,67 @@ public class SidePanel {
 				String butSrcTxt = ((AbstractButton) source).getText();
 
 				
-				//"HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육" };
+				//"HCI&비쥬얼컴퓨팅", "멀티미디어", "사물인터넷", "시스템응용", "인공지능", "가상현실", "정보보호", "데이터사이언스", "SW교육"
 				if (butSrcTxt == sideTxt[0]) {
+					// HCI 채널로 멀티채팅 시작
 					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "HCI");
 					chat.appMain();
-				} // 왼쪽 첫번째 버튼
+				} // 왼쪽 첫 번째 버튼
 				
 				else if (butSrcTxt == sideTxt[1]) {
+					// MULTIMEDIA 채널로 멀티 채팅 시작
 					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "MULTIMEDIA");
 					chat.appMain();
-				} // 왼쪽 첫번째 버튼
+				} // 왼쪽 두 번째 버튼
 				
 				else if (butSrcTxt == sideTxt[2]) {
+					// IOT 채널로 멀티 채팅 시작
 					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "IOT");
 					chat.appMain();
-				} // 왼쪽 첫번째 버튼
+				} // 왼쪽 세 번째 버튼
 				
 				else if (butSrcTxt == sideTxt[3]) {
+					// SYSTEMAPPLICATION 채널로 멀티 채팅 시작
 					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "SYSTEMAPPLICATION");
 					chat.appMain();
-				} // 왼쪽 첫번째 버튼
+				} // 왼쪽 네 번째 버튼
 				
 				else if (butSrcTxt == sideTxt[4]) {
+					// AI 채널로 멀티 채팅 시작
 					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "AI");
 					chat.appMain();
-				} // 왼쪽 첫번째 버튼
+				} // 왼쪽 다섯 번째 버튼
 				
 				else if (butSrcTxt == sideTxt[5]) {
+					// VR 채널로 멀티 채팅 시작
 					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "VR");
 					chat.appMain();
-				} // 왼쪽 첫번째 버튼
+				} // 왼쪽 여섯 번째 버튼
 				
 				else if (butSrcTxt == sideTxt[6]) {
+					// SECURITY 채널로 멀티 채팅 시작
 					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "SECURITY");
 					chat.appMain();
-				} // 왼쪽 첫번째 버튼
+				} // 왼쪽 일곱 번째 버튼
 				
 				else if (butSrcTxt == sideTxt[7]) {
+					// DATASCIENCE 채널로 멀티 채팅 시작
 					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "DATASCIENCE");
 					chat.appMain();
-				} // 왼쪽 첫번째 버튼
+				} // 왼쪽 여덟 번째 버튼
 				
 				else{
+					// SWEDU 채널로 멀티 채팅 시작
 					ChatControl chat = new ChatControl(new ChatData(), new ChatViewer(), "SWEDU");
 					chat.appMain();
-				} // 왼쪽 첫번째 버튼
+				} // 왼쪽 아홉 번째 버튼
 
 			} // actionPerformed()
 		}); // addActionListener
 	} // fidBtnAction()
 	
 	// infoSidePanel
+	// information 메뉴 클릭 시 좌측 메뉴의 버튼 들의 이벤트 추가 메서드
 	private void infoBtnAction(JButton inBtn) {
 		inBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {				
@@ -1059,6 +1085,7 @@ public class SidePanel {
 	} // simulBtnAction()
 	
 	// logOutSidePanel
+	// 로그아웃 버튼 처리 메서드
 	private void logoutBtnAction(JButton inBtn) {
 		inBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {	
