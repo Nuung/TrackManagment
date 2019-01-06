@@ -154,6 +154,9 @@ public class ViewFirstSet {
 		tempP.add(loginBtn); // 로그인 버튼 추가
 		tempP.add(signupBtn); // 회원가입 버튼 추가
 		newFrame.add(tempP); // 프레임에 패널 추가
+		newFrame.setAlwaysOnTop(true);
+		newFrame.toFront();
+//		newFrame.setF
 	} // newFrameSet()
 
 	// 각 버튼의 액션 이벤트 세팅과 명시

@@ -681,7 +681,7 @@ public class ArticleUIpanel extends JPanel {
 			String tempS = "";
 			double tempPersent[] = simulFx.translaterReaching();
 			for (int j = 0; j < totalReaching[i][0] + totalReaching[i][1]; j++) {
-				tempS+="★ ";
+				tempS+=" ★ ★ ★";
 			} // for
 			tempTwo[i].setText(tempS+"      ("+String.format("%.2f", tempPersent[i])+")  ");
 			innerP[1].add(tempTwo[i]);
