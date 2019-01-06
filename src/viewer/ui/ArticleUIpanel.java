@@ -698,7 +698,7 @@ public class ArticleUIpanel extends JPanel {
 
 			// 이수율에 비례한 만큼 스트링에 별을 추가해준다.
 			for (int j = 0; j < totalReaching[i][0] + totalReaching[i][1]; j++) {
-				tempS+="★ ";
+				tempS+=" ★ ★ ★";
 			} // for
 			
 			// 이수율 수치 표시
