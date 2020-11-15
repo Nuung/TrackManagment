@@ -5,10 +5,6 @@ public class ViewLauncher {
 	
 	public static int CountUser = 0;
 	public static void main(String args[]) {
-
-		
-
 		new ViewFrame();
-		
 	} // main()
 }
