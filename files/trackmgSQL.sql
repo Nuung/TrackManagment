@@ -1,3 +1,7 @@
+
+use javadb;
+# DROP TABLE IF EXISTS User, userinfo, hciB, multimediaB, iotB, systemappB, aiB;
+
 create table User (
 id int(11) NOT NULL AUTO_INCREMENT,
 name varchar(100) NOT NULL,
