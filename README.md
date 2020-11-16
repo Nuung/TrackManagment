@@ -1,5 +1,6 @@
 <div align = "center">
 
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Nuung/TrackManagment)
 [![GitHub issues](https://img.shields.io/github/issues/Nuung/TrackManagment)](https://github.com/Nuung/TrackManagment/issues)
     <img src="https://img.shields.io/badge/license-MIT-green" />
     <img src="https://img.shields.io/badge/Java%20version-%3E%3D%20SE%2011-blue" />
